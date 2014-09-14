@@ -52,9 +52,6 @@ void pwm_gtk_control::scale_value_changed(GtkWidget *wid, gpointer user_data)
         return;
     }
 
-
-
-
     gdouble val = gtk_range_get_value(GTK_RANGE(obj->scale));
     double d = (double)val;
     d = d / 100;
@@ -113,6 +110,8 @@ void pwm_gtk_control::btnReleaseClick(GtkWidget *wid, gpointer user_data)
 void pwm_gtk_control::SetServo(servo * servoMotor)
 {
     ser = servoMotor;
+    //pwm_gtk_control::btnOnClick(btnON, this);
+    delay(50);
 }
 
 pwm_gtk_control::pwm_gtk_control(char * title, int minVal, int maxVal, int startVal)
@@ -168,8 +167,6 @@ pwm_gtk_control::pwm_gtk_control(char * title, int minVal, int maxVal, int start
     gtk_widget_set_usize(btnRelease, 70, 30);
     gtk_fixed_put(GTK_FIXED (fixed), btnRelease, 300, 10);
 
-    pwm_gtk_control::btnOnClick(btnON, this);
-    delay(50);
 }
 
 
