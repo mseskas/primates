@@ -52,10 +52,19 @@ void pwm_gtk_control::scale_value_changed(GtkWidget *wid, gpointer user_data)
         return;
     }
 
+
+
+
     gdouble val = gtk_range_get_value(GTK_RANGE(obj->scale));
     double d = (double)val;
     d = d / 100;
     obj->ser->set_angle(d);
+
+
+    //servo * ser = new servo(obj->chip, 4);
+    //ser->set_angle(d);
+   // ser = new servo(obj->chip, 3);
+    //ser->set_angle(d);
 
     printf("Scale turn to %f\n\r", d);
 }
@@ -170,7 +179,7 @@ pwm_gtk_control::pwm_gtk_control(char * title, int pinNo, int minVal, int maxVal
     gtk_fixed_put(GTK_FIXED (fixed), btnRelease, 300, 10);
 
     pwm_gtk_control::btnOnClick(btnON, this);
-    delay(250);
+    delay(50);
 }
 
 
