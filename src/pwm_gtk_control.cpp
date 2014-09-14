@@ -20,9 +20,13 @@ void pwm_gtk_control::btnOnClick(GtkWidget *wid, gpointer user_data)
 
     if (obj->isON == true) {
         obj->isON = false;
+        gtk_button_set_label((GtkButton*)obj->btnON, "OFF");
         return;
     }
-    else obj->isON = true;
+    else {
+        obj->isON = true;
+        gtk_button_set_label((GtkButton*)obj->btnON, "ON");
+    }
 
     if (obj->ser == NULL) {
         printf("null\r\n");
@@ -62,7 +66,7 @@ void pwm_gtk_control::entry_changed(GtkWidget *wid, gpointer user_data)
 
     obj->is_entry_changed = 1;
     obj->isON = false;
-
+    gtk_button_set_label((GtkButton*)obj->btnON, "OFF");
     gtk_button_set_label((GtkButton*)obj->btnRelease, "Reset");
 
     printf("min max changed\r\n");
@@ -98,15 +102,17 @@ void pwm_gtk_control::btnReleaseClick(GtkWidget *wid, gpointer user_data)
 }
 
 
-pwm_gtk_control::pwm_gtk_control(char * title, int pinNo, int minVal, int maxVal)
+pwm_gtk_control::pwm_gtk_control(char * title, int pinNo, int minVal, int maxVal, int startVal)
 {
-    int is_entry_changed = 0;
+    is_entry_changed = 0;
     ser = NULL;
     chip = NULL;
     scale = NULL;
+    isON = false;
 
-    int minValue = minVal;
-    int maxValue = maxVal;
+    minValue = minVal;
+    maxValue = maxVal;
+    startValue = startVal;//(minValue + maxValue) / 2;
 
     std::string fullTitle = "PWM - ";
     fullTitle.append(title);
@@ -139,6 +145,8 @@ pwm_gtk_control::pwm_gtk_control(char * title, int pinNo, int minVal, int maxVal
 
     // scale
     scale = gtk_hscale_new_with_range(minVal, maxVal, 1);
+    gtk_range_set_value(GTK_RANGE(scale), startValue);
+
     gtk_widget_set_usize(scale, 150, 45);
     g_signal_connect (scale, "value-changed", G_CALLBACK (pwm_gtk_control::scale_value_changed), this);
     gtk_fixed_put(GTK_FIXED (fixed), scale, 50, 0);
@@ -149,18 +157,20 @@ pwm_gtk_control::pwm_gtk_control(char * title, int pinNo, int minVal, int maxVal
     gtk_widget_set_usize(maxTxt, 35, 25);
     gtk_fixed_put(GTK_FIXED (fixed), maxTxt, 205, 10);
 
-    // button turn
+    // button on/off
     btnON = gtk_button_new_with_label("OFF");
     g_signal_connect (btnON, "clicked", G_CALLBACK (pwm_gtk_control::btnOnClick), this);
     gtk_widget_set_usize(btnON, 50, 30);
     gtk_fixed_put(GTK_FIXED (fixed), btnON, 245, 10);
 
-    // button off
+    // button release/reset
     btnRelease = gtk_button_new_with_label("Release");
     g_signal_connect (btnRelease, "clicked", G_CALLBACK (pwm_gtk_control::btnReleaseClick), this);
     gtk_widget_set_usize(btnRelease, 70, 30);
     gtk_fixed_put(GTK_FIXED (fixed), btnRelease, 300, 10);
 
+    pwm_gtk_control::btnOnClick(btnON, this);
+    delay(250);
 }
 
 

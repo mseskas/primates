@@ -12,7 +12,7 @@
 class pwm_gtk_control
 {
     public:
-        pwm_gtk_control(char * title, int pinNo, int minVal, int maxVal);
+        pwm_gtk_control(char * title, int pinNo, int minVal, int maxVal, int startVal);
         GtkWidget * get_main();
         static void scale_value_changed(GtkWidget *wid, gpointer user_data);
         static void entry_changed(GtkWidget *wid, gpointer user_data);
@@ -21,6 +21,7 @@ class pwm_gtk_control
 
         int minValue;
         int maxValue;
+        int startValue;
 
     private:
         GtkWidget * frame;
@@ -32,7 +33,7 @@ class pwm_gtk_control
         GtkWidget * maxTxt;
 
         int is_entry_changed;
-        bool isON = false;
+        bool isON;
 
         int _servoPinNo;
 
