@@ -11,10 +11,10 @@ void gtkAllServo::btnOnClick(GtkWidget *wid, gpointer user_data)
 {
     gtkAllServo * obj = (gtkAllServo * )user_data;
 
-   /* if (obj->hasServos == false) {
+    if (obj->hasServos == false) {
         printf("has no servos\r\n");
         return;
-    }*/
+    }
 
     char* leg1txt = gtk_entry_get_text((GtkEntry*)obj->txtLeg1);
     char* leg2txt = gtk_entry_get_text((GtkEntry*)obj->txtLeg2);
@@ -48,6 +48,7 @@ float gtkAllServo::ExecutePosition(char * data12, gtkAllServo * obj){
             case '1':
                 printf("1");
                 min = obj->_servoParams[i*3 + 1];
+                printf("set d%\r\n", min);
                 d = (float)min / 100;
                 obj->_servos[i]->set_angle(d);
 
@@ -55,7 +56,8 @@ float gtkAllServo::ExecutePosition(char * data12, gtkAllServo * obj){
             case '2':
                 printf("2");
                 max = obj->_servoParams[i*3 + 2];
-                d = (float)min / 100;
+                d = (float)max / 100;
+                printf("set d%\r\n", max);
                 obj->_servos[i]->set_angle(d);
             break;
 
@@ -64,6 +66,7 @@ float gtkAllServo::ExecutePosition(char * data12, gtkAllServo * obj){
             break;
         }
     }
+    printf("\r\n");
     return 8.8;
 }
 
@@ -77,7 +80,9 @@ void gtkAllServo::SetServos(servo * servoMotor[])
 
 gtkAllServo::gtkAllServo(char * title, servo * data[], int * params)
 {
-    for (int i = 0; i < srvQuantity; i++) _servos[i] = NULL;
+    hasServos = false;
+    for (int i = 0; i < srvQuantity; i++) _servos[i] = data[i];
+    hasServos = true;
 
     _servoParams = params;
 

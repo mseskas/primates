@@ -8,7 +8,7 @@ class gtkAllServo
         GtkWidget * get_main();
         void SetServos(servo * servoMotor[]);
         static const int srvQuantity = 12;
-        bool hasServos = false;
+        bool hasServos;
         servo * _servos[srvQuantity];
 
         static void btnOnClick(GtkWidget *wid, gpointer user_data);

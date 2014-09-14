@@ -11,6 +11,23 @@ gui_main::gui_main( )
 
 void gui_main::build_gui()
 {
+    int params[12][3] = {
+            {25, 15, 40},
+            {90, 60, 90},
+            {50, 32, 60},
+            {45, 25, 52},
+            {37, 37, 70},
+            {20, 10, 40},
+            {45, 40, 65},
+            {84, 47, 84},
+            {50, 30, 75},
+            {35, 20, 42},
+            {10, 10, 40},
+            {32, 15, 50}
+        };
+
+    _servoParams = &params[0][0];
+
     gdk_threads_enter();
     XInitThreads();
     gtk_init( 0, NULL );
@@ -30,8 +47,18 @@ void gui_main::build_gui()
     GtkWidget * noteBook = gtk_notebook_new ();
     gtk_notebook_append_page ((GtkNotebook*)noteBook, _fixed_box, gtk_label_new("Single"));
 
-    gtkAllServo * all = new gtkAllServo("Start position", _servos, &_servoParams[0][0]);
-    gtk_notebook_append_page ((GtkNotebook*)noteBook, all->get_main(), gtk_label_new("Position"));
+    GtkWidget * no = gtk_fixed_new();
+    gtk_widget_set_usize(no, 900, 450);
+
+
+
+    gtkAllServo * all = new gtkAllServo("Start position", _servos, _servoParams);
+    gtk_fixed_put(GTK_FIXED (no), all->get_main(), 0, 0);
+
+    all = new gtkAllServo("2nd position", _servos, _servoParams);
+    gtk_fixed_put(GTK_FIXED (no), all->get_main(), 0, 100);
+
+    gtk_notebook_append_page ((GtkNotebook*)noteBook, no, gtk_label_new("Position"));
 
 
 
@@ -60,7 +87,7 @@ void gui_main::LoadServoControls(GtkWidget * frame){
 
     for (int i = 1; i < 13; i++){
         int xOffset = (i-1) / 6;
-        pwm_gtk_control * ctr = new pwm_gtk_control(to_string(i).c_str(), _servoParams[i - 1][1], _servoParams[(i - 1)][2], _servoParams[i - 1][0]);
+        pwm_gtk_control * ctr = new pwm_gtk_control(to_string(i).c_str(), _servoParams[(i - 1)* 3 + 1], _servoParams[(i - 1)* 3 + 2], _servoParams[(i - 1)* 3 ]);
 
         if (isRaspberryPi){
             _servos[i-1] = new servo(chip, i);
