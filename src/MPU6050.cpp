@@ -1,32 +1,33 @@
 #include "MPU6050.h"
 
-MPU6050::MPU6050(int chipAddr) {
+MPU6050::MPU6050() {
     _WAKEUP = 0x6b;
-    _RTEMP = 41;
-    _RACCELX = 43;
-    _RACCELY = 45;
-    _RACCELZ = 47;
-    _RGYROX = 0x3b;
-    _RGYROY = 0x3d;
-    _RGYROZ = 0x3f;
+    _RTEMP = 0x41;
+    _RACCELX = 0x3b;
+    _RACCELY = 0x3d;
+    _RACCELZ = 0x3f;
+    _RGYROX = 0x43;
+    _RGYROY = 0x45;
+    _RGYROZ = 0x47;
 
-    wiringPiSetup ();
-    _chipHandler = wiringPiI2CSetup(chipAddr) ;
-    WakeUp();
+   wiringPiSetup ();
+   _chipHandler = wiringPiI2CSetup(MPU6050_ADDR);
+   cout << "MPU handler: " << _chipHandler << endl;
+   WakeUp();
 }
 
 void MPU6050::WakeUp() {
     wiringPiI2CWriteReg8(_chipHandler, _WAKEUP, 0x00);
-    delay(0.1);
+    delay(100);
 }
 
 double MPU6050::GetXRotation(double accelX, double accelY, double accelZ) {
-    double radians = atan2 (y, Distance(x, z));
+    double radians = atan2 (accelY, Distance(accelX, accelZ));
     return -radians * 180 / PI;
 }
 
 double MPU6050::GetYRotation(double accelX, double accelY, double accelZ) {
-    double radians = atan2 (x, Distance(y, z));
+    double radians = atan2 (accelX, Distance(accelY, accelZ));
     return -radians * 180 / PI;
 }
 
@@ -47,7 +48,7 @@ int MPU6050::ReadValue(int address){
 }
 
 double MPU6050::GetAccelX(){
-    float value = (float)ReadValue(_RACCELZ);
+    float value = (float)ReadValue(_RACCELX);
     return value / 16384.0;
 }
 

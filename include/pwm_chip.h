@@ -2,11 +2,13 @@
 #include <wiringPi.h>
 
 #include <wiringPiI2C.h>
-
+#include <iostream>
 #include <project_constants.h>
 
 #ifndef	__PWM_CHIP_H__
 #define	__PWM_CHIP_H__
+using namespace std;
+
 
 class pwm_chip
 {
