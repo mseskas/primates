@@ -29,6 +29,10 @@ void AllServoModel::LoadServoControls(){
     pwm_chip * chip = NULL;
     chip = new pwm_chip(PWM_CHIP_ADDR);
 
+   // servo ** temp = new servo*[srvQuantity];
+
+   // Servos = &temp[0][0];
+
     for (int i = 0; i < srvQuantity; i++) Servos[i] = new servo(chip, i+1);
 }
 
@@ -64,12 +68,9 @@ int AllServoModel::ExecutePosition(char * data12){
             case '1':
                 max = ServoParams[i*3 + 2];
                 d = (float)max / 100;
-                //printf("set d%\r\n", max);
                 Servos[i]->set_angle(d);
             break;
-
             default:
-                return 0;
             break;
         }
     }

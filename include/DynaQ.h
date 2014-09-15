@@ -27,9 +27,9 @@ class DynaQ
         float Q[Squantity][Squantity];
         char R[Squantity][Squantity];
 
-        const float BETA = 0.9;
-        const float GAMA = 0.9;
-        const float EPSILON = 0.01;
+        float BETA;
+        float GAMA;
+        float EPSILON;
 
         AllServoModel * StateModel;
         Reward * RewardModel;

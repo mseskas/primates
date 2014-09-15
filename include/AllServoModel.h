@@ -17,9 +17,9 @@ class AllServoModel
         int ExecutePosition(char * data12);
         char* BeginState();
 
-        char LastState[srvQuantity];
+        char LastState[srvQuantity+1];
 
-        servo * Servos[srvQuantity+1];
+        servo * Servos[12];
         int * ServoParams;
 
     protected:

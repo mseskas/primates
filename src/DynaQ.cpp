@@ -9,6 +9,9 @@ DynaQ::~DynaQ(){
 
 DynaQ::DynaQ(AllServoModel * allServoModel, Reward * rewardModel)
 {
+    float BETA = 0.9;
+    float GAMA = 0.9;
+    float EPSILON = 0.01;
     StateModel = allServoModel;
     RewardModel = rewardModel;
     srvQuantity = allServoModel->srvQuantity;
