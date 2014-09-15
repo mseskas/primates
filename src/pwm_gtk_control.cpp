@@ -68,7 +68,6 @@ void pwm_gtk_control::entry_changed(GtkWidget *wid, gpointer user_data)
     pwm_gtk_control * obj = (pwm_gtk_control * )user_data;
 
     obj->is_entry_changed = 1;
-    obj->isON = false;
     gtk_button_set_label((GtkButton*)obj->btnON, "OFF");
     gtk_button_set_label((GtkButton*)obj->btnRelease, "Reset");
 
@@ -99,7 +98,7 @@ void pwm_gtk_control::btnReleaseClick(GtkWidget *wid, gpointer user_data)
         printf("null\r\n");
         return;
     }
-
+    obj->isON = false;
     obj->ser->Reset();
     printf("Release pwm\n\r");
 }
