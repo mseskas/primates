@@ -22,7 +22,7 @@ void RewardView::btnStartClick(GtkWidget *wid, gpointer user_data)
     if (obj->hasMPU == true){
         cout << "btnStartClick - starting to measure" << endl;
 
-        double result = -0.02;//obj->Model->GetReward();
+        double result = obj->Model->GetReward();
 
         string output = to_string(result);
 

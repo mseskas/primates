@@ -58,10 +58,7 @@ void pwm_gtk_control::scale_value_changed(GtkWidget *wid, gpointer user_data)
     obj->ser->set_angle(d);
 
 
-    //servo * ser = new servo(obj->chip, 4);
-    //ser->set_angle(d);
-   // ser = new servo(obj->chip, 3);
-    //ser->set_angle(d);
+
 
     printf("Scale turn to %f\n\r", d);
 }
