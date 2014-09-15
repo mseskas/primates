@@ -3,8 +3,8 @@
 
 Reward::Reward(MPU6050 * mpuChip) {
     _mpuChip = mpuChip;
-    _durationMs = 10000; // milliseconds
-    _separationDurationMs = 50;
+    _durationMs = 2500; // milliseconds
+    _separationDurationMs = 30;
     _threshold = 0.05;
 }
 
@@ -46,19 +46,22 @@ double Reward::GetReward(){
                 maxAX = measure;
                 maxIteration = iteration;
             }
-            cout << "[" << minAX << ":" << maxAX << "]\t" << measure << endl;
-            delay(_separationDurationMs);
-            iteration++;
+
         }
+        cout << "[" << minAX << ":" << maxAX << "]\t";
+        cout << "[" << minIteration << ":" << maxIteration << "]\t" << measure << endl;
+        delay(_separationDurationMs);
+        iteration++;
     }
 
     if (minIteration == 2000000 && maxIteration == 2000000) return 0;
 
     if (minIteration < maxIteration){
-        // min WIN
+        // min WIN - forward
+        cout << "FORWARD!" << minAX << endl;
         return minAX;
-
     }
-    // max WIN
+    // max WIN - backward
+    cout << "BACKWARD!" << maxAX << endl;
     return maxAX;
 }
