@@ -6,6 +6,8 @@
 #include "pwm_chip.h"
 #include "servo.h"
 
+#include <sys/utsname.h>
+
 class pwm_gtk_control
 {
     public:
@@ -25,17 +27,17 @@ class pwm_gtk_control
         GtkWidget * frame;
         GtkWidget * fixed;
 
-        static GtkWidget * scale;
+        GtkWidget * scale;
         GtkWidget * btn_turn;
         GtkWidget * btn_off;
         GtkWidget * minTxt;
         GtkWidget * maxTxt;
-        static int is_entry_changed;
+        int is_entry_changed;
 
         int _servoPinNo;
 
-        static servo * ser;
-        static pwm_chip * chip;
+        servo * ser;
+        pwm_chip * chip;
 };
 
 #endif // PWM_GTK_CONTROL_H

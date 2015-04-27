@@ -52,8 +52,12 @@ void gui_main::build_gui()
     gtk_container_add (GTK_CONTAINER (_window), _fixed_box);
 
 
-pwm_gtk_control * ctr = new pwm_gtk_control("1", 8);
-gtk_fixed_put(GTK_FIXED (_fixed_box), ctr->get_main(), 200, 50);
+pwm_gtk_control * ctr = new pwm_gtk_control("8", 8);
+gtk_fixed_put(GTK_FIXED (_fixed_box), ctr->get_main(), 20, 50);
+
+
+pwm_gtk_control * ctr2 = new pwm_gtk_control("9", 9);
+gtk_fixed_put(GTK_FIXED (_fixed_box), ctr2->get_main(), 400, 50);
 
     /* Enter the main loop */
     gtk_widget_show_all (_window);
