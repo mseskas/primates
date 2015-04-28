@@ -3043,14 +3043,18 @@
 	<X11/Xlib.h>
 	<thread>
 
-1430160180 source:/home/minde/Desktop/primates/src/gui_main.cpp
+1430241787 source:/home/minde/Desktop/primates/src/gui_main.cpp
 	"gui_main.h"
 	"pwm_gtk_control.h"
 
-1430159362 /home/minde/Desktop/primates/include/pwm_gtk_control.h
+1430241995 /home/minde/Desktop/primates/include/pwm_gtk_control.h
 	<gtk/gtk.h>
+	<gtk/gtkbutton.h>
 	"pwm_chip.h"
 	"servo.h"
+	<string>
+	<stdio.h>
+	<stdlib.h>
 	<sys/utsname.h>
 
 1430155356 /home/minde/Desktop/primates/include/pwm_chip.h
@@ -3069,7 +3073,7 @@
 1430155356 source:/home/minde/Desktop/primates/src/pwm_chip.cpp
 	"pwm_chip.h"
 
-1430161268 source:/home/minde/Desktop/primates/src/pwm_gtk_control.cpp
+1430242021 source:/home/minde/Desktop/primates/src/pwm_gtk_control.cpp
 	"../include/pwm_gtk_control.h"
 	"pwm_chip.h"
 	"servo.h"

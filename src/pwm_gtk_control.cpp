@@ -12,55 +12,48 @@
 GtkWidget * pwm_gtk_control::get_main()
 {
     return this->frame;
-
 }
 
-void pwm_gtk_control::btn_turn_click(GtkWidget *wid, gpointer user_data)
+void pwm_gtk_control::btnOnClick(GtkWidget *wid, gpointer user_data)
 {
     pwm_gtk_control * obj = (pwm_gtk_control * )user_data;
 
-    gdouble val = gtk_range_get_value(GTK_RANGE(obj->scale));
-    if (obj->ser != NULL)
-    {
-        double d = (double)val;
-
-        d = d / 100;
-        printf("%f", d);
-        obj->ser->set_angle(d);
-
+    if (obj->isON == true) {
+        obj->isON = false;
+        return;
     }
-    else printf("null ");
+    else obj->isON = true;
 
-    if (obj->is_entry_changed == 1)
-        printf("changed entry\n\r");
-    else printf("button turn\n\r");
-
-    obj->is_entry_changed = 0;
+    if (obj->ser == NULL) {
+        printf("null\r\n");
+        return;
+    }
+    // turn motor
+    gdouble val = gtk_range_get_value(GTK_RANGE(obj->scale));
+    double d = (double)val;
+    d = d / 100;
+    obj->ser->set_angle(d);
+    printf("btnOn turn to %f\n\r", d);
 }
 
 void pwm_gtk_control::scale_value_changed(GtkWidget *wid, gpointer user_data)
 {
     pwm_gtk_control * obj = (pwm_gtk_control * )user_data;
+    if (obj->isON == false) {
+        printf("Off\r\n");
+        return;
+    }
+    if (obj->ser == NULL) {
+        printf("null\r\n");
+        return;
+    }
 
     gdouble val = gtk_range_get_value(GTK_RANGE(obj->scale));
+    double d = (double)val;
+    d = d / 100;
+    obj->ser->set_angle(d);
 
-    if (obj->ser != NULL)
-    {
-        double d = (double)val;
-
-        d = d / 100;
-        printf("%f", d);
-        obj->ser->set_angle(d);
-
-    }
-    else printf("null ");
-
-    if (obj->is_entry_changed == 1)
-        printf("changed entry\n\r");
-    else printf("button turn\n\r");
-
-    printf("scale\n\r");
-
+    printf("Scale turn to %f\n\r", d);
 }
 
 void pwm_gtk_control::entry_changed(GtkWidget *wid, gpointer user_data)
@@ -68,37 +61,63 @@ void pwm_gtk_control::entry_changed(GtkWidget *wid, gpointer user_data)
     pwm_gtk_control * obj = (pwm_gtk_control * )user_data;
 
     obj->is_entry_changed = 1;
-    //printf("min max");
+    obj->isON = false;
+
+    gtk_button_set_label((GtkButton*)obj->btnRelease, "Reset");
+
+    printf("min max changed\r\n");
 }
 
-void pwm_gtk_control::btn_off_click(GtkWidget *wid, gpointer user_data)
+void pwm_gtk_control::btnReleaseClick(GtkWidget *wid, gpointer user_data)
 {
     pwm_gtk_control * obj = (pwm_gtk_control * )user_data;
 
-    if (obj->chip != NULL){
-        obj->chip->reset();
-    }
-    else {
-        printf("null ");
-    }
-    printf("turn off pwm\n\r");
+    if (obj->is_entry_changed == 1) {
+        char* minText = gtk_entry_get_text((GtkEntry*)obj->minTxt);
+        char* maxText = gtk_entry_get_text((GtkEntry*)obj->maxTxt);
 
+        int minInt = std::stoi (minText);
+        int maxInt = std::stoi (maxText);
+
+        gtk_range_set_range((GtkRange*)obj->scale, minInt, maxInt);
+        obj->is_entry_changed = 0;
+        obj->minValue = minInt;
+        obj->maxValue = maxInt;
+        gtk_button_set_label((GtkButton*)obj->btnRelease, "Release");
+        printf("Reset control\n\r");
+        return;
+    }
+
+    if (obj->chip == NULL) {
+        printf("null\r\n");
+        return;
+    }
+
+    obj->chip->reset();
+    printf("Release pwm\n\r");
 }
 
 
-pwm_gtk_control::pwm_gtk_control(char * title, int pinNo)
+pwm_gtk_control::pwm_gtk_control(char * title, int pinNo, int minVal, int maxVal)
 {
     int is_entry_changed = 0;
     ser = NULL;
     chip = NULL;
     scale = NULL;
 
-    frame = gtk_frame_new(title);
+    int minValue = minVal;
+    int maxValue = maxVal;
+
+    std::string fullTitle = "PWM - ";
+    fullTitle.append(title);
+    fullTitle.append(", control percentage");
+
+    frame = gtk_frame_new(fullTitle.c_str());
     fixed = gtk_fixed_new();
 
     struct utsname sysinfo;
     uname(&sysinfo);
-    cout << "Your computer is : " << sysinfo.nodename << endl;
+    //cout << "Your computer is : " << sysinfo.nodename << endl;
     std::string g = "raspberrypi";
 
     if ( g.compare(sysinfo.nodename) == 0){
@@ -107,38 +126,40 @@ pwm_gtk_control::pwm_gtk_control(char * title, int pinNo)
         ser = new servo(chip, _servoPinNo);
     }
 
-    gtk_container_set_border_width(GTK_CONTAINER (fixed), 5);
+    gtk_container_set_border_width(GTK_CONTAINER (fixed), 2);
     gtk_container_add(GTK_CONTAINER (frame), fixed);
 
+
+
     // min text box
-    minTxt = gtk_entry_new_with_buffer(gtk_entry_buffer_new("50", 7));
+    minTxt = gtk_entry_new_with_buffer(gtk_entry_buffer_new(to_string(minVal).c_str(), 7));
     g_signal_connect (minTxt, "changed", G_CALLBACK (pwm_gtk_control::entry_changed), this);
-    gtk_widget_set_usize(minTxt, 25, 25);
+    gtk_widget_set_usize(minTxt, 35, 25);
     gtk_fixed_put(GTK_FIXED (fixed), minTxt, 10, 10);
 
     // scale
-    scale = gtk_hscale_new_with_range(0, 150, 1);
+    scale = gtk_hscale_new_with_range(minVal, maxVal, 1);
     gtk_widget_set_usize(scale, 150, 45);
     g_signal_connect (scale, "value-changed", G_CALLBACK (pwm_gtk_control::scale_value_changed), this);
-    gtk_fixed_put(GTK_FIXED (fixed), scale, 40, 0);
+    gtk_fixed_put(GTK_FIXED (fixed), scale, 50, 0);
 
     // max text box
-    maxTxt = gtk_entry_new_with_buffer(gtk_entry_buffer_new("150", 7));
+    maxTxt = gtk_entry_new_with_buffer(gtk_entry_buffer_new(to_string(maxVal).c_str(), 7));
     g_signal_connect (maxTxt, "changed", G_CALLBACK (pwm_gtk_control::entry_changed), this);
-    gtk_widget_set_usize(maxTxt, 25, 25);
-    gtk_fixed_put(GTK_FIXED (fixed), maxTxt, 195, 10);
+    gtk_widget_set_usize(maxTxt, 35, 25);
+    gtk_fixed_put(GTK_FIXED (fixed), maxTxt, 205, 10);
 
     // button turn
-    btn_turn = gtk_button_new_with_label("Turn");
-    g_signal_connect (btn_turn, "clicked", G_CALLBACK (pwm_gtk_control::btn_turn_click), this);
-    gtk_widget_set_usize(btn_turn, 50, 30);
-    gtk_fixed_put(GTK_FIXED (fixed), btn_turn, 225, 10);
+    btnON = gtk_button_new_with_label("OFF");
+    g_signal_connect (btnON, "clicked", G_CALLBACK (pwm_gtk_control::btnOnClick), this);
+    gtk_widget_set_usize(btnON, 50, 30);
+    gtk_fixed_put(GTK_FIXED (fixed), btnON, 245, 10);
 
     // button off
-    btn_off = gtk_button_new_with_label("OFF");
-    g_signal_connect (btn_off, "clicked", G_CALLBACK (pwm_gtk_control::btn_off_click), this);
-    gtk_widget_set_usize(btn_off, 50, 30);
-    gtk_fixed_put(GTK_FIXED (fixed), btn_off, 280, 10);
+    btnRelease = gtk_button_new_with_label("Release");
+    g_signal_connect (btnRelease, "clicked", G_CALLBACK (pwm_gtk_control::btnReleaseClick), this);
+    gtk_widget_set_usize(btnRelease, 70, 30);
+    gtk_fixed_put(GTK_FIXED (fixed), btnRelease, 300, 10);
 
 }
 
