@@ -23,7 +23,7 @@ void gui_main::build_gui()
     gtk_window_set_position (GTK_WINDOW (_window), GTK_WIN_POS_CENTER);
 
     _fixed_box = gtk_fixed_new();
-    gtk_widget_set_usize(_fixed_box, 900, 400);
+    gtk_widget_set_usize(_fixed_box, 900, 450);
 
 
   /*  GtkWidget * frame = gtk_frame_new("Display");
@@ -40,8 +40,6 @@ void gui_main::build_gui()
     gtk_fixed_put(GTK_FIXED (_fixed_box), frame, 460, 0);
 
 */
-
-
     // PRIMATES
     //GtkWidget * drive_scale = gtk_hscale_new_with_range(50, 150, 1);
     //gtk_widget_set_usize(drive_scale, 150, 45);
@@ -52,16 +50,15 @@ void gui_main::build_gui()
     gtk_container_add (GTK_CONTAINER (_window), _fixed_box);
 
 
-pwm_gtk_control * ctr8 = new pwm_gtk_control("8", 8, 0, 120);
-gtk_fixed_put(GTK_FIXED (_fixed_box), ctr8->get_main(), 20, 50);
+    for (int i = 1; i < 13; i++){
+        int xOffset = (i-1) / 6;
 
-
-pwm_gtk_control * ctr9 = new pwm_gtk_control("9", 9, 0, 120);
-gtk_fixed_put(GTK_FIXED (_fixed_box), ctr9->get_main(), 400, 50);
-
-
-pwm_gtk_control * ctr10 = new pwm_gtk_control("10", 10, 0, 120);
-gtk_fixed_put(GTK_FIXED (_fixed_box), ctr10->get_main(), 20, 150);
+        pwm_gtk_control * ctr8 = new pwm_gtk_control(to_string(i).c_str(), i, 0, 120);
+        gtk_fixed_put(GTK_FIXED (_fixed_box), ctr8->get_main(), xOffset * 400, (i-1) * 75 - xOffset * 450);
+        /*pwm_gtk_control * ctr8 = new pwm_gtk_control("8", 8, 0, 120);
+        gtk_fixed_put(GTK_FIXED (_fixed_box), ctr8->get_main(), 0, 0);
+        */
+    }
 
     /* Enter the main loop */
     gtk_widget_show_all (_window);

@@ -5,9 +5,7 @@
 #include <gtk/gtkbutton.h>
 #include "pwm_chip.h"
 #include "servo.h"
-#include <string>  // std::string, std::stoi
-#include <stdio.h> //
-#include <stdlib.h> // itos
+
 
 #include <sys/utsname.h>
 
