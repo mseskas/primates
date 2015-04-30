@@ -101,21 +101,24 @@ void pwm_gtk_control::btnReleaseClick(GtkWidget *wid, gpointer user_data)
         return;
     }
 
-    if (obj->chip == NULL) {
+    if (obj->ser == NULL) {
         printf("null\r\n");
         return;
     }
 
-    obj->chip->reset();
+    obj->ser->Reset();
     printf("Release pwm\n\r");
 }
 
+void pwm_gtk_control::SetServo(servo * servoMotor)
+{
+    ser = servoMotor;
+}
 
-pwm_gtk_control::pwm_gtk_control(char * title, int pinNo, int minVal, int maxVal, int startVal)
+pwm_gtk_control::pwm_gtk_control(char * title, int minVal, int maxVal, int startVal)
 {
     is_entry_changed = 0;
     ser = NULL;
-    chip = NULL;
     scale = NULL;
     isON = false;
 
@@ -130,21 +133,8 @@ pwm_gtk_control::pwm_gtk_control(char * title, int pinNo, int minVal, int maxVal
     frame = gtk_frame_new(fullTitle.c_str());
     fixed = gtk_fixed_new();
 
-    struct utsname sysinfo;
-    uname(&sysinfo);
-    //cout << "Your computer is : " << sysinfo.nodename << endl;
-    std::string g = "raspberrypi";
-
-    if ( g.compare(sysinfo.nodename) == 0){
-        chip = new pwm_chip(PWM_CHIP_ADDR);
-        _servoPinNo = pinNo;
-        ser = new servo(chip, _servoPinNo);
-    }
-
     gtk_container_set_border_width(GTK_CONTAINER (fixed), 2);
     gtk_container_add(GTK_CONTAINER (frame), fixed);
-
-
 
     // min text box
     minTxt = gtk_entry_new_with_buffer(gtk_entry_buffer_new(to_string(minVal).c_str(), 7));

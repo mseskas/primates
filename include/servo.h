@@ -18,6 +18,9 @@ public:
     void turn(float angle);
     int _max_ticks;
     int _min_ticks;
+
+    void Reset();
+
 protected:
 private:
     pwm_chip * _chip_PCA9685;

@@ -42,5 +42,8 @@ float servo::get_angle()
     return _angle;
 }
 
-
+void servo::Reset()
+{
+    _chip_PCA9685->set_pwm(_pin, 0, 0 );
+}
 

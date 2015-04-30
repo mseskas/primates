@@ -45,37 +45,11 @@ void gui_main::build_gui()
     //gtk_widget_set_usize(drive_scale, 150, 45);
     //gtk_fixed_put(GTK_FIXED (_fixed_box), drive_scale, 45, 350);
 
+    LoadServoControls(_fixed_box);
 
     // put everithing to window
     gtk_container_add (GTK_CONTAINER (_window), _fixed_box);
 
-
-int d[36] =
-{
-25, 15, 40,
-90, 60, 90,
-55, 32, 55,
-45, 25, 52,
-37, 37, 70,
-20, 20, 40,
-45, 40, 65,
-84, 47, 84,
-50, 30, 50,
-35, 20, 42,
-10, 10, 40,
-32, 32, 50
-
-};
-
-    for (int i = 1; i < 13; i++){
-        int xOffset = (i-1) / 6;
-
-        pwm_gtk_control * ctr8 = new pwm_gtk_control(to_string(i).c_str(), i, d[1 + (3 * (i - 1))], d[ 2 + (3 * (i - 1))], d[3 * (i - 1)]);
-        gtk_fixed_put(GTK_FIXED (_fixed_box), ctr8->get_main(), xOffset * 400, (i-1) * 75 - xOffset * 450);
-        /*pwm_gtk_control * ctr8 = new pwm_gtk_control("8", 8, 0, 120);
-        gtk_fixed_put(GTK_FIXED (_fixed_box), ctr8->get_main(), 0, 0);
-        */
-    }
 
     /* Enter the main loop */
     gtk_widget_show_all (_window);
@@ -83,4 +57,47 @@ int d[36] =
 
     /* Release gtk's global lock */
     gdk_threads_leave();
+}
+
+void gui_main::LoadServoControls(GtkWidget * frame){
+    struct utsname sysinfo;
+    uname(&sysinfo);
+    //cout << "Your computer is : " << sysinfo.nodename << endl;
+    std::string g = "raspberrypi";
+    bool isRaspberryPi = false;
+    if ( g.compare(sysinfo.nodename) == 0) isRaspberryPi = true;  // if raspberry
+
+    int d[36] = {
+        25, 15, 40,
+        90, 60, 90,
+        50, 32, 60,
+        45, 25, 52,
+        37, 37, 70,
+        20, 10, 40,
+        45, 40, 65,
+        84, 47, 84,
+        50, 30, 75,
+        35, 20, 42,
+        10, 10, 40,
+        32, 15, 50
+    };
+
+    pwm_chip * chip = NULL;
+    if (isRaspberryPi) chip = new pwm_chip(PWM_CHIP_ADDR);
+
+    for (int i = 1; i < 13; i++){
+        int xOffset = (i-1) / 6;
+        pwm_gtk_control * ctr = new pwm_gtk_control(to_string(i).c_str(), d[1 + (3 * (i - 1))], d[ 2 + (3 * (i - 1))], d[3 * (i - 1)]);
+
+        if (isRaspberryPi){
+            _servos[i-1] = new servo(chip, i);
+            ctr->SetServo(_servos[i-1]);
+        }
+
+        gtk_fixed_put(GTK_FIXED (_fixed_box), ctr->get_main(), xOffset * 400, (i-1) * 75 - xOffset * 450);
+        /*pwm_gtk_control * ctr8 = new pwm_gtk_control("8", 8, 0, 120);
+        gtk_fixed_put(GTK_FIXED (_fixed_box), ctr8->get_main(), 0, 0);
+        */
+    }
+
 }
