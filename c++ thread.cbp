@@ -60,6 +60,9 @@
 			<Add library="/usr/local/lib/libwiringPiDev.so" />
 			<Add directory="/usr/local/lib" />
 		</Linker>
+		<Unit filename="include/gtkAllServo.h">
+			<Option target="Debug" />
+		</Unit>
 		<Unit filename="include/gui_main.h" />
 		<Unit filename="include/project_constants.h" />
 		<Unit filename="include/pwm_chip.h" />
@@ -68,6 +71,9 @@
 		</Unit>
 		<Unit filename="include/servo.h" />
 		<Unit filename="main.cpp" />
+		<Unit filename="src/gtkAllServo.cpp">
+			<Option target="Debug" />
+		</Unit>
 		<Unit filename="src/gui_main.cpp" />
 		<Unit filename="src/pwm_chip.cpp" />
 		<Unit filename="src/pwm_gtk_control.cpp">

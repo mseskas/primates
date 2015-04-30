@@ -111,7 +111,7 @@ void pwm_gtk_control::SetServo(servo * servoMotor)
 {
     ser = servoMotor;
     //pwm_gtk_control::btnOnClick(btnON, this);
-    delay(50);
+    //delay(50);
 }
 
 pwm_gtk_control::pwm_gtk_control(char * title, int minVal, int maxVal, int startVal)
