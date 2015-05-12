@@ -68,16 +68,16 @@ void DynaQ::IndicateResult(short reward){
 }
 
 void DynaQ::RunIterations(int iterations, bool useMPU, short nextState=-1, short reward=-1){
-    if (useMPU) {
-        for (int i = 0; i < iterations; i++) RunIterationMPU( nextState,  reward);
-    }
-    else {
-        for (int i = 0; i < iterations; i++) RunIterationSONAR( nextState,  reward);
-    }
+  //  if (useMPU) {
+  //      for (int i = 0; i < iterations; i++) RunIterationMPU( nextState,  reward);
+  //  }
+ //   else {
+        for (int i = 0; i < iterations; i++) RunIteration( nextState,  reward);
+  //  }
 }
 
-void DynaQ::RunIterationSONAR(short forcedNextState = -1, short forcedReward = -1){
-       // short nextState = EGreedyByQuality(CurrentState);
+void DynaQ::RunIteration(short forcedNextState = -1, short forcedReward = -1){
+        short nextState = EGreedyByQuality(CurrentState);
         short nextState;
 
         if (forcedNextState == -1){
@@ -88,11 +88,13 @@ void DynaQ::RunIterationSONAR(short forcedNextState = -1, short forcedReward = -
 
 logFile << CurrentIteration << "\tIn state:\t" << CurrentState << "\tchoose\t" << nextState;
 cout << CurrentIteration << "\tIn state:\t" << CurrentState << "\tchoose\t" << nextState;
+        double t = (double)cvGetTickCount();  // mark when started
+        RewardModel->StartMeasure();
+        StateModel->ExecutePosition(nextState); // asynchronous
 
-       // RewardModel->StartMeasure();
-        StateModel->ExecutePosition(nextState);
-       // delay(1000);
-        short reward ;//= RewardModel->StopMeasure();
+// start learn calculations in parallel
+        short reward = lastReward;
+
         char input;
         cout << "insert reward 1 - forward, 0 - still, . - backward: ";
         cin >> input;
@@ -139,6 +141,13 @@ cout << "\tUpdate Q(" << CurrentState << ", " << nextState << ") = " << Q[Curren
 
         CurrentIteration++;
         Exploration[CurrentState][nextState] = CurrentIteration;
+// stop learn calculations in parallel
+
+        t = (double)cvGetTickCount() - t;  // count time past
+        t = t/((double)cvGetTickFrequency()*1000); // in ms
+        delay(1000 - t); // synchronize
+        lastReward = RewardModel->StopMeasure();
+        lastState = CurrentState;
         CurrentState = nextState;
 }
 
@@ -256,51 +265,6 @@ short DynaQ::EGreedy(short state){
     }
     return maxA;
 }
-
-
-void DynaQ::RunIterationMPU(short forcedNextState = -1, short forcedReward = -1){
-        short nextState = EGreedyByQuality(CurrentState);
-logFile << "In state:\t" << CurrentState << "\tchoose\t" << nextState;
-        RewardModel->AsyncGetReward();
-        delay(120);
-        StateModel->ExecutePosition(nextState);
-        RewardModel->AsyncGetReward(); // just waiting to finish measurement
-        short reward = RewardModel->ResultCategory;
-        IndicateResult(reward);
-
-        Q[CurrentState][nextState] = Q[CurrentState][nextState] + BETA * (reward
-        // always = 0  //+ EPSILON * sqrt(CurrentIteration - Exploration[CurrentState][nextState])
-            + GAMA * GetMaxQuality(nextState) - Q[CurrentState][nextState]); //old:
-        //Q(s, a) = Q(s, a) + β(r + γmax a ′ Q(s ′ , a ′ ) − Q(s, a))
-
-logFile << "\tUpdate Q(" << CurrentState << ", " << nextState << ") = " << Q[CurrentState][nextState] << endl << endl;
-
-        //Update Model
-        Model[CurrentState][nextState] = reward;
-        // learn from model
-        short PlanningCurrentState = CurrentState;
-        for (int i = 0; i < PlanningSteps; i++){
-            if (PlanningCurrentState != -1) PlanningCurrentState = DoPlanning(PlanningCurrentState);
-        }
-
-        CurrentIteration++;
-        Exploration[CurrentState][nextState] = CurrentIteration;
-        CurrentState = nextState;
-        delay(250);
-
-}
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

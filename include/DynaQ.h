@@ -30,6 +30,9 @@ class DynaQ
         short CurrentState;
         short CurrentIteration;
 
+        short lastReward;
+        short lastState;
+
         void PrepareToLearn();
         short DoPlanning(short currentstate);
         short EGreedy(short currentState);
@@ -38,8 +41,7 @@ class DynaQ
 
         void RunIterations(int iterations, bool useMPU, short nextState=-1, short reward=-1);
 
-        void RunIterationMPU(short nextState=-1, short reward=-1);
-        void RunIterationSONAR(short nextState=-1, short reward=-1);
+        void RunIteration(short nextState=-1, short reward=-1);
 
         void IndicateResult(short reward);
         //float MaxQ[Statequantity];
