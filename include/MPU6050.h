@@ -1,31 +1,44 @@
 #ifndef MPU6050_H
 #define MPU6050_H
 
+#include <stdlib.h>
+#include <wiringPi.h>
+#include <wiringPiI2C.h>
+#include <project_constants.h>
+#include <math.h> // math functions, like sqrt, pow...
 
 class MPU6050
 {
     public:
-        MPU6050();
+        MPU6050(int chip_addr);
 
-        double GetYRotation(double x, double y, double z);
-        double GetYRotation(double x, double y, double z);
+        double GetXRotation(double accelX, double accelY, double accelZ);
+        double GetYRotation(double accelX, double accelY, double accelZ);
 
-        void WakeUp
+        double GetAccelX();
+        double GetAccelY();
+        double GetAccelZ();
+
+        double GetGyroX();
+        double GetGyroY();
+        double GetGyroZ();
+
+        void WakeUp();
 
     protected:
     private:
-        double Distance(double v1, double v2);
+        double Distance(double a, double b);
+        int _chipHandler;
+        int _WAKEUP;
+        int _RTEMP;
+        int _RACCELX;
+        int _RACCELY;
+        int _RACCELZ;
+        int _RGYROX;
+        int _RGYROY;
+        int _RGYROZ;
 
-
-
-        def get_y_rotation(x,y,z):
-    radians = math.atan2(x, dist(y,z))
-    return -math.degrees(radians)
-
-def get_x_rotation(x,y,z):
-    radians = math.atan2(y, dist(x,z))
-    return math.degrees(radians)
-
+        int ReadValue(int address);
 };
 
 #endif // MPU6050_H
