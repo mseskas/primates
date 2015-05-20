@@ -22,6 +22,7 @@
 					<Add option="-lwiringPi" />
 					<Add directory="./src" />
 					<Add directory="./include" />
+					<Add directory="include" />
 				</Compiler>
 				<Linker>
 					<Add option="-pthread" />
@@ -37,6 +38,7 @@
 				<Compiler>
 					<Add directory="./src" />
 					<Add directory="./include" />
+					<Add directory="include" />
 				</Compiler>
 				<Linker>
 					<Add option="-s" />
@@ -63,6 +65,7 @@
 			<Add directory="/usr/local/lib" />
 		</Linker>
 		<Unit filename="include/MPU6050.h" />
+		<Unit filename="include/Reward.h" />
 		<Unit filename="include/gtkAllServo.h">
 			<Option target="Debug" />
 		</Unit>
@@ -75,6 +78,7 @@
 		<Unit filename="include/servo.h" />
 		<Unit filename="main.cpp" />
 		<Unit filename="src/MPU6050.cpp" />
+		<Unit filename="src/Reward.cpp" />
 		<Unit filename="src/gtkAllServo.cpp">
 			<Option target="Debug" />
 		</Unit>
