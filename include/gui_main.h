@@ -10,6 +10,7 @@
 #include "gtkAllServo.h"
 #include "pwm_gtk_control.h"
 
+#include "RewardView.h"
 
 class gui_main
 {
@@ -24,13 +25,14 @@ class gui_main
 
     protected:
     private:
-
+        bool isRaspberryPi;
         int * _servoParams;
 
         servo * _servos[srvQuantity];
 
         GtkWidget * _window;
-        GtkWidget * _fixed_box;
+        GtkWidget * _pwmControlPage;
+        GtkWidget * _positionPage;
         std::thread * _execution_thread;
 };
 

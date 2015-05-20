@@ -3,14 +3,19 @@
 
 gui_main::gui_main( )
 {
-
+    bool isRaspberryPi = false;
     _execution_thread = new std::thread (&gui_main::build_gui, this);
 }
 
-
-
 void gui_main::build_gui()
 {
+    struct utsname sysinfo;
+    uname(&sysinfo);
+    //cout << "Your computer is : " << sysinfo.nodename << endl;
+    std::string g = "raspberrypi";
+    if ( g.compare(sysinfo.nodename) == 0) isRaspberryPi = true;  // if raspberry
+
+
     int params[12][3] = {
             {25, 15, 40},
             {90, 60, 90},
@@ -39,48 +44,53 @@ void gui_main::build_gui()
     //gtk_window_set_default_size(GTK_WINDOW(_window), 400, 300);
     gtk_window_set_position (GTK_WINDOW (_window), GTK_WIN_POS_CENTER);
 
-    _fixed_box = gtk_fixed_new();
-    gtk_widget_set_usize(_fixed_box, 900, 450);
+    _pwmControlPage = gtk_fixed_new();
+    gtk_widget_set_usize(_pwmControlPage, 900, 450);
 
-    LoadServoControls(_fixed_box);
+    LoadServoControls(_pwmControlPage);
 
     GtkWidget * noteBook = gtk_notebook_new ();
-    gtk_notebook_append_page ((GtkNotebook*)noteBook, _fixed_box, gtk_label_new("Single"));
 
-    GtkWidget * no = gtk_fixed_new();
-    gtk_widget_set_usize(no, 900, 450);
+// second page initialization
 
+    _positionPage = gtk_fixed_new();
+    gtk_widget_set_usize(_positionPage, 900, 450);
 
 
     gtkAllServo * all = new gtkAllServo("Start position", _servos, _servoParams);
-    gtk_fixed_put(GTK_FIXED (no), all->get_main(), 0, 0);
+    gtk_fixed_put(GTK_FIXED (_positionPage), all->get_main(), 0, 0);
 
     all = new gtkAllServo("2nd position", _servos, _servoParams);
-    gtk_fixed_put(GTK_FIXED (no), all->get_main(), 0, 100);
+    gtk_fixed_put(GTK_FIXED (_positionPage), all->get_main(), 0, 60);
 
-    gtk_notebook_append_page ((GtkNotebook*)noteBook, no, gtk_label_new("Position"));
+    RewardView * view;
+    if (isRaspberryPi) {
+        view = new RewardView(new Reward(new MPU6050()));
+    } else {
+        view = new RewardView(NULL);
+    }
+
+    gtk_fixed_put(GTK_FIXED (_positionPage), view->get_main(), 250, 0);
 
 
+
+
+
+
+
+    gtk_notebook_append_page ((GtkNotebook*)noteBook, _positionPage, gtk_label_new("Position"));
+    gtk_notebook_append_page ((GtkNotebook*)noteBook, _pwmControlPage, gtk_label_new("PWM Control"));
 
     // put everithing to window
     gtk_container_add (GTK_CONTAINER (_window), noteBook);
-
-
     /* Enter the main loop */
     gtk_widget_show_all (_window);
     gtk_main ();
-
     /* Release gtk's global lock */
     gdk_threads_leave();
 }
 
 void gui_main::LoadServoControls(GtkWidget * frame){
-    struct utsname sysinfo;
-    uname(&sysinfo);
-    //cout << "Your computer is : " << sysinfo.nodename << endl;
-    std::string g = "raspberrypi";
-    bool isRaspberryPi = false;
-    if ( g.compare(sysinfo.nodename) == 0) isRaspberryPi = true;  // if raspberry
 
     pwm_chip * chip = NULL;
     if (isRaspberryPi) chip = new pwm_chip(PWM_CHIP_ADDR);
@@ -94,9 +104,9 @@ void gui_main::LoadServoControls(GtkWidget * frame){
             ctr->SetServo(_servos[i-1]);
         }
 
-        gtk_fixed_put(GTK_FIXED (_fixed_box), ctr->get_main(), xOffset * 400, (i-1) * 75 - xOffset * 450);
+        gtk_fixed_put(GTK_FIXED (_pwmControlPage), ctr->get_main(), xOffset * 400, (i-1) * 75 - xOffset * 450);
         /*pwm_gtk_control * ctr8 = new pwm_gtk_control("8", 8, 0, 120);
-        gtk_fixed_put(GTK_FIXED (_fixed_box), ctr8->get_main(), 0, 0);
+        gtk_fixed_put(GTK_FIXED (_pwmControlPage), ctr8->get_main(), 0, 0);
         */
     }
 

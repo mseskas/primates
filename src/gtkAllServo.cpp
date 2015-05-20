@@ -120,8 +120,6 @@ gtkAllServo::gtkAllServo(char * title, servo * data[], int * params)
     gtk_widget_set_usize(btnON, 50, 30);
     gtk_fixed_put(GTK_FIXED (fixed), btnON, 190, 10);
 
-
-
 }
 
 

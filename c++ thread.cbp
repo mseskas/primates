@@ -65,6 +65,7 @@
 		</Linker>
 		<Unit filename="include/MPU6050.h" />
 		<Unit filename="include/Reward.h" />
+		<Unit filename="include/RewardView.h" />
 		<Unit filename="include/gtkAllServo.h">
 			<Option target="Debug" />
 		</Unit>
@@ -78,6 +79,7 @@
 		<Unit filename="main.cpp" />
 		<Unit filename="src/MPU6050.cpp" />
 		<Unit filename="src/Reward.cpp" />
+		<Unit filename="src/RewardView.cpp" />
 		<Unit filename="src/gtkAllServo.cpp">
 			<Option target="Debug" />
 		</Unit>

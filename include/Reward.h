@@ -8,18 +8,19 @@ class Reward
     public:
         Reward(MPU6050 * mpuChip);
 
-        void SetIterationduration(int milliseconds);
-        void SetRewardThreshold(float threshold);
-        void SetSeparateDuration(float milliseconds);
+//        void SetIterationduration(int milliseconds);
+//        void SetRewardThreshold(float threshold);
+//        void SetSeparateDuration(float milliseconds);
 
+        float SeparationDurationMs; // time between measure
+        float Threshold;
+        int DurationMs;  // total measure duration
 
         double GetReward();
 
     protected:
     private:
-        float _separationDurationMs; // time between measure
-        float _threshold;
-        int _durationMs;  // total measure duration
+
         MPU6050 * _mpuChip;
 };
 
