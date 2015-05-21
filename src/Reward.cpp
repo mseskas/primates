@@ -4,7 +4,7 @@
 Reward::Reward(MPU6050 * mpuChip) {
     _mpuChip = mpuChip;
     DurationMs = 2500; // milliseconds
-    SeparationDurationMs = 30;
+    IntervalMs = 30;
     Threshold = 0.05;
 }
 
@@ -21,7 +21,7 @@ double Reward::GetReward(){
 
     leanAX = _mpuChip->GetAccelX(); // initialization
 
-    for (int i = 0; i < DurationMs; i += SeparationDurationMs){
+    for (int i = 0; i < DurationMs; i += IntervalMs){
 
         double measure = _mpuChip->GetAccelX() - leanAX;
         if (measure > Threshold || measure < -Threshold){
@@ -37,7 +37,7 @@ double Reward::GetReward(){
         }
         cout << "[" << minAX << ":" << maxAX << "]\t";
         cout << "[" << minIteration << ":" << maxIteration << "]\t" << measure << endl;
-        delay(SeparationDurationMs);
+        delay(IntervalMs);
         iteration++;
     }
 

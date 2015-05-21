@@ -57,11 +57,20 @@ void gui_main::build_gui()
     gtk_widget_set_usize(_positionPage, 900, 450);
 
 
-    gtkAllServo * all = new gtkAllServo("Start position", _servos, _servoParams);
+    gtkAllServo * all = new gtkAllServo("Start", _servos, _servoParams);
     gtk_fixed_put(GTK_FIXED (_positionPage), all->get_main(), 0, 0);
 
-    all = new gtkAllServo("2nd position", _servos, _servoParams);
+    all = new gtkAllServo("2nd", _servos, _servoParams);
     gtk_fixed_put(GTK_FIXED (_positionPage), all->get_main(), 0, 60);
+
+    all = new gtkAllServo("3nd", _servos, _servoParams);
+    gtk_fixed_put(GTK_FIXED (_positionPage), all->get_main(), 0, 120);
+
+    all = new gtkAllServo("4nd", _servos, _servoParams);
+    gtk_fixed_put(GTK_FIXED (_positionPage), all->get_main(), 0, 180);
+
+    all = new gtkAllServo("5nd", _servos, _servoParams);
+    gtk_fixed_put(GTK_FIXED (_positionPage), all->get_main(), 0, 240);
 
     RewardView * view;
     if (isRaspberryPi) {
@@ -71,10 +80,6 @@ void gui_main::build_gui()
     }
 
     gtk_fixed_put(GTK_FIXED (_positionPage), view->get_main(), 250, 0);
-
-
-
-
 
 
 

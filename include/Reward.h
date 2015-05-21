@@ -12,7 +12,7 @@ class Reward
 //        void SetRewardThreshold(float threshold);
 //        void SetSeparateDuration(float milliseconds);
 
-        float SeparationDurationMs; // time between measure
+        float IntervalMs; // time between measure
         float Threshold;
         int DurationMs;  // total measure duration
 

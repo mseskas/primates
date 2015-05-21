@@ -3055,7 +3055,7 @@
 	"pwm_gtk_control.h"
 	"RewardView.h"
 
-1432157665 source:/home/minde/Desktop/primates/src/gui_main.cpp
+1432225591 source:/home/minde/Desktop/primates/src/gui_main.cpp
 	"gui_main.h"
 	"pwm_gtk_control.h"
 
@@ -3188,10 +3188,10 @@
 1410716399 source:/root/Desktop/primates/src/servo.cpp
 	"servo.h"
 
-1432158921 source:/home/minde/Desktop/primates/src/Reward.cpp
+1432223531 source:/home/minde/Desktop/primates/src/Reward.cpp
 	"Reward.h"
 
-1432158932 /home/minde/Desktop/primates/include/Reward.h
+1432223516 /home/minde/Desktop/primates/include/Reward.h
 	"MPU6050.h"
 
 1410754996 /root/Desktop/primates/include/Reward.h
@@ -3200,10 +3200,12 @@
 1410756614 source:/root/Desktop/primates/src/Reward.cpp
 	"Reward.h"
 
-1432158516 /home/minde/Desktop/primates/include/RewardView.h
+1432224282 /home/minde/Desktop/primates/include/RewardView.h
 	<gtk/gtk.h>
 	"Reward.h"
+	<stdlib.h>
+	<stdio.h>
 
-1432157027 source:/home/minde/Desktop/primates/src/RewardView.cpp
+1432225308 source:/home/minde/Desktop/primates/src/RewardView.cpp
 	"RewardView.h"
 
