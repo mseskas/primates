@@ -60,9 +60,10 @@ double Reward::GetReward(){
                 cout << "FORWARD!" << minAX << endl;
                 LastResult = minAX;
             }
-            // max WIN - backward
-            cout << "BACKWARD!" << maxAX << endl;
-            LastResult = maxAX;
+            else {// max WIN - backward
+                cout << "BACKWARD!" << maxAX << endl;
+                LastResult = maxAX;
+            }
         }
     } else{
         delay(DurationMs);
