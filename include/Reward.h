@@ -2,6 +2,9 @@
 #define REWARD_H
 
 #include "MPU6050.h"
+#include <gtk/gtk.h>
+#include <thread>
+#include <cstdlib>
 
 class Reward
 {
@@ -18,6 +21,15 @@ class Reward
 
         double GetReward();
 
+        bool AsyncGetReward();
+
+
+        float LastResult;
+        bool IsRunning;
+        GtkWidget * OutputLabel;
+
+        bool HasMPU;
+        std::thread * _execution_thread;
     protected:
     private:
 

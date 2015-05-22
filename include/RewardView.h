@@ -24,7 +24,6 @@ class RewardView
         GtkWidget * ThresholdEntry;
     protected:
     private:
-        bool hasMPU;
         GtkWidget * frame;
         GtkWidget * fixed;
         GtkWidget * OutputLabel;

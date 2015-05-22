@@ -7,51 +7,41 @@ GtkWidget * RewardView::get_main()
 
 RewardView::RewardView(Reward * reward)
 {
-    hasMPU = false;
-    if (reward != NULL) {
-        Model = reward;
-        hasMPU = true;
-    }
+    Model = reward;
     build_gui();
+    Model->OutputLabel = OutputLabel;
 }
 
 void RewardView::btnStartClick(GtkWidget *wid, gpointer user_data)
 {
     RewardView * obj = (RewardView * )user_data;
 
-    if (obj->hasMPU == true){
-        cout << "btnStartClick - starting to measure" << endl;
+    bool result = obj->Model->AsyncGetReward();
 
-        double result = obj->Model->GetReward();
+    if (result == false ) cout << "already running" << endl;
+    else cout << "btnStartClick - starting to measure" << endl;
 
-        string output = to_string(result);
+//    string output = to_string(result);
+//    if (result > 0)output.append(" - BACKWARD");
+//    else output.append(" - FORWARD");
+//    gtk_label_set_text((GtkLabel*)obj->OutputLabel, output.c_str() );
 
-        if (result > 0)output.append(" - BACKWARD");
-        else output.append(" - FORWARD");
-
-        gtk_label_set_text((GtkLabel*)obj->OutputLabel, output.c_str() );
-
-    } else cout << "btnStartClick - no MPU" << endl;
 }
 
 void RewardView::btnSetParamsClick(GtkWidget *wid, gpointer user_data)
 {
     RewardView * obj = (RewardView * )user_data;
+    cout << "btnSetParamsClick - setting parameters" << endl;
+    char* txt1 = gtk_entry_get_text((GtkEntry*)obj->DurationEntry);
+    char* txt2 = gtk_entry_get_text((GtkEntry*)obj->IntervalEntry);
+    char* txt3 = gtk_entry_get_text((GtkEntry*)obj->ThresholdEntry);
+    int duration = stoi (txt1);
+    float interval = stof (txt2);
+    float threshold = stof (txt3);
 
-    if (obj->hasMPU == true){
-        cout << "btnSetParamsClick - setting parameters" << endl;
-        char* txt1 = gtk_entry_get_text((GtkEntry*)obj->DurationEntry);
-        char* txt2 = gtk_entry_get_text((GtkEntry*)obj->IntervalEntry);
-        char* txt3 = gtk_entry_get_text((GtkEntry*)obj->ThresholdEntry);
-        int duration = stoi (txt1);
-        float interval = stof (txt2);
-        float threshold = stof (txt3);
-
-        obj->Model->DurationMs = duration;
-        obj->Model->IntervalMs = interval;
-        obj->Model->Threshold = threshold;
-
-    } else cout << "btnSetParamsClick - no MPU" << endl;
+    obj->Model->DurationMs = duration;
+    obj->Model->IntervalMs = interval;
+    obj->Model->Threshold = threshold;
 }
 
 void RewardView::build_gui(){
@@ -71,15 +61,9 @@ void RewardView::build_gui(){
     gtk_widget_set_usize(StartButton, 120, 45);
     gtk_fixed_put(GTK_FIXED (fixed), StartButton, 140, 40);
 
-    string duration = "none";
-    string interval = "none";
-    string threshold = "none";
-
-    if (hasMPU == true){
-       duration = to_string(Model->DurationMs);
-       interval = to_string(Model->IntervalMs);
-       threshold = to_string(Model->Threshold);
-    }
+    string duration = to_string(Model->DurationMs);
+    string interval = to_string(Model->IntervalMs);
+    string threshold = to_string(Model->Threshold);
 
     int groupX = 80;
     gtk_fixed_put(GTK_FIXED (fixed), gtk_label_new("Duration"), 10, 40);

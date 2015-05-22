@@ -16,20 +16,22 @@ class gui_main
 {
     public:
         gui_main( );
-
         void build_gui();
-
         void LoadServoControls(GtkWidget * frame);
-
         static const int srvQuantity = 12;
 
+        static void btnAllOffClick(GtkWidget *wid, gpointer user_data);
+        static void btnAllOnClick(GtkWidget *wid, gpointer user_data);
+
+        pwm_gtk_control * PwmViews[srvQuantity];
+        servo * Servos[srvQuantity];
     protected:
     private:
         bool isRaspberryPi;
         int * _servoParams;
 
-        servo * _servos[srvQuantity];
-
+        GtkWidget * AllOffButton;
+        GtkWidget * AllOnButton;
         GtkWidget * _window;
         GtkWidget * _pwmControlPage;
         GtkWidget * _positionPage;

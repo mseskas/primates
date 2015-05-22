@@ -57,26 +57,26 @@ void gui_main::build_gui()
     gtk_widget_set_usize(_positionPage, 900, 450);
 
 
-    gtkAllServo * all = new gtkAllServo("Start", _servos, _servoParams);
+    gtkAllServo * all = new gtkAllServo("Start", Servos, _servoParams);
     gtk_fixed_put(GTK_FIXED (_positionPage), all->get_main(), 0, 0);
 
-    all = new gtkAllServo("2nd", _servos, _servoParams);
+    all = new gtkAllServo("2nd", Servos, _servoParams);
     gtk_fixed_put(GTK_FIXED (_positionPage), all->get_main(), 0, 60);
 
-    all = new gtkAllServo("3nd", _servos, _servoParams);
+    all = new gtkAllServo("3nd", Servos, _servoParams);
     gtk_fixed_put(GTK_FIXED (_positionPage), all->get_main(), 0, 120);
 
-    all = new gtkAllServo("4nd", _servos, _servoParams);
+    all = new gtkAllServo("4nd", Servos, _servoParams);
     gtk_fixed_put(GTK_FIXED (_positionPage), all->get_main(), 0, 180);
 
-    all = new gtkAllServo("5nd", _servos, _servoParams);
+    all = new gtkAllServo("5nd", Servos, _servoParams);
     gtk_fixed_put(GTK_FIXED (_positionPage), all->get_main(), 0, 240);
 
     RewardView * view;
     if (isRaspberryPi) {
         view = new RewardView(new Reward(new MPU6050()));
     } else {
-        view = new RewardView(NULL);
+        view = new RewardView(new Reward(NULL));
     }
 
     gtk_fixed_put(GTK_FIXED (_positionPage), view->get_main(), 250, 0);
@@ -100,19 +100,47 @@ void gui_main::LoadServoControls(GtkWidget * frame){
     pwm_chip * chip = NULL;
     if (isRaspberryPi) chip = new pwm_chip(PWM_CHIP_ADDR);
 
-    for (int i = 1; i < 13; i++){
+    for (int i = 1; i < srvQuantity + 1; i++){
         int xOffset = (i-1) / 6;
-        pwm_gtk_control * ctr = new pwm_gtk_control(to_string(i).c_str(), _servoParams[(i - 1)* 3 + 1], _servoParams[(i - 1)* 3 + 2], _servoParams[(i - 1)* 3 ]);
+        PwmViews[i-1] = new pwm_gtk_control(to_string(i).c_str(), _servoParams[(i - 1)* 3 + 1], _servoParams[(i - 1)* 3 + 2], _servoParams[(i - 1)* 3 ]);
 
         if (isRaspberryPi){
-            _servos[i-1] = new servo(chip, i);
-            ctr->SetServo(_servos[i-1]);
+            Servos[i-1] = new servo(chip, i);
+            PwmViews[i-1]->SetServo(Servos[i-1]);
         }
 
-        gtk_fixed_put(GTK_FIXED (_pwmControlPage), ctr->get_main(), xOffset * 400, (i-1) * 75 - xOffset * 450);
-        /*pwm_gtk_control * ctr8 = new pwm_gtk_control("8", 8, 0, 120);
-        gtk_fixed_put(GTK_FIXED (_pwmControlPage), ctr8->get_main(), 0, 0);
-        */
+        gtk_fixed_put(GTK_FIXED (_pwmControlPage), PwmViews[i-1]->get_main(), xOffset * 400, (i-1) * 75 - xOffset * 450);
     }
+    // add all pwm controls
+    AllOffButton = gtk_button_new_with_label("All OFF");
+    g_signal_connect (AllOffButton, "clicked", G_CALLBACK (gui_main::btnAllOffClick), this);
+    gtk_widget_set_usize(AllOffButton, 100, 40);
+    gtk_fixed_put(GTK_FIXED (_pwmControlPage), AllOffButton, 785, 20);
 
+    AllOnButton = gtk_button_new_with_label("All ON");
+    g_signal_connect (AllOnButton, "clicked", G_CALLBACK (gui_main::btnAllOnClick), this);
+    gtk_widget_set_usize(AllOnButton, 100, 40);
+    gtk_fixed_put(GTK_FIXED (_pwmControlPage), AllOnButton, 785, 65);
 }
+
+void gui_main::btnAllOnClick(GtkWidget *wid, gpointer user_data)
+{
+    gui_main * obj = (gui_main * )user_data;
+    for (int i = 0; i < obj->srvQuantity; i++){
+       //
+       if (obj->PwmViews[i]->isON != true)
+        obj->PwmViews[i]->btnOnClick(NULL, obj->PwmViews[i]);
+    }
+}
+
+void gui_main::btnAllOffClick(GtkWidget *wid, gpointer user_data)
+{
+    gui_main * obj = (gui_main * )user_data;
+    for (int i = 0; i < obj->srvQuantity; i++){
+       //
+       if (obj->PwmViews[i]->isON == true)
+        obj->PwmViews[i]->btnReleaseClick(NULL, obj->PwmViews[i]);
+    }
+}
+
+

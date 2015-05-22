@@ -25,6 +25,8 @@ class pwm_gtk_control
 
         void SetServo(servo * servoMotor);
 
+        bool isON;
+
     private:
         GtkWidget * frame;
         GtkWidget * fixed;
@@ -35,9 +37,9 @@ class pwm_gtk_control
         GtkWidget * maxTxt;
 
         int is_entry_changed;
-        bool isON;
 
-        int _servoPinNo;
+
+        //int _servoPinNo;
 
 
 
