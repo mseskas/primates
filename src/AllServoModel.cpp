@@ -51,14 +51,14 @@ void AllServoModel::ExecutePosition(short state){
     printf("changing state to: %hu\r\n", state);
 
     for (int f = 0; f < srvQuantity; f++){
-        flags[f] = state % 2;
+        flags[srvQuantity-1 - f] = state % 2;
         state = state / 2;
     }
 
     for (int i = 0; i < srvQuantity; i++){
         int flag = flags[i];
 
-        if (flags[i] == 0){
+        if (flag == 0){
             min = ServoParams[i*3 + 1];
                 d = (float)min / 100;
                Servos[i]->set_angle(d);
