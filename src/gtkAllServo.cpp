@@ -7,7 +7,7 @@ GtkWidget * gtkAllServo::get_main()
     return this->frame;
 }
 
-void gtkAllServo::btnOnClick(GtkWidget *wid, gpointer user_data)
+void gtkAllServo::btnTurnClick(GtkWidget *wid, gpointer user_data)
 {
     gtkAllServo * obj = (gtkAllServo * )user_data;
 
@@ -57,7 +57,7 @@ gtkAllServo::gtkAllServo(char * title, AllServoModel * servoModel)
 
     // button on/off
     btnON = gtk_button_new_with_label("Turn");
-    g_signal_connect (btnON, "clicked", G_CALLBACK (gtkAllServo::btnOnClick), this);
+    g_signal_connect (btnON, "clicked", G_CALLBACK (gtkAllServo::btnTurnClick), this);
     gtk_widget_set_usize(btnON, 50, 30);
     gtk_fixed_put(GTK_FIXED (fixed), btnON, 190, 10);
 

@@ -37,9 +37,7 @@ char* AllServoModel::BeginState(){
     string tmp = "x10x01x10x01";
     strcpy(LastState, tmp.c_str());
 
-    for (int i = 0; i < srvQuantity; i++){
-
-    }
+    ExecutePosition(LastState);
 
     return LastState;
 }
@@ -50,20 +48,20 @@ int AllServoModel::ExecutePosition(char * data12){
     int max = 0;
     double d = 0.0;
 
+    printf(data12);
+    printf("\r\n");
+
     for (int i = 0; i < srvQuantity; i++){
         char cr = data12[i];
 
-
         switch (cr){
-            case '1':
-                printf("1");
+            case '0':
                 min = ServoParams[i*3 + 1];
                 d = (float)min / 100;
                Servos[i]->set_angle(d);
 
             break;
-            case '2':
-                printf("2");
+            case '1':
                 max = ServoParams[i*3 + 2];
                 d = (float)max / 100;
                 //printf("set d%\r\n", max);

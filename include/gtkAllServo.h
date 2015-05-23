@@ -14,7 +14,7 @@ class gtkAllServo
         AllServoModel * ServoModel;
         int srvQuantity;
 
-        static void btnOnClick(GtkWidget *wid, gpointer user_data);
+        static void btnTurnClick(GtkWidget *wid, gpointer user_data);
 
     private:
         GtkWidget * frame;
