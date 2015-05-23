@@ -5,18 +5,19 @@ Reward::Reward(MPU6050 * mpuChip) {
     HasMPU = false;
     _mpuChip = mpuChip;
     if (mpuChip != NULL) HasMPU = true;
-    DurationMs = 2500; // milliseconds
-    IntervalMs = 30;
+    DurationMs = 1500; // milliseconds
+    IntervalMs = 20;
     Threshold = 0.05;
     IsRunning = false;
     OutputLabel = NULL;
+    ResultCategory = 0;
 }
 
-bool Reward::AsyncGetReward(){
-    if (IsRunning == true) return false;
+void Reward::AsyncGetReward(bool waitToFinish = false){
+    ExecutionLock.lock();
 
-    _execution_thread = new std::thread (&Reward::GetReward, this);
-    return true;
+    if (waitToFinish) ExecutionLock.unlock(); // just leave, this means LastResult is initialized
+    else _execution_thread = new std::thread (&Reward::GetReward, this);
 }
 
 
@@ -53,21 +54,25 @@ double Reward::GetReward(){
 
         if (minIteration == 2000000 && maxIteration == 2000000) {
             LastResult = 0;
+            ResultCategory = 0;
             cout << "standing still" << endl;
         }
         else {
             if (minIteration < maxIteration){
                 // min WIN - forward
                 cout << "FORWARD!" << minAX << endl;
+                ResultCategory = 100;
                 LastResult = minAX;
             }
             else {// max WIN - backward
                 cout << "BACKWARD!" << maxAX << endl;
+                ResultCategory = -100;
                 LastResult = maxAX;
             }
         }
     } else{
         delay(DurationMs);
+        ResultCategory = 0;
         LastResult = 0;
     }
 
@@ -78,7 +83,7 @@ double Reward::GetReward(){
         else output.append(" - FORWARD");
         gtk_label_set_text((GtkLabel*)OutputLabel, output.c_str() );
     }
-
     IsRunning = false;
+    ExecutionLock.unlock();
     return LastResult;
 }

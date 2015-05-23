@@ -3037,7 +3037,7 @@
 	"pwm_chip.h"
 	"servo.h"
 
-1432394004 source:/home/minde/Desktop/primates/main.cpp
+1432408701 source:/home/minde/Desktop/primates/main.cpp
 	<iostream>
 	<string>
 	"gui_main.h"
@@ -3193,14 +3193,15 @@
 1410716399 source:/root/Desktop/primates/src/servo.cpp
 	"servo.h"
 
-1432383455 source:/home/minde/Desktop/primates/src/Reward.cpp
+1432407825 source:/home/minde/Desktop/primates/src/Reward.cpp
 	"Reward.h"
 
-1432243299 /home/minde/Desktop/primates/include/Reward.h
+1432407114 /home/minde/Desktop/primates/include/Reward.h
 	"MPU6050.h"
 	<gtk/gtk.h>
 	<thread>
 	<cstdlib>
+	<mutex>
 
 1410773953 /root/Desktop/primates/include/Reward.h
 	"MPU6050.h"
@@ -3217,7 +3218,7 @@
 	<stdlib.h>
 	<stdio.h>
 
-1432243870 source:/home/minde/Desktop/primates/src/RewardView.cpp
+1432403923 source:/home/minde/Desktop/primates/src/RewardView.cpp
 	"RewardView.h"
 
 1410773953 /root/Desktop/primates/include/RewardView.h
@@ -3229,23 +3230,26 @@
 1410773953 source:/root/Desktop/primates/src/RewardView.cpp
 	"RewardView.h"
 
-1432394667 source:/home/minde/Desktop/primates/src/DynaQ.cpp
+1432408910 source:/home/minde/Desktop/primates/src/DynaQ.cpp
 	"DynaQ.h"
 
-1432395423 /home/minde/Desktop/primates/include/DynaQ.h
+1432406610 /home/minde/Desktop/primates/include/DynaQ.h
 	<iostream>
 	<fstream>
 	<ctime>
+	<cmath>
+	<thread>
+	<chrono>
 	"RewardView.h"
 	"AllServoModel.h"
 
-1432390595 /home/minde/Desktop/primates/include/AllServoModel.h
+1432403481 /home/minde/Desktop/primates/include/AllServoModel.h
 	<pwm_chip.h>
 	"servo.h"
 	<iostream>
 	<cstring>
 
-1432390630 source:/home/minde/Desktop/primates/src/AllServoModel.cpp
+1432402132 source:/home/minde/Desktop/primates/src/AllServoModel.cpp
 	"AllServoModel.h"
 
 1410779396 /root/Desktop/primates/include/AllServoModel.h

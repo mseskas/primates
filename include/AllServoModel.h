@@ -6,6 +6,8 @@
 #include <iostream>
 #include <cstring>
 
+
+
 using namespace std;
 
 class AllServoModel
@@ -14,15 +16,18 @@ class AllServoModel
         static const int srvQuantity = 12;
         AllServoModel();
 
-        int ExecutePosition(char * data12);
-        int ExecutePosition(short state);
+        void ExecutePosition(const char * data12);
+        void ExecutePosition(short state);
 
-        char* BeginState();
+        short BeginState();
 
-        char LastState[srvQuantity+1];
+      //  char LastState[srvQuantity+1];
+        short LastState;
 
         servo * Servos[srvQuantity];
         int * ServoParams;
+
+
 
     protected:
     private:

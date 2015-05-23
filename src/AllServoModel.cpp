@@ -18,9 +18,8 @@ AllServoModel::AllServoModel()
             23, 10, 23
             };
 
-
     ServoParams = params;
-
+    LastState = 0;
     LoadServoControls();
 }
 
@@ -28,64 +27,52 @@ AllServoModel::AllServoModel()
 void AllServoModel::LoadServoControls(){
     pwm_chip * chip = NULL;
     chip = new pwm_chip(PWM_CHIP_ADDR);
-
    // servo ** temp = new servo*[srvQuantity];
-
    // Servos = &temp[0][0];
-
     for (int i = 0; i < srvQuantity; i++) Servos[i] = new servo(chip, i+1);
 }
 
-//LastPosition = "x10x01x10x01";
-char* AllServoModel::BeginState(){
-    string tmp = "x10x01x10x01";
-    strcpy(LastState, tmp.c_str());
-
-    ExecutePosition(LastState);
+short AllServoModel::BeginState(){
+    //string tmp = "010101010101";
+    //strcpy(LastState, tmp.c_str());
+    short beginState = 1365;
+    LastState = beginState;
+    ExecutePosition(beginState);
 
     return LastState;
 }
 
-int AllServoModel::ExecutePosition(short state){
+void AllServoModel::ExecutePosition(short state){
     int min = 0;
     int max = 0;
     double d = 0.0;
 
     int flags[srvQuantity];
+    printf("changing state to: %hu\r\n", state);
 
     for (int f = 0; f < srvQuantity; f++){
         flags[f] = state % 2;
+        state = state / 2;
     }
-
-    printf("changing state to: ");
-    printf(data12);
-    printf("\r\n");
 
     for (int i = 0; i < srvQuantity; i++){
-        char cr = data12[i];
+        int flag = flags[i];
 
-        switch (cr){
-            case '0':
-                min = ServoParams[i*3 + 1];
+        if (flags[i] == 0){
+            min = ServoParams[i*3 + 1];
                 d = (float)min / 100;
                Servos[i]->set_angle(d);
-
-            break;
-            case '1':
-                max = ServoParams[i*3 + 2];
+        } else {
+            max = ServoParams[i*3 + 2];
                 d = (float)max / 100;
                 Servos[i]->set_angle(d);
-            break;
-            default:
-            break;
         }
     }
-    return 1;
 }
 
 
 // Possible data12[x] values : "0", "1" or any other
-int AllServoModel::ExecutePosition(char * data12){
+void AllServoModel::ExecutePosition(const char * data12){
     int min = 0;
     int max = 0;
     double d = 0.0;
@@ -113,7 +100,6 @@ int AllServoModel::ExecutePosition(char * data12){
             break;
         }
     }
-    return 1;
 }
 
 

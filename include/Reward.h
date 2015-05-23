@@ -6,6 +6,8 @@
 #include <thread>
 #include <cstdlib>
 
+#include <mutex>
+
 class Reward
 {
     public:
@@ -20,16 +22,19 @@ class Reward
         int DurationMs;  // total measure duration
 
         double GetReward();
+        void AsyncGetReward(bool waitToFinish = false);
 
-        bool AsyncGetReward();
+        double LastResult;
+        short ResultCategory;
 
-
-        float LastResult;
-        bool IsRunning;
         GtkWidget * OutputLabel;
 
         bool HasMPU;
+
         std::thread * _execution_thread;
+        std::mutex ExecutionLock;
+        bool IsRunning;
+
     protected:
     private:
 

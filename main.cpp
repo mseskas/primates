@@ -22,13 +22,42 @@ int main()
 
     AllServoModel * servosModel = new AllServoModel();
     Reward * reward = new Reward(new MPU6050());
-
     gui_main * main_gui = new gui_main(servosModel, reward);
-
     DynaQ * dyna = new DynaQ(servosModel, reward);
 
-//  cout << sizeof(float) << endl;
+    char str[80];
 
+    char c;
+
+    bool execute = true;
+    while (execute) {
+        cout << "Enter command: " <<  endl;
+        cin >> c;
+
+        //scanf ("%79s",&str);
+
+        switch (c){
+            case '1':
+                dyna->RunIterations(1);
+                break;
+            case '0':
+                dyna->PrepareToLearn();
+                break;
+            case '5':
+                dyna->RunIterations(2);
+                break;
+            case '6':
+                dyna->RunIterations(4);
+                break;
+            case '7':
+                dyna->RunIterations(8);
+                break;
+            case 't':
+                execute = false;
+                break;
+        }
+    }
+//  cout << sizeof(float) << endl;
 
    //MPU6050 * chip = new MPU6050();
    // Reward * reward = new Reward(chip);
@@ -44,9 +73,6 @@ int main()
         cout << chip->GetAccelX() << "\t" << chip->GetAccelY() << "\t" << chip->GetAccelZ()<< endl;
         delay(100);
     }*/
-
-    char t;
-    cin >> t;
 
     delete dyna;
 

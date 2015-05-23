@@ -16,16 +16,7 @@ void RewardView::btnStartClick(GtkWidget *wid, gpointer user_data)
 {
     RewardView * obj = (RewardView * )user_data;
 
-    bool result = obj->Model->AsyncGetReward();
-
-    if (result == false ) cout << "already running" << endl;
-    else cout << "btnStartClick - starting to measure" << endl;
-
-//    string output = to_string(result);
-//    if (result > 0)output.append(" - BACKWARD");
-//    else output.append(" - FORWARD");
-//    gtk_label_set_text((GtkLabel*)obj->OutputLabel, output.c_str() );
-
+    obj->Model->AsyncGetReward();
 }
 
 void RewardView::btnSetParamsClick(GtkWidget *wid, gpointer user_data)
