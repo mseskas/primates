@@ -1,0 +1,130 @@
+IterationNo - in beginning of the line, s - state, r - received reward, rs - total reward
+start state: 1365
+In state: 1365 choose 1087
+Received reward: 100	Total: 100
+Update Q(1365, 1087) = 90
+
+In state: 1087 choose 2721
+Received reward: 100	Total: 200
+Update Q(1087, 2721) = 90
+
+In state: 2721 choose 1282
+Received reward: -100	Total: 100
+Update Q(2721, 1282) = -90
+
+In state: 1282 choose 4047
+Received reward: -100	Total: 0
+Update Q(1282, 4047) = -90
+
+In state: 4047 choose 2012
+Received reward: -100	Total: -100
+Update Q(4047, 2012) = -90
+
+In state: 2012 choose 517
+Received reward: 100	Total: 0
+Update Q(2012, 517) = 90
+
+In state: 517 choose 3793
+Received reward: -100	Total: -100
+Update Q(517, 3793) = -90
+
+In state: 3793 choose 2718
+Received reward: 100	Total: 0
+Update Q(3793, 2718) = 90
+
+In state: 2718 choose 1924
+Received reward: 100	Total: 100
+Update Q(2718, 1924) = 90
+
+In state: 1924 choose 4059
+Received reward: 100	Total: 200
+Update Q(1924, 4059) = 90
+
+In state: 4059 choose 719
+Received reward: -100	Total: 100
+Update Q(4059, 719) = -90
+
+In state: 719 choose 3609
+Received reward: 100	Total: 200
+Update Q(719, 3609) = 90
+
+In state: 3609 choose 3666
+Received reward: -100	Total: 100
+Update Q(3609, 3666) = -90
+
+In state: 3666 choose 1312
+Received reward: -100	Total: 0
+Update Q(3666, 1312) = -90
+
+In state: 1312 choose 1478
+Received reward: -100	Total: -100
+Update Q(1312, 1478) = -90
+
+In state: 1478 choose 3777
+Received reward: 100	Total: 0
+Update Q(1478, 3777) = 90
+
+In state: 3777 choose 3613
+Received reward: 100	Total: 100
+Update Q(3777, 3613) = 90
+
+In state: 3613 choose 3758
+Received reward: 100	Total: 200
+Update Q(3613, 3758) = 90
+
+In state: 3758 choose 3034
+Received reward: -100	Total: 100
+Update Q(3758, 3034) = -90
+
+In state: 3034 choose 995
+Received reward: 100	Total: 200
+Update Q(3034, 995) = 90
+
+In state: 995 choose 1747
+Received reward: -100	Total: 100
+Update Q(995, 1747) = -90
+
+In state: 1747 choose 377
+Received reward: 100	Total: 200
+Update Q(1747, 377) = 90
+
+In state: 377 choose 3219
+Received reward: -100	Total: 100
+Update Q(377, 3219) = -90
+
+In state: 3219 choose 1453
+Received reward: 100	Total: 200
+Update Q(3219, 1453) = 90
+
+In state: 1453 choose 3933
+Received reward: -100	Total: 100
+Update Q(1453, 3933) = -90
+
+In state: 3933 choose 916
+Received reward: 100	Total: 200
+Update Q(3933, 916) = 90
+
+In state: 916 choose 1807
+Received reward: 100	Total: 300
+Update Q(916, 1807) = 90
+
+In state: 1807 choose 2117
+Received reward: -100	Total: 200
+Update Q(1807, 2117) = -90
+
+In state: 2117 choose 1118
+Received reward: -100	Total: 100
+Update Q(2117, 1118) = -90
+
+In state: 1118 choose 1977
+Received reward: 100	Total: 200
+Update Q(1118, 1977) = 90
+
+In state: 1977 choose 745
+Received reward: 100	Total: 300
+Update Q(1977, 745) = 90
+
+In state: 745 choose 2205
+Received reward: -100	Total: 200
+Update Q(745, 2205) = -90
+

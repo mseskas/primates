@@ -61,6 +61,7 @@ void DynaQ::RunIterations(int iterationsNo){
 logFile << "In state: " << CurrentState << " choose " << nextState << endl;
 
         RewardModel->AsyncGetReward();
+        delay(120);
         StateModel->ExecutePosition(nextState);
         RewardModel->AsyncGetReward(true); // just waiting to finish measurement
         short reward = RewardModel->ResultCategory;
@@ -80,7 +81,7 @@ logFile << "Update Q(" << CurrentState << ", " << nextState << ") = " << Q[Curre
         CurrentIteration++;
         Exploration[CurrentState][nextState] = CurrentIteration;
         CurrentState = nextState;
-        delay(100);
+        delay(1000);
     }
 }
 

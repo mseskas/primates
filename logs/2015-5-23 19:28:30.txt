@@ -1,0 +1,122 @@
+IterationNo - in beginning of the line, s - state, r - received reward, rs - total reward
+start state: 1365
+In state: 1365 choose 3758
+Received reward: 100	Total: 100
+Update Q(1365, 3758) = 90
+
+In state: 3758 choose 2967
+Received reward: -100	Total: 0
+Update Q(3758, 2967) = -90
+
+In state: 2967 choose 1180
+Received reward: 100	Total: 100
+Update Q(2967, 1180) = 90
+
+In state: 1180 choose 2891
+Received reward: 100	Total: 200
+Update Q(1180, 2891) = 90
+
+In state: 2891 choose 3720
+Received reward: -100	Total: 100
+Update Q(2891, 3720) = -90
+
+In state: 3720 choose 1636
+Received reward: 100	Total: 200
+Update Q(3720, 1636) = 90
+
+In state: 1636 choose 3656
+Received reward: -100	Total: 100
+Update Q(1636, 3656) = -90
+
+In state: 3656 choose 3987
+Received reward: -100	Total: 0
+Update Q(3656, 3987) = -90
+
+In state: 3987 choose 1472
+Received reward: 100	Total: 100
+Update Q(3987, 1472) = 90
+
+In state: 1472 choose 2852
+Received reward: -100	Total: 0
+Update Q(1472, 2852) = -90
+
+In state: 2852 choose 1551
+Received reward: 100	Total: 100
+Update Q(2852, 1551) = 90
+
+In state: 1551 choose 2794
+Received reward: -100	Total: 0
+Update Q(1551, 2794) = -90
+
+In state: 2794 choose 2554
+Received reward: -100	Total: -100
+Update Q(2794, 2554) = -90
+
+In state: 2554 choose 2047
+Received reward: 100	Total: 0
+Update Q(2554, 2047) = 90
+
+In state: 2047 choose 872
+Received reward: -100	Total: -100
+Update Q(2047, 872) = -90
+
+In state: 872 choose 2077
+Received reward: -100	Total: -200
+Update Q(872, 2077) = -90
+
+In state: 2077 choose 1235
+Received reward: -100	Total: -300
+Update Q(2077, 1235) = -90
+
+In state: 1235 choose 3842
+Received reward: -100	Total: -400
+Update Q(1235, 3842) = -90
+
+In state: 3842 choose 1907
+Received reward: 100	Total: -300
+Update Q(3842, 1907) = 90
+
+In state: 1907 choose 1967
+Received reward: 100	Total: -200
+Update Q(1907, 1967) = 90
+
+In state: 1967 choose 941
+Received reward: 100	Total: -100
+Update Q(1967, 941) = 90
+
+In state: 941 choose 101
+Received reward: -100	Total: -200
+Update Q(941, 101) = -90
+
+In state: 101 choose 432
+Received reward: 100	Total: -100
+Update Q(101, 432) = 90
+
+In state: 432 choose 2277
+Received reward: 100	Total: 0
+Update Q(432, 2277) = 90
+
+In state: 2277 choose 329
+Received reward: -100	Total: -100
+Update Q(2277, 329) = -90
+
+In state: 329 choose 1931
+Received reward: -100	Total: -200
+Update Q(329, 1931) = -90
+
+In state: 1931 choose 483
+Received reward: -100	Total: -300
+Update Q(1931, 483) = -90
+
+In state: 483 choose 1512
+Received reward: -100	Total: -400
+Update Q(483, 1512) = -90
+
+In state: 1512 choose 13
+Received reward: -100	Total: -500
+Update Q(1512, 13) = -90
+
+In state: 13 choose 2866
+Received reward: -100	Total: -600
+Update Q(13, 2866) = -90
+
