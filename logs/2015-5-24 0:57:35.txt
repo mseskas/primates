@@ -1,0 +1,42 @@
+IterationNo - in beginning of the line, s - state, r - received reward, rs - total reward
+start state: 1365
+In state: 1365 choose 2475
+Received reward: 0	Total: 0
+Update Q(1365, 2475) = 0
+
+In state: 2475 choose 92
+Received reward: 0	Total: 0
+Update Q(2475, 92) = 0
+
+In state: 92 choose 1269
+Received reward: 0	Total: 0
+Update Q(92, 1269) = 0
+
+In state: 1269 choose 2440
+Received reward: 0	Total: 0
+Update Q(1269, 2440) = 0
+
+In state: 2440 choose 4078
+Received reward: 0	Total: 0
+Update Q(2440, 4078) = 0
+
+In state: 4078 choose 2444
+Received reward: 0	Total: 0
+Update Q(4078, 2444) = 0
+
+In state: 2444 choose 184
+Received reward: 0	Total: 0
+Update Q(2444, 184) = 0
+
+In state: 184 choose 3784
+Received reward: 0	Total: 0
+Update Q(184, 3784) = 0
+
+In state: 3784 choose 3515
+Received reward: 0	Total: 0
+Update Q(3784, 3515) = 0
+
+In state: 3515 choose 751
+Received reward: 0	Total: 0
+Update Q(3515, 751) = 0
+
