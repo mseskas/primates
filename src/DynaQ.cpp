@@ -28,6 +28,9 @@ DynaQ::DynaQ(AllServoModel * allServoModel, Reward * rewardModel)
     dateTimeStr.append(to_string(ltm->tm_min) + ":");
     dateTimeStr.append(to_string(ltm->tm_sec));
 
+    const int dir_err = mkdir("logs", S_IRWXU | S_IRWXG | S_IROTH | S_IXOTH);
+    if (-1 == dir_err) cout << "Error creating directory!" << endl;
+
     logFile.open("logs/" + dateTimeStr + ".txt");
     logFile << "IterationNo - in beginning of the line, s - state, r - received reward, rs - total reward" << endl;
 }
@@ -46,7 +49,7 @@ void DynaQ::PrepareToLearn() {
     }
     cout << "Model and Quality is set to zero" << endl;
 
-    GetActionByEgreedy(CurrentState);
+    //GetActionByEgreedy(CurrentState);
 }
 
 void DynaQ::RunIterations(int iterationsNo){
@@ -97,18 +100,32 @@ short DynaQ::GetMaxQuality(short state){
 short DynaQ::GetActionByEgreedy(short state){
     float maxQ=0;
     short maxA=0;
+    short repeatedValues = 0;
 
     maxQ = Q[state][maxA] + (EPSILON * sqrt(CurrentIteration - Exploration[state][maxA])); // arbitrary action
+    Temporary[repeatedValues] = maxA;
 
     for (short a = 1; a < Statequantity; a++){
         if (state == a) continue; // skip current state
         float currentQ = Q[state][a] + (EPSILON * sqrt(CurrentIteration - Exploration[state][a]));
 
         if (currentQ > maxQ){
+            repeatedValues = 0;
+            Temporary[repeatedValues] = a;
             maxQ = currentQ;
             maxA = a;
+        } else if (currentQ == maxQ){
+            Temporary[repeatedValues] = a;
+            repeatedValues++;
         }
+
     }
+
+    if (repeatedValues > 0){
+        int randomState = rand() % repeatedValues + 1;  // rand = [0; repeatedValues]
+        return Temporary[randomState];
+    }
+
     return maxA;
 }
 

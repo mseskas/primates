@@ -35,22 +35,22 @@ gtkAllServo::gtkAllServo(char * title, AllServoModel * servoModel)
     gtk_container_set_border_width(GTK_CONTAINER (fixed), 2);
     gtk_container_add(GTK_CONTAINER (frame), fixed);
 
-    txtLeg1 = gtk_entry_new_with_buffer(gtk_entry_buffer_new("112", 3));
+    txtLeg1 = gtk_entry_new_with_buffer(gtk_entry_buffer_new("010", 3));
     //g_signal_connect (minTxt, "changed", G_CALLBACK (pwm_gtk_control::entry_changed), this);
     gtk_widget_set_usize(txtLeg1, 40, 25);
     gtk_fixed_put(GTK_FIXED (fixed), txtLeg1, 10, 10);
 
-    txtLeg2 = gtk_entry_new_with_buffer(gtk_entry_buffer_new("211", 3));
+    txtLeg2 = gtk_entry_new_with_buffer(gtk_entry_buffer_new("101", 3));
     //g_signal_connect (maxTxt, "changed", G_CALLBACK (pwm_gtk_control::entry_changed), this);
     gtk_widget_set_usize(txtLeg2, 40, 25);
     gtk_fixed_put(GTK_FIXED (fixed), txtLeg2, 55, 10);
 
-    txtLeg3 = gtk_entry_new_with_buffer(gtk_entry_buffer_new("212", 3));
+    txtLeg3 = gtk_entry_new_with_buffer(gtk_entry_buffer_new("010", 3));
     //g_signal_connect (maxTxt, "changed", G_CALLBACK (pwm_gtk_control::entry_changed), this);
     gtk_widget_set_usize(txtLeg3, 40, 25);
     gtk_fixed_put(GTK_FIXED (fixed), txtLeg3, 100, 10);
 
-    txtLeg4 = gtk_entry_new_with_buffer(gtk_entry_buffer_new("111", 3));
+    txtLeg4 = gtk_entry_new_with_buffer(gtk_entry_buffer_new("101", 3));
     //g_signal_connect (maxTxt, "changed", G_CALLBACK (pwm_gtk_control::entry_changed), this);
     gtk_widget_set_usize(txtLeg4, 40, 25);
     gtk_fixed_put(GTK_FIXED (fixed), txtLeg4, 145, 10);

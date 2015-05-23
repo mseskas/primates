@@ -7,6 +7,7 @@
 #include <cmath>
 #include <thread>   // std::sleep_for
 #include <chrono>   // std::chrono::seconds
+#include <sys/stat.h> // mkdir
 
 #include "RewardView.h"
 #include "AllServoModel.h"
@@ -37,6 +38,7 @@ class DynaQ
         float Q[Statequantity][Statequantity];
         char Model[Statequantity][Statequantity];
         short Exploration[Statequantity][Statequantity];  // last iteration number
+        short Temporary[Statequantity];
 
         float BETA;  // 0.9
         float GAMA;  // 0.9
