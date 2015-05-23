@@ -24,6 +24,7 @@ int main()
     Reward * reward = new Reward(new MPU6050());
 
     gui_main * main_gui = new gui_main(servosModel, reward);
+
     DynaQ * dyna = new DynaQ(servosModel, reward);
 
 //  cout << sizeof(float) << endl;
@@ -46,5 +47,8 @@ int main()
 
     char t;
     cin >> t;
+
+    delete dyna;
+
     return 0;
 }

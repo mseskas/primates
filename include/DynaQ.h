@@ -15,28 +15,35 @@ class DynaQ
     public:
         DynaQ(AllServoModel * allServoModel, Reward * rewardModel);
         ~DynaQ();
-        static const int Squantity =  4096;
+        static const short Statequantity =  4096;
         int srvQuantity;
 
         char * CurrentState;
 
 
 
-        void BeginState();
+        void PrepareToLearn();
 
-        float Q[Squantity][Squantity];
-        char R[Squantity][Squantity];
 
-        float BETA;
-        float GAMA;
-        float EPSILON;
+
+        /// [state from][state to]
+        float Q[Statequantity][Statequantity];
+        char Model[Statequantity][Statequantity];
+        short Exploration[Statequantity][Statequantity];
+
+        float BETA;  // 0.9
+        float GAMA;  // 0.9
+        float EPSILON; // 0.01
+
+        double TotalReward;
+        short Iteration;
 
         AllServoModel * StateModel;
         Reward * RewardModel;
     protected:
     private:
 
-        ofstream file;
+        ofstream logFile;
         string dateTimeStr;
 };
 

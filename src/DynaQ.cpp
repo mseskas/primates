@@ -2,9 +2,8 @@
 
 // destructor to release memory
 DynaQ::~DynaQ(){
-    file.close();
-//                            delete pointer;
-//                            delete[] pointer;
+    logFile.close();
+    cout << "DynaQ deleted";
 }
 
 DynaQ::DynaQ(AllServoModel * allServoModel, Reward * rewardModel)
@@ -12,6 +11,8 @@ DynaQ::DynaQ(AllServoModel * allServoModel, Reward * rewardModel)
     float BETA = 0.9;
     float GAMA = 0.9;
     float EPSILON = 0.01;
+    TotalReward = 0;
+    Iteration = 0;
     StateModel = allServoModel;
     RewardModel = rewardModel;
     srvQuantity = allServoModel->srvQuantity;
@@ -27,18 +28,30 @@ DynaQ::DynaQ(AllServoModel * allServoModel, Reward * rewardModel)
     dateTimeStr.append(to_string(ltm->tm_min) + ":");
     dateTimeStr.append(to_string(ltm->tm_sec));
 
-    file.open("logs/" + dateTimeStr + ".txt");
+    logFile.open("logs/" + dateTimeStr + ".txt");
+    logFile << "IterationNo - in beginning of the line, s - state, r - received reward, rs - total reward" << endl;
 
-    BeginState();
+    PrepareToLearn();
 }
 
-void DynaQ::BeginState() {
+void DynaQ::PrepareToLearn() {
+    cout << "Preparing Primates..." << endl;
     CurrentState  =  StateModel->BeginState();
+    logFile << "s " << CurrentState << endl;
 
-
-//StateModel->
-
+    for (int s = 0; s < Statequantity; s++){
+        for (int a = 0; a < Statequantity; a++){
+            Model[s][a] = 0;
+            Q[s][a] = 0;
+            Exploration[s][a] = 0;
+        }
+    }
+    cout << "Model and Quality is set to zero" << endl;
 }
+
+
+
+
 
 
 

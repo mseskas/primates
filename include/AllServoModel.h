@@ -15,11 +15,13 @@ class AllServoModel
         AllServoModel();
 
         int ExecutePosition(char * data12);
+        int ExecutePosition(short state);
+
         char* BeginState();
 
         char LastState[srvQuantity+1];
 
-        servo * Servos[12];
+        servo * Servos[srvQuantity];
         int * ServoParams;
 
     protected:

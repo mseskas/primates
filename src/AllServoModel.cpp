@@ -46,12 +46,51 @@ char* AllServoModel::BeginState(){
     return LastState;
 }
 
+int AllServoModel::ExecutePosition(short state){
+    int min = 0;
+    int max = 0;
+    double d = 0.0;
+
+    int flags[srvQuantity];
+
+    for (int f = 0; f < srvQuantity; f++){
+        flags[f] = state % 2;
+    }
+
+    printf("changing state to: ");
+    printf(data12);
+    printf("\r\n");
+
+    for (int i = 0; i < srvQuantity; i++){
+        char cr = data12[i];
+
+        switch (cr){
+            case '0':
+                min = ServoParams[i*3 + 1];
+                d = (float)min / 100;
+               Servos[i]->set_angle(d);
+
+            break;
+            case '1':
+                max = ServoParams[i*3 + 2];
+                d = (float)max / 100;
+                Servos[i]->set_angle(d);
+            break;
+            default:
+            break;
+        }
+    }
+    return 1;
+}
+
+
 // Possible data12[x] values : "0", "1" or any other
 int AllServoModel::ExecutePosition(char * data12){
     int min = 0;
     int max = 0;
     double d = 0.0;
 
+    printf("changing state to: ");
     printf(data12);
     printf("\r\n");
 
