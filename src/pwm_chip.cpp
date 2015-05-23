@@ -2,6 +2,7 @@
 
 pwm_chip::pwm_chip(int chip_addr)
 {
+    isRaspberryPi = false;
     _ticks = 4095;
     __SUBADR1      = 0x02;
     __SUBADR3      = 0x04;
@@ -16,22 +17,33 @@ pwm_chip::pwm_chip(int chip_addr)
     __ALLLED_OFF_L = 0xFC;
     __ALLLED_OFF_H = 0xFD;
 
-    wiringPiSetup ();
-    _addr = wiringPiI2CSetup (chip_addr) ;
-    reset();
-    set_pwm_freq(PWM_CHIP_HZ);
+    struct utsname sysinfo;
+    uname(&sysinfo);
+    //cout << "Your computer is : " << sysinfo.nodename << endl;
+    std::string g = "raspberrypi";
+    if ( g.compare(sysinfo.nodename) == 0) isRaspberryPi = true;  // if raspberry
+
+    if (isRaspberryPi){
+        wiringPiSetup ();
+        _addr = wiringPiI2CSetup(chip_addr) ;
+        reset();
+        set_pwm_freq(PWM_CHIP_HZ);
+    }
 }
 
 pwm_chip::~pwm_chip()
 {
+    if (!isRaspberryPi) return;
+
     wiringPiI2CWriteReg8(_addr, __ALLLED_ON_L, 0x00);
     wiringPiI2CWriteReg8(_addr, __ALLLED_ON_H, 0x00);
     wiringPiI2CWriteReg8(_addr, __ALLLED_OFF_L, 0x00);
-    wiringPiI2CWriteReg8(_addr, __ALLLED_OFF_H, 0x00);
 }
 
 int pwm_chip::reset()
 {
+    if (!isRaspberryPi) return 0;
+
     wiringPiI2CWriteReg8(_addr, __ALLLED_ON_L, 0x00);
     wiringPiI2CWriteReg8(_addr, __ALLLED_ON_H, 0x00);
     wiringPiI2CWriteReg8(_addr, __ALLLED_OFF_L, 0x00);
@@ -46,6 +58,8 @@ int pwm_chip::get_pwm_freq()
 
 void pwm_chip::set_pwm(int pwn_no, int on_tick, int off_tick)
 {
+    if (!isRaspberryPi) return;
+
     if ((pwn_no >= 0) && (pwn_no < 16))
     {
         wiringPiI2CWriteReg8(_addr, __LED0_ON_L + 4 * pwn_no, on_tick & 0xFF);
@@ -58,6 +72,8 @@ void pwm_chip::set_pwm(int pwn_no, int on_tick, int off_tick)
 // 40 and 1000 Hz
 void pwm_chip::set_pwm_freq(int frq_Hz)
 {
+    if (!isRaspberryPi) return;
+
     _work_frequence = frq_Hz;
     float prescaleval = 25000000.0;   // 25MHz
     prescaleval /= 4096.0;     // 12-bit
@@ -72,7 +88,6 @@ void pwm_chip::set_pwm_freq(int frq_Hz)
     delayMicroseconds(500);  // 500 us to stabilize oscillator
     wiringPiI2CWriteReg8(_addr, __MODE1, oldmode | 0x80);
 }
-
 
 int pwm_chip::get_ticks()
 {

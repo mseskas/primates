@@ -1,12 +1,13 @@
+#ifndef	__PWM_CHIP_H__
+#define	__PWM_CHIP_H__
+
 #include <stdlib.h>
 #include <wiringPi.h>
-
 #include <wiringPiI2C.h>
 #include <iostream>
 #include <project_constants.h>
+#include <sys/utsname.h>
 
-#ifndef	__PWM_CHIP_H__
-#define	__PWM_CHIP_H__
 using namespace std;
 
 
@@ -20,6 +21,9 @@ public:
     int  get_pwm_freq();
     int get_ticks();
     int reset();
+
+    bool isRaspberryPi;
+
 private:
     int _ticks;
     int _work_frequence;

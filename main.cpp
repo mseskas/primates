@@ -1,15 +1,33 @@
 #include <iostream>
 #include <string>
 #include "gui_main.h"
-#include "MPU6050.h"
 #include "Reward.h"
+#include "DynaQ.h"
+
+
+#include "AllServoModel.h"
 
 using namespace std;
 
+// TODO: remove if necessary
+bool isRaspberryPi = false;
+
 int main()
 {
+    struct utsname sysinfo;
+    uname(&sysinfo);
+    //cout << "Your computer is : " << sysinfo.nodename << endl;
+    std::string g = "raspberrypi";
+    if ( g.compare(sysinfo.nodename) == 0) isRaspberryPi = true;  // if raspberry
 
-    gui_main * main_gui = new gui_main();
+    AllServoModel * servosModel = new AllServoModel();
+    Reward * reward = new Reward(new MPU6050());
+
+    gui_main * main_gui = new gui_main(servosModel, reward);
+    DynaQ * dyna = new DynaQ(servosModel, reward);
+
+//  cout << sizeof(float) << endl;
+
 
    //MPU6050 * chip = new MPU6050();
    // Reward * reward = new Reward(chip);
@@ -26,7 +44,7 @@ int main()
         delay(100);
     }*/
 
-    int t;
+    char t;
     cin >> t;
     return 0;
 }

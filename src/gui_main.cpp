@@ -1,38 +1,16 @@
 #include "gui_main.h"
-#include "pwm_gtk_control.h"
 
-gui_main::gui_main( )
+gui_main::gui_main(AllServoModel * allServoModel, Reward * rewardModel)
 {
-    bool isRaspberryPi = false;
+    ServosModel = allServoModel;
+    RewardModel = rewardModel;
+    srvQuantity = allServoModel->srvQuantity;
+
     _execution_thread = new std::thread (&gui_main::build_gui, this);
 }
 
 void gui_main::build_gui()
 {
-    struct utsname sysinfo;
-    uname(&sysinfo);
-    //cout << "Your computer is : " << sysinfo.nodename << endl;
-    std::string g = "raspberrypi";
-    if ( g.compare(sysinfo.nodename) == 0) isRaspberryPi = true;  // if raspberry
-
-
-    int params[12][3] = {
-            {25, 15, 40},//
-            {90, 80, 90},
-            {55, 55, 70},
-            {45, 25, 52},//
-            {37, 37, 50},
-            {23, 10, 23},
-            {45, 40, 65},//
-            {84, 70, 84},
-            {58, 58, 68},
-            {35, 20, 42},//
-            {10, 10, 20},
-            {23, 15, 23}
-        };
-
-    _servoParams = &params[0][0];
-
     gdk_threads_enter();
     XInitThreads();
     gtk_init( 0, NULL );
@@ -56,32 +34,25 @@ void gui_main::build_gui()
     _positionPage = gtk_fixed_new();
     gtk_widget_set_usize(_positionPage, 900, 450);
 
-
-    gtkAllServo * all = new gtkAllServo("Start", Servos, _servoParams);
+    gtkAllServo * all = new gtkAllServo("Start", ServosModel);
     gtk_fixed_put(GTK_FIXED (_positionPage), all->get_main(), 0, 0);
 
-    all = new gtkAllServo("2nd", Servos, _servoParams);
+    all = new gtkAllServo("2nd", ServosModel);
     gtk_fixed_put(GTK_FIXED (_positionPage), all->get_main(), 0, 60);
 
-    all = new gtkAllServo("3nd", Servos, _servoParams);
+    all = new gtkAllServo("3nd", ServosModel);
     gtk_fixed_put(GTK_FIXED (_positionPage), all->get_main(), 0, 120);
 
-    all = new gtkAllServo("4nd", Servos, _servoParams);
+    all = new gtkAllServo("4nd", ServosModel);
     gtk_fixed_put(GTK_FIXED (_positionPage), all->get_main(), 0, 180);
 
-    all = new gtkAllServo("5nd", Servos, _servoParams);
+    all = new gtkAllServo("5nd", ServosModel);
     gtk_fixed_put(GTK_FIXED (_positionPage), all->get_main(), 0, 240);
 
-    RewardView * view;
-    if (isRaspberryPi) {
-        view = new RewardView(new Reward(new MPU6050()));
-    } else {
-        view = new RewardView(new Reward(NULL));
-    }
+    RewardView * view = new RewardView(RewardModel);
+
 
     gtk_fixed_put(GTK_FIXED (_positionPage), view->get_main(), 250, 0);
-
-
 
     gtk_notebook_append_page ((GtkNotebook*)noteBook, _positionPage, gtk_label_new("Position"));
     gtk_notebook_append_page ((GtkNotebook*)noteBook, _pwmControlPage, gtk_label_new("PWM Control"));
@@ -96,19 +67,10 @@ void gui_main::build_gui()
 }
 
 void gui_main::LoadServoControls(GtkWidget * frame){
-
-    pwm_chip * chip = NULL;
-    if (isRaspberryPi) chip = new pwm_chip(PWM_CHIP_ADDR);
-
     for (int i = 1; i < srvQuantity + 1; i++){
         int xOffset = (i-1) / 6;
-        PwmViews[i-1] = new pwm_gtk_control(to_string(i).c_str(), _servoParams[(i - 1)* 3 + 1], _servoParams[(i - 1)* 3 + 2], _servoParams[(i - 1)* 3 ]);
-
-        if (isRaspberryPi){
-            Servos[i-1] = new servo(chip, i);
-            PwmViews[i-1]->SetServo(Servos[i-1]);
-        }
-
+        PwmViews[i-1] = new pwm_gtk_control(to_string(i).c_str(), ServosModel->ServoParams[(i - 1) * 3 + 1], ServosModel->ServoParams[(i - 1) * 3 + 2], ServosModel->ServoParams[(i - 1) * 3]);
+        PwmViews[i-1]->SetServo(ServosModel->Servos[i-1]);
         gtk_fixed_put(GTK_FIXED (_pwmControlPage), PwmViews[i-1]->get_main(), xOffset * 400, (i-1) * 75 - xOffset * 450);
     }
     // add all pwm controls

@@ -1,21 +1,20 @@
+#ifndef GTKALLSERVO_H
+#define GTKALLSERVO_H
+
 #include <gtk/gtk.h>
-#include "servo.h"
+
+#include "AllServoModel.h"
 
 class gtkAllServo
 {
     public:
-        gtkAllServo(char * title, servo * data[], int * params);
+        gtkAllServo(char * title, AllServoModel * servoModel);
         GtkWidget * get_main();
-        void SetServos(servo * servoMotor[]);
-        static const int srvQuantity = 12;
-        bool hasServos;
-        servo * _servos[srvQuantity];
+
+        AllServoModel * ServoModel;
+        int srvQuantity;
 
         static void btnOnClick(GtkWidget *wid, gpointer user_data);
-
-        int * _servoParams;
-
-        float ExecutePosition(char * data12,gtkAllServo * obj);
 
     private:
         GtkWidget * frame;
@@ -30,3 +29,4 @@ class gtkAllServo
 
 };
 
+#endif // GTKALLSERVO_H

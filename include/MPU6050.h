@@ -7,6 +7,7 @@
 #include <wiringPiI2C.h>
 #include <project_constants.h>
 #include <math.h> // math functions, like sqrt, pow...
+#include <sys/utsname.h>
 
 using namespace std;
 
@@ -27,6 +28,8 @@ class MPU6050
         double GetGyroZ();
 
         void WakeUp();
+
+        bool isRaspberryPi;
 
     protected:
     private:

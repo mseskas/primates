@@ -9,14 +9,25 @@ MPU6050::MPU6050() {
     _RGYROX = 0x43;
     _RGYROY = 0x45;
     _RGYROZ = 0x47;
+    isRaspberryPi = false;
 
-   wiringPiSetup ();
-   _chipHandler = wiringPiI2CSetup(MPU6050_ADDR);
-   cout << "MPU handler: " << _chipHandler << endl;
-   WakeUp();
+    struct utsname sysinfo;
+    uname(&sysinfo);
+    //cout << "Your computer is : " << sysinfo.nodename << endl;
+    std::string g = "raspberrypi";
+    if ( g.compare(sysinfo.nodename) == 0) isRaspberryPi = true;  // if raspberry
+
+    if (isRaspberryPi){
+        wiringPiSetup ();
+        _chipHandler = wiringPiI2CSetup(MPU6050_ADDR);
+        cout << "MPU handler: " << _chipHandler << endl;
+        WakeUp();
+    }
 }
 
 void MPU6050::WakeUp() {
+    if (!isRaspberryPi) return;
+
     wiringPiI2CWriteReg8(_chipHandler, _WAKEUP, 0x00);
     delay(100);
 }
@@ -36,6 +47,8 @@ double MPU6050::Distance(double a, double b) {
 }
 
 int MPU6050::ReadValue(int address){
+    if (!isRaspberryPi) return 0;
+
     int high = wiringPiI2CReadReg8(_chipHandler, address);
     int low = wiringPiI2CReadReg8(_chipHandler, address+1);
 

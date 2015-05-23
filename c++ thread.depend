@@ -3037,14 +3037,15 @@
 	"pwm_chip.h"
 	"servo.h"
 
-1432155171 source:/home/minde/Desktop/primates/main.cpp
+1432381059 source:/home/minde/Desktop/primates/main.cpp
 	<iostream>
 	<string>
 	"gui_main.h"
-	"MPU6050.h"
 	"Reward.h"
+	"DynaQ.h"
+	"AllServoModel.h"
 
-1432240675 /home/minde/Desktop/primates/include/gui_main.h
+1432381213 /home/minde/Desktop/primates/include/gui_main.h
 	<stdlib.h>
 	<gtk/gtk.h>
 	<X11/Xlib.h>
@@ -3055,9 +3056,8 @@
 	"pwm_gtk_control.h"
 	"RewardView.h"
 
-1432242981 source:/home/minde/Desktop/primates/src/gui_main.cpp
+1432381523 source:/home/minde/Desktop/primates/src/gui_main.cpp
 	"gui_main.h"
-	"pwm_gtk_control.h"
 
 1432240717 /home/minde/Desktop/primates/include/pwm_gtk_control.h
 	<gtk/gtk.h>
@@ -3065,12 +3065,13 @@
 	"pwm_chip.h"
 	"servo.h"
 
-1432147125 /home/minde/Desktop/primates/include/pwm_chip.h
+1432373910 /home/minde/Desktop/primates/include/pwm_chip.h
 	<stdlib.h>
 	<wiringPi.h>
 	<wiringPiI2C.h>
 	<iostream>
 	<project_constants.h>
+	<sys/utsname.h>
 
 1432069338 /home/minde/Desktop/primates/include/project_constants.h
 
@@ -3079,10 +3080,10 @@
 	<project_constants.h>
 	<iostream>
 
-1432067470 source:/home/minde/Desktop/primates/src/pwm_chip.cpp
+1432371936 source:/home/minde/Desktop/primates/src/pwm_chip.cpp
 	"pwm_chip.h"
 
-1432239061 source:/home/minde/Desktop/primates/src/pwm_gtk_control.cpp
+1432316273 source:/home/minde/Desktop/primates/src/pwm_gtk_control.cpp
 	"../include/pwm_gtk_control.h"
 	"pwm_chip.h"
 	"servo.h"
@@ -3090,13 +3091,13 @@
 1432067470 source:/home/minde/Desktop/primates/src/servo.cpp
 	"servo.h"
 
-1432155790 source:/home/minde/Desktop/primates/src/gtkAllServo.cpp
+1432373722 source:/home/minde/Desktop/primates/src/gtkAllServo.cpp
 	"../include/gtkAllServo.h"
 	"servo.h"
 
-1432067470 /home/minde/Desktop/primates/include/gtkAllServo.h
+1432373763 /home/minde/Desktop/primates/include/gtkAllServo.h
 	<gtk/gtk.h>
-	"servo.h"
+	"AllServoModel.h"
 
 1410719482 /root/Desktop/PRIMATES v0.3/include/gtkAllServo.h
 	<gtk/gtk.h>
@@ -3106,16 +3107,17 @@
 	"../include/gtkAllServo.h"
 	"servo.h"
 
-1432147125 source:/home/minde/Desktop/primates/src/MPU6050.cpp
+1432371986 source:/home/minde/Desktop/primates/src/MPU6050.cpp
 	"MPU6050.h"
 
-1432147125 /home/minde/Desktop/primates/include/MPU6050.h
+1432373860 /home/minde/Desktop/primates/include/MPU6050.h
 	<stdlib.h>
 	<iostream>
 	<wiringPi.h>
 	<wiringPiI2C.h>
 	<project_constants.h>
 	<math.h>
+	<sys/utsname.h>
 
 1410763716 source:/root/Desktop/primates/main.cpp
 	<iostream>
@@ -3189,7 +3191,7 @@
 1410716399 source:/root/Desktop/primates/src/servo.cpp
 	"servo.h"
 
-1432243486 source:/home/minde/Desktop/primates/src/Reward.cpp
+1432383455 source:/home/minde/Desktop/primates/src/Reward.cpp
 	"Reward.h"
 
 1432243299 /home/minde/Desktop/primates/include/Reward.h
@@ -3224,4 +3226,23 @@
 
 1410773953 source:/root/Desktop/primates/src/RewardView.cpp
 	"RewardView.h"
+
+1432383590 source:/home/minde/Desktop/primates/src/DynaQ.cpp
+	"DynaQ.h"
+
+1432383911 /home/minde/Desktop/primates/include/DynaQ.h
+	<iostream>
+	<fstream>
+	<ctime>
+	"RewardView.h"
+	"AllServoModel.h"
+
+1432383716 /home/minde/Desktop/primates/include/AllServoModel.h
+	<pwm_chip.h>
+	"servo.h"
+	<iostream>
+	<cstring>
+
+1432383716 source:/home/minde/Desktop/primates/src/AllServoModel.cpp
+	"AllServoModel.h"
 

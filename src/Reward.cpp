@@ -9,6 +9,7 @@ Reward::Reward(MPU6050 * mpuChip) {
     IntervalMs = 30;
     Threshold = 0.05;
     IsRunning = false;
+    OutputLabel = NULL;
 }
 
 bool Reward::AsyncGetReward(){
@@ -70,11 +71,13 @@ double Reward::GetReward(){
         LastResult = 0;
     }
 
-
-    string output = to_string(LastResult);
-    if (LastResult > 0)output.append(" - BACKWARD");
-    else output.append(" - FORWARD");
-    gtk_label_set_text((GtkLabel*)OutputLabel, output.c_str() );
+    if (OutputLabel != NULL)
+    {
+        string output = to_string(LastResult);
+        if (LastResult > 0)output.append(" - BACKWARD");
+        else output.append(" - FORWARD");
+        gtk_label_set_text((GtkLabel*)OutputLabel, output.c_str() );
+    }
 
     IsRunning = false;
     return LastResult;

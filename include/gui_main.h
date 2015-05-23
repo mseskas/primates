@@ -9,26 +9,29 @@
 #include "servo.h"
 #include "gtkAllServo.h"
 #include "pwm_gtk_control.h"
-
 #include "RewardView.h"
 
 class gui_main
 {
     public:
-        gui_main( );
+        gui_main(AllServoModel * allServoModel, Reward * rewardModel);
         void build_gui();
         void LoadServoControls(GtkWidget * frame);
-        static const int srvQuantity = 12;
+
+        int srvQuantity;
 
         static void btnAllOffClick(GtkWidget *wid, gpointer user_data);
         static void btnAllOnClick(GtkWidget *wid, gpointer user_data);
 
-        pwm_gtk_control * PwmViews[srvQuantity];
-        servo * Servos[srvQuantity];
+        pwm_gtk_control * PwmViews[12];
+
+        AllServoModel * ServosModel;
+        Reward * RewardModel;
+
     protected:
     private:
         bool isRaspberryPi;
-        int * _servoParams;
+
 
         GtkWidget * AllOffButton;
         GtkWidget * AllOnButton;
