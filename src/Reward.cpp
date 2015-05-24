@@ -60,7 +60,7 @@ double Reward::GetReward(){
                     maxIteration = iteration;
                 }
             }
-            logFile << IterationNumber << "\t" << measure << " [" << minAX << ":" << maxAX << "]\t";
+            logFile << IterationNumber << "\t" << measure << "\t[" << minAX << ":" << maxAX << "]\t";
             logFile << "[" << minIteration << ":" << maxIteration << "]" << endl;
 
             cout << "[" << minAX << ":" << maxAX << "]\t";

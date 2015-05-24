@@ -1,0 +1,66 @@
+IterationNo - in beginning of the line, s - state, r - received reward, rs - total reward
+start state: 1365
+In state: 1365 choose 4069
+Received reward: -10	Total: -10
+Update Q(1365, 4069) = -9
+
+In state: 4069 choose 4067
+Received reward: -10	Total: -20
+Update Q(4069, 4067) = -9
+
+In state: 4067 choose 2371
+Received reward: 100	Total: 80
+Update Q(4067, 2371) = 90
+
+In state: 2371 choose 4067
+Received reward: -10	Total: 70
+Update Q(2371, 4067) = 31.5
+
+In state: 4067 choose 2371
+Received reward: -100	Total: -30
+Update Q(4067, 2371) = -67.05
+
+In state: 2371 choose 4067
+Received reward: -10	Total: -40
+Update Q(2371, 4067) = -5.85
+
+In state: 4067 choose 2371
+Received reward: -10	Total: -50
+Update Q(4067, 2371) = -15.705
+
+In state: 2371 choose 4067
+Received reward: -10	Total: -60
+Update Q(2371, 4067) = -9.585
+
+In state: 4067 choose 2371
+Received reward: -10	Total: -70
+Update Q(4067, 2371) = -10.5705
+
+In state: 2371 choose 4067
+Received reward: -10	Total: -80
+Update Q(2371, 4067) = -9.9585
+
+In state: 4067 choose 2371
+Received reward: -10	Total: -90
+Update Q(4067, 2371) = -10.057
+
+In state: 2371 choose 4067
+Received reward: -10	Total: -100
+Update Q(2371, 4067) = -9.99585
+
+In state: 4067 choose 2371
+Received reward: -10	Total: -110
+Update Q(4067, 2371) = -10.0057
+
+In state: 2371 choose 4067
+Received reward: -10	Total: -120
+Update Q(2371, 4067) = -9.99959
+
+In state: 4067 choose 2371
+Received reward: 100	Total: -20
+Update Q(4067, 2371) = 88.9994
+
+In state: 2371 choose 4067
+Received reward: -10	Total: -30
+Update Q(2371, 4067) = 29.6
+
