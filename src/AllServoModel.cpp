@@ -38,7 +38,9 @@ void AllServoModel::LoadServoControls(){
 short AllServoModel::BeginState(){
     //string tmp = "010101010101";
     //strcpy(LastState, tmp.c_str());
-    short beginState = 1365;
+    //short beginState = 1365;
+    short beginState = 85;
+
     LastState = beginState;
     ExecutePosition(beginState);
 
@@ -57,20 +59,111 @@ void AllServoModel::ExecutePosition(short state){
         flags[srvQuantity-1 - f] = state % 2;
         state = state / 2;
     }
-
-    for (int i = 0; i < srvQuantity; i++){
-        int flag = flags[i];
-
-        if (flag == 0){
-            min = ServoParams[i*3 + 1];
-                d = (float)min / 100;
-               Servos[i]->set_angle(d);
-        } else {
-            max = ServoParams[i*3 + 2];
-                d = (float)max / 100;
-                Servos[i]->set_angle(d);
-        }
+    int i =0;
+    int flag = flags[0];
+// first
+    if (flag == 0){
+        min = ServoParams[ + 1];
+        d = (float)min / 100;
+        Servos[i]->set_angle(d);
+    } else {
+        max = ServoParams[ + 2];
+        d = (float)max / 100;
+        Servos[0]->set_angle(d);
     }
+
+    flag = flags[1];
+    if (flag == 0){
+        min = ServoParams[1*3 + 1];
+            d = (float)min / 100;
+           Servos[1]->set_angle(d);
+    } else {
+        max = ServoParams[1*3 + 2];
+            d = (float)max / 100;
+            Servos[1]->set_angle(d);
+    }
+// two
+    flag = flags[2];
+    if (flag == 0){
+        min = ServoParams[3*3 + 1];
+            d = (float)min / 100;
+           Servos[3]->set_angle(d);
+    } else {
+        max = ServoParams[3*3 + 2];
+            d = (float)max / 100;
+            Servos[3]->set_angle(d);
+    }
+
+    flag = flags[3];
+    if (flag == 0){
+        min = ServoParams[4*3 + 1];
+            d = (float)min / 100;
+           Servos[4]->set_angle(d);
+    } else {
+        max = ServoParams[4*3 + 2];
+            d = (float)max / 100;
+            Servos[4]->set_angle(d);
+    }
+// three
+    flag = flags[4];
+    if (flag == 0){
+        min = ServoParams[6*3 + 1];
+            d = (float)min / 100;
+           Servos[6]->set_angle(d);
+    } else {
+        max = ServoParams[6*3 + 2];
+            d = (float)max / 100;
+            Servos[6]->set_angle(d);
+    }
+
+    flag = flags[5];
+    if (flag == 0){
+        min = ServoParams[7*3 + 1];
+            d = (float)min / 100;
+           Servos[7]->set_angle(d);
+    } else {
+        max = ServoParams[7*3 + 2];
+            d = (float)max / 100;
+            Servos[7]->set_angle(d);
+    }
+// four
+    flag = flags[6];
+    if (flag == 0){
+        min = ServoParams[9*3 + 1];
+            d = (float)min / 100;
+           Servos[9]->set_angle(d);
+    } else {
+        max = ServoParams[9*3 + 2];
+            d = (float)max / 100;
+            Servos[9]->set_angle(d);
+    }
+
+    flag = flags[7];
+    if (flag == 0){
+        min = ServoParams[10*3 + 1];
+            d = (float)min / 100;
+           Servos[10]->set_angle(d);
+    } else {
+        max = ServoParams[10*3 + 2];
+            d = (float)max / 100;
+            Servos[10]->set_angle(d);
+    }
+
+
+
+//    for (int i = 0; i < srvQuantity; i++){
+//
+//
+//        if (flag == 0){
+//            min = ServoParams[i*3 + 1];
+//                d = (float)min / 100;
+//               Servos[i]->set_angle(d);
+//        } else {
+//            max = ServoParams[i*3 + 2];
+//                d = (float)max / 100;
+//                Servos[i]->set_angle(d);
+//        }
+//    }
 }
 
 

@@ -19,7 +19,8 @@ class DynaQ
     public:
         DynaQ(AllServoModel * allServoModel, Reward * rewardModel);
         ~DynaQ();
-        static const short Statequantity =  4096;
+        static const short Statequantity =  256;
+        //static const short Statequantity =  4096;
         int srvQuantity;
 
 

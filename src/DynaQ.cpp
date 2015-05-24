@@ -105,7 +105,7 @@ short DynaQ::GetActionByEgreedy(short state){
     short repeatedValues = 0;
 
     maxQ = Model[state][maxA] + (EPSILON * sqrt(CurrentIteration - Exploration[state][maxA]))
-    + GAMA * (GetMaxQuality(maxA)); // arbitrary action
+        + GAMA * (GetMaxQuality(maxA)); // arbitrary action
     Temporary[repeatedValues] = maxA;
 
     for (short a = 1; a < Statequantity; a++){
