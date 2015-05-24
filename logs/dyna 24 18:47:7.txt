@@ -1,0 +1,99 @@
+IterationNo - in beginning of the line, s - state, r - received reward, rs - total reward
+start state: 1365
+In state: 1365 choose 3123
+Received reward: -10	Total: -10
+Update Q(1365, 3123) = -9
+
+In state: 3123 choose 1276
+Received reward: -10	Total: -20
+Update Q(3123, 1276) = -9
+
+In state: 1276 choose 2010
+Received reward: -100	Total: -120
+Update Q(1276, 2010) = -90
+
+In state: 2010 choose 2405
+Received reward: -10	Total: -130
+Update Q(2010, 2405) = -9
+
+In state: 2405 choose 208
+Received reward: -10	Total: -140
+Update Q(2405, 208) = -9
+
+In state: 208 choose 1146
+Received reward: 100	Total: -40
+Update Q(208, 1146) = 90
+
+In state: 1146 choose 208
+Received reward: -100	Total: -140
+Update Q(1146, 208) = -49.5
+
+In state: 208 choose 1146
+Received reward: -10	Total: -150
+Update Q(208, 1146) = 0
+
+In state: 1146 choose 208
+Received reward: -100	Total: -250
+Update Q(1146, 208) = -94.95
+
+In state: 208 choose 1146
+Received reward: -100	Total: -350
+Update Q(208, 1146) = -90
+
+In state: 1146 choose 208
+Received reward: 100	Total: -250
+Update Q(1146, 208) = 80.505
+
+In state: 208 choose 1146
+Received reward: -10	Total: -260
+Update Q(208, 1146) = 18
+
+In state: 1146 choose 208
+Received reward: -100	Total: -360
+Update Q(1146, 208) = -73.8495
+
+In state: 208 choose 1146
+Received reward: -100	Total: -460
+Update Q(208, 1146) = -88.2
+
+In state: 1146 choose 208
+Received reward: -100	Total: -560
+Update Q(1146, 208) = -97.3849
+
+In state: 208 choose 1146
+Received reward: -10	Total: -570
+Update Q(208, 1146) = -17.82
+
+In state: 1146 choose 208
+Received reward: 100	Total: -470
+Update Q(1146, 208) = 80.2615
+
+In state: 208 choose 1146
+Received reward: -10	Total: -480
+Update Q(208, 1146) = 25.218
+
+In state: 1146 choose 208
+Received reward: 100	Total: -380
+Update Q(1146, 208) = 109.276
+
+In state: 208 choose 1146
+Received reward: -100	Total: -480
+Update Q(208, 1146) = -38.4282
+
+In state: 1146 choose 208
+Received reward: 100	Total: -380
+Update Q(1146, 208) = 100.928
+
+In state: 208 choose 1146
+Received reward: -100	Total: -480
+Update Q(208, 1146) = -48.8428
+
+In state: 1146 choose 208
+Received reward: -100	Total: -580
+Update Q(1146, 208) = -79.9072
+
+In state: 208 choose 1146
+Received reward: -10	Total: -590
+Update Q(208, 1146) = -13.8843
+
+start state: 1365
