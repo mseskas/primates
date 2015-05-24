@@ -8,5 +8,7 @@
 #define PI 3.14159265
 
 #define GREEN_LED_PIN 1
-
 #define RED_LED_PIN 4
+
+#define FRONT_SONAR_TRIGGER_PIN 5
+#define FRONT_SONAR_ECHO_PIN 6

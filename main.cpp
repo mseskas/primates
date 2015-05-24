@@ -3,10 +3,9 @@
 #include "gui_main.h"
 #include "Reward.h"
 #include "DynaQ.h"
-
 #include <signal.h>
-
 #include "AllServoModel.h"
+#include "Sonar.h"
 
 using namespace std;
 
@@ -27,7 +26,6 @@ int main()
 
     const int dir_err = mkdir("logs", S_IRWXU | S_IRWXG | S_IROTH | S_IXOTH);
 
-
     struct utsname sysinfo;
     uname(&sysinfo);
     //cout << "Your computer is : " << sysinfo.nodename << endl;
@@ -37,9 +35,13 @@ int main()
     AllServoModel * servosModel = new AllServoModel();
     Reward * reward = new Reward(new MPU6050());
     gui_main * main_gui = new gui_main(servosModel, reward);
-    dyna = new DynaQ(servosModel, reward);
 
-    char str[80];
+    Sonar * frontSonar = new Sonar( FRONT_SONAR_TRIGGER_PIN, FRONT_SONAR_ECHO_PIN);
+
+
+    dyna = new DynaQ(servosModel, reward, frontSonar);
+
+
 
     char c;
 
@@ -71,6 +73,10 @@ int main()
                 break;
             case '9':
                 dyna->RunIterations(6000);
+                break;
+            case 's':
+                cout << "measure distance" << endl;
+                for (int i = 0; i < 10; i ++) frontSonar->measure_distance();
                 break;
             case 't':
                 execute = false;

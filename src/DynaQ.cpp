@@ -4,10 +4,12 @@
 DynaQ::~DynaQ(){
     logFile.close();
     StateModel->ReleaseMotors();
+    RedLED->TurnOff();
+    GreenLED->TurnOff();
     cout << "DynaQ deleted";
 }
 
-DynaQ::DynaQ(AllServoModel * allServoModel, Reward * rewardModel)
+DynaQ::DynaQ(AllServoModel * allServoModel, Reward * rewardModel, Sonar * frontSonar)
 {
     BETA = 0.9;
     GAMA = 0.5;
@@ -19,6 +21,7 @@ DynaQ::DynaQ(AllServoModel * allServoModel, Reward * rewardModel)
     srvQuantity = allServoModel->srvQuantity;
     GreenLED = new LED(GREEN_LED_PIN);
     RedLED = new LED(RED_LED_PIN);
+    FrontSonar = frontSonar;
 
     time_t now = time(0);
     tm *ltm = localtime(&now);
@@ -47,18 +50,26 @@ void DynaQ::PrepareToLearn() {
         }
     }
     cout << "Model and Quality is set to zero" << endl;
+}
 
-    //GetActionByEgreedy(CurrentState);
+
+void DynaQ::IndicateResult(short reward){
+    if (reward == 100) {
+        GreenLED->TurnON();
+        RedLED->TurnOff();
+    } else {
+        GreenLED->TurnOff();
+        RedLED->TurnON();
+    }
+    TotalReward += reward;
+    logFile << "Received reward: " << reward << "\tTotal: " << TotalReward << endl;
 }
 
 void DynaQ::RunIterations(int iterationsNo){
 
     for (int i = 0; i < iterationsNo; i++){
-
-        //hort nextState = GetActionByEgreedy(CurrentState);
-        short nextState = GetActionByEgreedyOLD(CurrentState);
-
-
+        //short nextState = EGreedy(CurrentState);
+        short nextState = EGreedyByQuality(CurrentState);
 logFile << "In state: " << CurrentState << " choose " << nextState << endl;
 
         RewardModel->AsyncGetReward();
@@ -66,17 +77,7 @@ logFile << "In state: " << CurrentState << " choose " << nextState << endl;
         StateModel->ExecutePosition(nextState);
         RewardModel->AsyncGetReward(true); // just waiting to finish measurement
         short reward = RewardModel->ResultCategory;
-
-        if (reward == 100) {
-                GreenLED->TurnON();
-                RedLED->TurnOff();
-        } else {
-            GreenLED->TurnOff();
-            RedLED->TurnON();
-        }
-
-        TotalReward += reward;
-logFile << "Received reward: " << reward << "\tTotal: " << TotalReward << endl;
+        IndicateResult(reward);
 
         Q[CurrentState][nextState] = Q[CurrentState][nextState] + BETA * (reward
         // always = 0  //+ EPSILON * sqrt(CurrentIteration - Exploration[CurrentState][nextState])
@@ -110,7 +111,7 @@ short DynaQ::GetMaxQuality(short state){
 }
 
 //epsilon-greedy: return State number
-short DynaQ::GetActionByEgreedy(short state){
+short DynaQ::EGreedy(short state){
     float maxQ=0;
     short maxA=0;
     short repeatedValues = 0;
@@ -142,7 +143,7 @@ short DynaQ::GetActionByEgreedy(short state){
 }
 
 //epsilon-greedy: return State number
-short DynaQ::GetActionByEgreedyOLD(short state){
+short DynaQ::EGreedyByQuality(short state){
     float maxQ=0;
     short maxA=0;
     short repeatedValues = 0;
