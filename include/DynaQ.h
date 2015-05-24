@@ -29,10 +29,15 @@ class DynaQ
 
 
         void PrepareToLearn();
+
         short GetActionByEgreedy(short currentState);
+        short GetActionByEgreedyOLD(short currentState);
+
         short GetMaxQuality(short state);
         void RunIterations(int iterationsNo);
 
+
+        float MaxQ[Statequantity];
 
         /// [state from][state to]
         float Q[Statequantity][Statequantity];

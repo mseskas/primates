@@ -52,6 +52,9 @@ int main()
             case '7':
                 dyna->RunIterations(8);
                 break;
+            case '8':
+                dyna->RunIterations(16);
+                break;
             case 't':
                 execute = false;
                 break;

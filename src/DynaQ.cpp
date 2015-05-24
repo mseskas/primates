@@ -8,7 +8,7 @@ DynaQ::~DynaQ(){
 
 DynaQ::DynaQ(AllServoModel * allServoModel, Reward * rewardModel)
 {
-    BETA = 0.9;
+    BETA = 0.91;
     GAMA = 0.9;
     EPSILON = 0.01;
     TotalReward = 0;
@@ -70,8 +70,10 @@ logFile << "Received reward: " << reward << "\tTotal: " << TotalReward << endl;
 
         Q[CurrentState][nextState] = Q[CurrentState][nextState] + BETA * (reward
         // always = 0  //+ EPSILON * sqrt(CurrentIteration - Exploration[CurrentState][nextState])
-            + GAMA * GetMaxQuality(nextState) - Q[CurrentState][nextState]);
+            + GAMA * MaxQ[nextState] - Q[CurrentState][nextState]); //old: GetMaxQuality(nextState)
         //Q(s, a) = Q(s, a) + β(r + γmax a ′ Q(s ′ , a ′ ) − Q(s, a))
+
+        if (Q[CurrentState][nextState] > MaxQ[CurrentState]) MaxQ[CurrentState] = Q[CurrentState][nextState];
 
 logFile << "Update Q(" << CurrentState << ", " << nextState << ") = " << Q[CurrentState][nextState] << endl << endl;
 
@@ -103,6 +105,37 @@ short DynaQ::GetActionByEgreedy(short state){
     short maxA=0;
     short repeatedValues = 0;
 
+    maxQ = Model[state][maxA] + (EPSILON * sqrt(CurrentIteration - Exploration[state][maxA]))
+    + GAMA * (MaxQ[maxA]); // arbitrary action
+    Temporary[repeatedValues] = maxA;
+
+    for (short a = 1; a < Statequantity; a++){
+        if (state == a) continue; // skip current state
+        float currentQ = Model[state][a] + (EPSILON * sqrt(CurrentIteration - Exploration[state][a])) + GAMA * (MaxQ[a]);
+
+        if (currentQ > maxQ){
+            repeatedValues = 0;
+            Temporary[repeatedValues] = a;
+            maxQ = currentQ;
+            maxA = a;
+        } else if (currentQ == maxQ){
+            Temporary[repeatedValues] = a;
+            repeatedValues++;
+        }
+    }
+    if (repeatedValues > 0){
+        int randomState = rand() % repeatedValues + 1;  // rand = [0; repeatedValues]
+        return Temporary[randomState];
+    }
+    return maxA;
+}
+
+//epsilon-greedy: return State number
+short DynaQ::GetActionByEgreedyOLD(short state){
+    float maxQ=0;
+    short maxA=0;
+    short repeatedValues = 0;
+
     maxQ = Q[state][maxA] + (EPSILON * sqrt(CurrentIteration - Exploration[state][maxA])); // arbitrary action
     Temporary[repeatedValues] = maxA;
 
@@ -119,17 +152,13 @@ short DynaQ::GetActionByEgreedy(short state){
             Temporary[repeatedValues] = a;
             repeatedValues++;
         }
-
     }
-
     if (repeatedValues > 0){
         int randomState = rand() % repeatedValues + 1;  // rand = [0; repeatedValues]
         return Temporary[randomState];
     }
-
     return maxA;
 }
-
 
 
 
