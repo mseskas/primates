@@ -70,10 +70,10 @@ logFile << "Received reward: " << reward << "\tTotal: " << TotalReward << endl;
 
         Q[CurrentState][nextState] = Q[CurrentState][nextState] + BETA * (reward
         // always = 0  //+ EPSILON * sqrt(CurrentIteration - Exploration[CurrentState][nextState])
-            + GAMA * MaxQ[nextState] - Q[CurrentState][nextState]); //old: GetMaxQuality(nextState)
+            + GAMA * GetMaxQuality(nextState) - Q[CurrentState][nextState]); //old:
         //Q(s, a) = Q(s, a) + β(r + γmax a ′ Q(s ′ , a ′ ) − Q(s, a))
 
-        if (Q[CurrentState][nextState] > MaxQ[CurrentState]) MaxQ[CurrentState] = Q[CurrentState][nextState];
+// if (Q[CurrentState][nextState] > MaxQ[CurrentState]) MaxQ[CurrentState] = Q[CurrentState][nextState];
 
 logFile << "Update Q(" << CurrentState << ", " << nextState << ") = " << Q[CurrentState][nextState] << endl << endl;
 
@@ -106,12 +106,12 @@ short DynaQ::GetActionByEgreedy(short state){
     short repeatedValues = 0;
 
     maxQ = Model[state][maxA] + (EPSILON * sqrt(CurrentIteration - Exploration[state][maxA]))
-    + GAMA * (MaxQ[maxA]); // arbitrary action
+    + GAMA * (GetMaxQuality(maxA)); // arbitrary action
     Temporary[repeatedValues] = maxA;
 
     for (short a = 1; a < Statequantity; a++){
         if (state == a) continue; // skip current state
-        float currentQ = Model[state][a] + (EPSILON * sqrt(CurrentIteration - Exploration[state][a])) + GAMA * (MaxQ[a]);
+        float currentQ = Model[state][a] + (EPSILON * sqrt(CurrentIteration - Exploration[state][a])) + GAMA * (GetMaxQuality(a));
 
         if (currentQ > maxQ){
             repeatedValues = 0;
