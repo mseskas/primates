@@ -70,7 +70,7 @@ int main()
                 dyna->RunIterations(16);
                 break;
             case '9':
-                dyna->RunIterations(64);
+                dyna->RunIterations(6000);
                 break;
             case 't':
                 execute = false;

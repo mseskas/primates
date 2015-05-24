@@ -39,7 +39,7 @@ short AllServoModel::BeginState(){
     //string tmp = "010101010101";
     //strcpy(LastState, tmp.c_str());
     //short beginState = 1365;
-    short beginState = 85;
+    short beginState = 102;
 
     LastState = beginState;
     ExecutePosition(beginState);
@@ -55,19 +55,19 @@ void AllServoModel::ExecutePosition(short state){
     int flags[srvQuantity];
     printf("changing state to: %hu\r\n", state);
 
-    for (int f = 0; f < srvQuantity; f++){
-        flags[srvQuantity-1 - f] = state % 2;
+    for (int f = 0; f < 8; f++){
+        flags[srvQuantity-5 - f] = state % 2;
         state = state / 2;
     }
     int i =0;
     int flag = flags[0];
 // first
     if (flag == 0){
-        min = ServoParams[ + 1];
+        min = ServoParams[  1];
         d = (float)min / 100;
         Servos[i]->set_angle(d);
     } else {
-        max = ServoParams[ + 2];
+        max = ServoParams[  2];
         d = (float)max / 100;
         Servos[0]->set_angle(d);
     }
