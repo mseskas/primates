@@ -65,6 +65,7 @@
 		</Linker>
 		<Unit filename="include/AllServoModel.h" />
 		<Unit filename="include/DynaQ.h" />
+		<Unit filename="include/LED.h" />
 		<Unit filename="include/MPU6050.h" />
 		<Unit filename="include/Reward.h" />
 		<Unit filename="include/RewardView.h" />
@@ -81,6 +82,7 @@
 		<Unit filename="main.cpp" />
 		<Unit filename="src/AllServoModel.cpp" />
 		<Unit filename="src/DynaQ.cpp" />
+		<Unit filename="src/LED.cpp" />
 		<Unit filename="src/MPU6050.cpp" />
 		<Unit filename="src/Reward.cpp" />
 		<Unit filename="src/RewardView.cpp" />

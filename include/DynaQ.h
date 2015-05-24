@@ -11,6 +11,7 @@
 
 #include "RewardView.h"
 #include "AllServoModel.h"
+#include "LED.h"
 
 using namespace std;
 
@@ -51,6 +52,8 @@ class DynaQ
         float EPSILON; // 0.01
         AllServoModel * StateModel;
         Reward * RewardModel;
+        LED * GreenLED;
+        LED * RedLED;
     protected:
     private:
 

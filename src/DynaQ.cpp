@@ -17,6 +17,8 @@ DynaQ::DynaQ(AllServoModel * allServoModel, Reward * rewardModel)
     StateModel = allServoModel;
     RewardModel = rewardModel;
     srvQuantity = allServoModel->srvQuantity;
+    GreenLED = new LED(GREEN_LED_PIN);
+    RedLED = new LED(RED_LED_PIN);
 
     time_t now = time(0);
     tm *ltm = localtime(&now);
@@ -64,6 +66,15 @@ logFile << "In state: " << CurrentState << " choose " << nextState << endl;
         StateModel->ExecutePosition(nextState);
         RewardModel->AsyncGetReward(true); // just waiting to finish measurement
         short reward = RewardModel->ResultCategory;
+
+        if (reward == 100) {
+                GreenLED->TurnON();
+                RedLED->TurnOff();
+        } else {
+            GreenLED->TurnOff();
+            RedLED->TurnON();
+        }
+
         TotalReward += reward;
 logFile << "Received reward: " << reward << "\tTotal: " << TotalReward << endl;
 
