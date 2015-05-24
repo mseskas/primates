@@ -1,0 +1,270 @@
+IterationNo - in beginning of the line, s - state, r - received reward, rs - total reward
+start state: 1365
+In state: 1365 choose 179
+Received reward: -10	Total: -10
+Update Q(1365, 179) = -9
+
+In state: 179 choose 1983
+Received reward: -10	Total: -20
+Update Q(179, 1983) = -9
+
+In state: 1983 choose 3301
+Received reward: -10	Total: -30
+Update Q(1983, 3301) = -9
+
+In state: 3301 choose 1120
+Received reward: -10	Total: -40
+Update Q(3301, 1120) = -9
+
+In state: 1120 choose 1426
+Received reward: -100	Total: -140
+Update Q(1120, 1426) = -90
+
+In state: 1426 choose 2432
+Received reward: -10	Total: -150
+Update Q(1426, 2432) = -9
+
+In state: 2432 choose 378
+Received reward: -100	Total: -250
+Update Q(2432, 378) = -90
+
+In state: 378 choose 688
+Received reward: -10	Total: -260
+Update Q(378, 688) = -9
+
+In state: 688 choose 1639
+Received reward: -10	Total: -270
+Update Q(688, 1639) = -9
+
+In state: 1639 choose 2733
+Received reward: -10	Total: -280
+Update Q(1639, 2733) = -9
+
+In state: 2733 choose 2860
+Received reward: -10	Total: -290
+Update Q(2733, 2860) = -9
+
+In state: 2860 choose 2010
+Received reward: -100	Total: -390
+Update Q(2860, 2010) = -90
+
+In state: 2010 choose 156
+Received reward: -10	Total: -400
+Update Q(2010, 156) = -9
+
+In state: 156 choose 3489
+Received reward: -10	Total: -410
+Update Q(156, 3489) = -9
+
+In state: 3489 choose 1513
+Received reward: -10	Total: -420
+Update Q(3489, 1513) = -9
+
+In state: 1513 choose 2664
+Received reward: -10	Total: -430
+Update Q(1513, 2664) = -9
+
+In state: 2664 choose 3815
+Received reward: -10	Total: -440
+Update Q(2664, 3815) = -9
+
+In state: 3815 choose 3942
+Received reward: -10	Total: -450
+Update Q(3815, 3942) = -9
+
+In state: 3942 choose 3795
+Received reward: -10	Total: -460
+Update Q(3942, 3795) = -9
+
+In state: 3795 choose 2458
+Received reward: -10	Total: -470
+Update Q(3795, 2458) = -9
+
+In state: 2458 choose 3972
+Received reward: -10	Total: -480
+Update Q(2458, 3972) = -9
+
+In state: 3972 choose 2759
+Received reward: -10	Total: -490
+Update Q(3972, 2759) = -9
+
+In state: 2759 choose 1153
+Received reward: -100	Total: -590
+Update Q(2759, 1153) = -90
+
+In state: 1153 choose 396
+Received reward: -10	Total: -600
+Update Q(1153, 396) = -9
+
+In state: 396 choose 2282
+Received reward: 100	Total: -500
+Update Q(396, 2282) = 90
+
+In state: 2282 choose 1908
+Received reward: -10	Total: -510
+Update Q(2282, 1908) = -9
+
+In state: 1908 choose 3563
+Received reward: -10	Total: -520
+Update Q(1908, 3563) = -9
+
+In state: 3563 choose 2117
+Received reward: -10	Total: -530
+Update Q(3563, 2117) = -9
+
+In state: 2117 choose 667
+Received reward: -10	Total: -540
+Update Q(2117, 667) = -9
+
+In state: 667 choose 1120
+Received reward: 100	Total: -440
+Update Q(667, 1120) = 90
+
+In state: 1120 choose 2540
+Received reward: -10	Total: -450
+Update Q(1120, 2540) = -9
+
+In state: 2540 choose 844
+Received reward: -10	Total: -460
+Update Q(2540, 844) = -9
+
+In state: 844 choose 2588
+Received reward: -10	Total: -470
+Update Q(844, 2588) = -9
+
+In state: 2588 choose 1183
+Received reward: -100	Total: -570
+Update Q(2588, 1183) = -90
+
+In state: 1183 choose 1451
+Received reward: -100	Total: -670
+Update Q(1183, 1451) = -90
+
+In state: 1451 choose 4011
+Received reward: -10	Total: -680
+Update Q(1451, 4011) = -9
+
+In state: 4011 choose 3612
+Received reward: -100	Total: -780
+Update Q(4011, 3612) = -90
+
+In state: 3612 choose 1826
+Received reward: -10	Total: -790
+Update Q(3612, 1826) = -9
+
+In state: 1826 choose 601
+Received reward: -10	Total: -800
+Update Q(1826, 601) = -9
+
+In state: 601 choose 644
+Received reward: -10	Total: -810
+Update Q(601, 644) = -9
+
+In state: 644 choose 4045
+Received reward: -10	Total: -820
+Update Q(644, 4045) = -9
+
+In state: 4045 choose 3458
+Received reward: 100	Total: -720
+Update Q(4045, 3458) = 90
+
+In state: 3458 choose 2651
+Received reward: 100	Total: -620
+Update Q(3458, 2651) = 90
+
+In state: 2651 choose 3687
+Received reward: -10	Total: -630
+Update Q(2651, 3687) = -9
+
+In state: 3687 choose 2851
+Received reward: -10	Total: -640
+Update Q(3687, 2851) = -9
+
+In state: 2851 choose 3651
+Received reward: -10	Total: -650
+Update Q(2851, 3651) = -9
+
+In state: 3651 choose 1742
+Received reward: -10	Total: -660
+Update Q(3651, 1742) = -9
+
+In state: 1742 choose 2058
+Received reward: -10	Total: -670
+Update Q(1742, 2058) = -9
+
+In state: 2058 choose 3496
+Received reward: -100	Total: -770
+Update Q(2058, 3496) = -90
+
+In state: 3496 choose 1441
+Received reward: -10	Total: -780
+Update Q(3496, 1441) = -9
+
+In state: 1441 choose 419
+Received reward: -10	Total: -790
+Update Q(1441, 419) = -9
+
+In state: 419 choose 3371
+Received reward: -10	Total: -800
+Update Q(419, 3371) = -9
+
+In state: 3371 choose 3687
+Received reward: -10	Total: -810
+Update Q(3371, 3687) = -9
+
+In state: 3687 choose 3618
+Received reward: -10	Total: -820
+Update Q(3687, 3618) = -9
+
+In state: 3618 choose 3252
+Received reward: -10	Total: -830
+Update Q(3618, 3252) = -9
+
+In state: 3252 choose 1871
+Received reward: 100	Total: -730
+Update Q(3252, 1871) = 90
+
+In state: 1871 choose 2965
+Received reward: -100	Total: -830
+Update Q(1871, 2965) = -90
+
+In state: 2965 choose 2207
+Received reward: -10	Total: -840
+Update Q(2965, 2207) = -9
+
+In state: 2207 choose 3476
+Received reward: -10	Total: -850
+Update Q(2207, 3476) = -9
+
+In state: 3476 choose 3118
+Received reward: -10	Total: -860
+Update Q(3476, 3118) = -9
+
+In state: 3118 choose 3325
+Received reward: -10	Total: -870
+Update Q(3118, 3325) = -9
+
+In state: 3325 choose 1869
+Received reward: -10	Total: -880
+Update Q(3325, 1869) = -9
+
+In state: 1869 choose 3961
+Received reward: -10	Total: -890
+Update Q(1869, 3961) = -9
+
+In state: 3961 choose 1303
+Received reward: -10	Total: -900
+Update Q(3961, 1303) = -9
+
+In state: 1303 choose 2539
+Received reward: 100	Total: -800
+Update Q(1303, 2539) = 90
+
+In state: 2539 choose 1315
+Received reward: -10	Total: -810
+Update Q(2539, 1315) = -9
+
+In state: 1315 choose 1217
+Received reward: -10	Total: -820
+Update Q(1315, 1217) = -9
+

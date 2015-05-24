@@ -19,6 +19,8 @@ class AllServoModel
         void ExecutePosition(const char * data12);
         void ExecutePosition(short state);
 
+        void ReleaseMotors();
+
         short BeginState();
 
       //  char LastState[srvQuantity+1];

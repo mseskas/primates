@@ -1,0 +1,62 @@
+IterationNo - in beginning of the line, s - state, r - received reward, rs - total reward
+start state: 1365
+In state: 1365 choose 2522
+Received reward: -10	Total: -10
+Update Q(1365, 2522) = -9
+
+In state: 2522 choose 2219
+Received reward: 100	Total: 90
+Update Q(2522, 2219) = 90
+
+In state: 2219 choose 2522
+Received reward: -100	Total: -10
+Update Q(2219, 2522) = -49.5
+
+In state: 2522 choose 2219
+Received reward: -10	Total: -20
+Update Q(2522, 2219) = 0
+
+In state: 2219 choose 2522
+Received reward: 100	Total: 80
+Update Q(2219, 2522) = 85.05
+
+In state: 2522 choose 2219
+Received reward: -10	Total: 70
+Update Q(2522, 2219) = 29.25
+
+In state: 2219 choose 2522
+Received reward: -10	Total: 60
+Update Q(2219, 2522) = 12.555
+
+In state: 2522 choose 2219
+Received reward: 100	Total: 160
+Update Q(2522, 2219) = 98.325
+
+In state: 2219 choose 2522
+Received reward: -10	Total: 150
+Update Q(2219, 2522) = 36.3555
+
+In state: 2522 choose 2219
+Received reward: 100	Total: 250
+Update Q(2522, 2219) = 116.033
+
+In state: 2219 choose 2522
+Received reward: -10	Total: 240
+Update Q(2219, 2522) = 46.8355
+
+In state: 2522 choose 2219
+Received reward: -10	Total: 230
+Update Q(2522, 2219) = 23.3033
+
+In state: 2219 choose 2522
+Received reward: -10	Total: 220
+Update Q(2219, 2522) = 6.03355
+
+In state: 2522 choose 2219
+Received reward: 100	Total: 320
+Update Q(2522, 2219) = 95.0303
+
+In state: 2219 choose 2522
+Received reward: -10	Total: 310
+Update Q(2219, 2522) = 34.3534
+

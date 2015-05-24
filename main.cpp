@@ -4,6 +4,7 @@
 #include "Reward.h"
 #include "DynaQ.h"
 
+#include <signal.h>
 
 #include "AllServoModel.h"
 
@@ -12,8 +13,18 @@ using namespace std;
 // TODO: remove if necessary
 bool isRaspberryPi = false;
 
+DynaQ * dyna;
+
+void signal_call(int signum){
+    printf("Killing Process...");
+    dyna->~DynaQ();
+    exit(signum);
+}
+
 int main()
 {
+    signal(SIGINT, signal_call);
+
     const int dir_err = mkdir("logs", S_IRWXU | S_IRWXG | S_IROTH | S_IXOTH);
 
 
@@ -26,7 +37,7 @@ int main()
     AllServoModel * servosModel = new AllServoModel();
     Reward * reward = new Reward(new MPU6050());
     gui_main * main_gui = new gui_main(servosModel, reward);
-    DynaQ * dyna = new DynaQ(servosModel, reward);
+    dyna = new DynaQ(servosModel, reward);
 
     char str[80];
 
@@ -57,6 +68,9 @@ int main()
                 break;
             case '8':
                 dyna->RunIterations(16);
+                break;
+            case '9':
+                dyna->RunIterations(64);
                 break;
             case 't':
                 execute = false;

@@ -71,7 +71,7 @@ double Reward::GetReward(){
         logFile << "result : ";
         if (minIteration == 2000000 && maxIteration == 2000000) {
             LastResult = 0;
-            ResultCategory = -10;
+            ResultCategory = 0;
             logFile << "Standing:|" << endl;
             cout << "standing still:|" << endl;
         }

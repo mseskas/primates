@@ -23,6 +23,9 @@ AllServoModel::AllServoModel()
     LoadServoControls();
 }
 
+void AllServoModel::ReleaseMotors(){
+    for (int i = 0; i < srvQuantity; i++) Servos[i]->Reset();
+}
 
 void AllServoModel::LoadServoControls(){
     pwm_chip * chip = NULL;

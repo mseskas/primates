@@ -3,6 +3,7 @@
 // destructor to release memory
 DynaQ::~DynaQ(){
     logFile.close();
+    StateModel->ReleaseMotors();
     cout << "DynaQ deleted";
 }
 
@@ -52,7 +53,9 @@ void DynaQ::RunIterations(int iterationsNo){
 
     for (int i = 0; i < iterationsNo; i++){
 
-        short nextState = GetActionByEgreedy(CurrentState);
+        //hort nextState = GetActionByEgreedy(CurrentState);
+        short nextState = GetActionByEgreedyOLD(CurrentState);
+
 
 logFile << "In state: " << CurrentState << " choose " << nextState << endl;
 
