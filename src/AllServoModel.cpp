@@ -44,6 +44,23 @@ short AllServoModel::BeginState(){
     LastState = beginState;
     ExecutePosition(beginState);
 
+    double d = 0.0;
+    int max = ServoParams[2*3 + 2];
+    d = (float)max / 100;
+    Servos[2]->set_angle(d);
+
+    int min= ServoParams[5*3 + 1];
+    d = (float)min/ 100;
+    Servos[5]->set_angle(d);
+
+    max = ServoParams[8*3 + 2];
+    d = (float)max / 100;
+    Servos[8]->set_angle(d);
+
+    min = ServoParams[11*3 + 1];
+    d = (float)min / 100;
+    Servos[11]->set_angle(d);
+
     return LastState;
 }
 
@@ -63,11 +80,11 @@ void AllServoModel::ExecutePosition(short state){
     int flag = flags[0];
 // first
     if (flag == 0){
-        min = ServoParams[  1];
+        min = ServoParams[1];
         d = (float)min / 100;
         Servos[i]->set_angle(d);
     } else {
-        max = ServoParams[  2];
+        max = ServoParams[2];
         d = (float)max / 100;
         Servos[0]->set_angle(d);
     }

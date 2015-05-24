@@ -35,7 +35,7 @@ class Reward
 
 
         //  Result is set to category where { fail, nothing, success} respectively :
-        static const short CategoryResult[3] = { -100, 0, 100 };
+        short CategoryResult[3];
         short ResultCategory;
 
         GtkWidget * OutputLabel;

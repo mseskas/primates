@@ -5,6 +5,10 @@ Reward::Reward(MPU6050 * mpuChip, Sonar * sonar)
 {
     HasMPU = false;
     HasSONAR = false;
+    CategoryResult[0] = -100;
+    CategoryResult[1] = 0;
+    CategoryResult[2] = 100;
+
     _mpuChip = mpuChip;
     FrontSonar = sonar;
     if (mpuChip != NULL) HasMPU = true;
@@ -72,8 +76,8 @@ double Reward::SyncGetReward()
             logFile << IterationNumber << "\t" << measure << "\t[" << minAX << ":" << maxAX << "]\t";
             logFile << "[" << minIteration << ":" << maxIteration << "]" << endl;
 
-            cout << "[" << minAX << ":" << maxAX << "]\t";
-            cout << "[" << minIteration << ":" << maxIteration << "]\t" << measure << endl;
+           // cout << "[" << minAX << ":" << maxAX << "]\t";
+            //cout << "[" << minIteration << ":" << maxIteration << "]\t" << measure << endl;
             delay(IntervalMs);
             iteration++;
         }

@@ -1,0 +1,25 @@
+IterationNo - in beginning of the line, s - state, r - received reward, rs - total reward
+In state: 0 choose 23
+Received reward: 100	Total: 100
+Update Q(0, 23) = 90
+
+In state: 23 choose 37
+Received reward: -100	Total: 0
+Update Q(23, 37) = -90
+
+In state: 37 choose 252
+Received reward: 100	Total: 100
+Update Q(37, 252) = 90
+
+In state: 252 choose 228
+Received reward: 0	Total: 100
+Update Q(252, 228) = 0
+
+In state: 228 choose 29
+Received reward: 0	Total: 100
+Update Q(228, 29) = 0
+
+In state: 29 choose 155
+Received reward: 100	Total: 200
+Update Q(29, 155) = 90
+

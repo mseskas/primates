@@ -36,7 +36,7 @@ int main()
     AllServoModel* servosModel = new AllServoModel();
 
     Reward* reward = new Reward(new MPU6050(), frontSonar);
-    gui_main* main_gui = new gui_main(servosModel, reward);
+   // gui_main* main_gui = new gui_main(servosModel, reward);
 
 
     dyna = new DynaQ(servosModel, reward);
@@ -60,19 +60,19 @@ int main()
             case '1':
                 dyna->RunIterations(1, useMPU);
                 break;
-            case '5':
+            case '2':
                 dyna->RunIterations(2, useMPU);
                 break;
-            case '6':
+            case '3':
                 dyna->RunIterations(4, useMPU);
                 break;
-            case '7':
+            case '4':
                 dyna->RunIterations(8, useMPU);
                 break;
-            case '8':
+            case '5':
                 dyna->RunIterations(16, useMPU);
                 break;
-            case '9':
+            case '6':
                 dyna->RunIterations(6000, useMPU);
                 break;
             case 's':

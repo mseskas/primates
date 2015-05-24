@@ -1,0 +1,52 @@
+IterationNo - in beginning of the line, s - state, r - received reward, rs - total reward
+start state: 102
+In state:	102	choose	131	Received reward:	0	Total: 	0	Update Q(102, 131) = 0
+
+In state:	131	choose	146	Received reward:	0	Total: 	0	Update Q(131, 146) = 0
+
+In state:	146	choose	181	Received reward:	0	Total: 	0	Update Q(146, 181) = 0
+
+In state:	181	choose	10	Received reward:	0	Total: 	0	Update Q(181, 10) = 0
+
+In state:	10	choose	123	Received reward:	0	Total: 	0	Update Q(10, 123) = 0
+
+In state:	123	choose	171	Received reward:	0	Total: 	0	Update Q(123, 171) = 0
+
+In state:	171	choose	111	Received reward:	0	Total: 	0	Update Q(171, 111) = 0
+
+In state:	111	choose	13	Received reward:	0	Total: 	0	Update Q(111, 13) = 0
+
+In state:	13	choose	191	Received reward:	0	Total: 	0	Update Q(13, 191) = 0
+
+In state:	191	choose	164	Received reward:	0	Total: 	0	Update Q(191, 164) = 0
+
+In state:	164	choose	198	Received reward:	0	Total: 	0	Update Q(164, 198) = 0
+
+In state:	198	choose	223	Received reward:	0	Total: 	0	Update Q(198, 223) = 0
+
+In state:	223	choose	179	Received reward:	0	Total: 	0	Update Q(223, 179) = 0
+
+In state:	179	choose	40	Received reward:	0	Total: 	0	Update Q(179, 40) = 0
+
+In state:	40	choose	153	Received reward:	0	Total: 	0	Update Q(40, 153) = 0
+
+In state:	153	choose	210	Received reward:	0	Total: 	0	Update Q(153, 210) = 0
+
+In state:	210	choose	137	Received reward:	0	Total: 	0	Update Q(210, 137) = 0
+
+In state:	137	choose	174	Received reward:	0	Total: 	0	Update Q(137, 174) = 0
+
+In state:	174	choose	119	Received reward:	0	Total: 	0	Update Q(174, 119) = 0
+
+In state:	119	choose	128	Received reward:	0	Total: 	0	Update Q(119, 128) = 0
+
+In state:	128	choose	203	Received reward:	0	Total: 	0	Update Q(128, 203) = 0
+
+In state:	203	choose	19	Received reward:	0	Total: 	0	Update Q(203, 19) = 0
+
+In state:	19	choose	85	Received reward:	0	Total: 	0	Update Q(19, 85) = 0
+
+In state:	85	choose	16	Received reward:	0	Total: 	0	Update Q(85, 16) = 0
+
+In state:	16	choose	112	Received reward:	0	Total: 	0	Update Q(16, 112) = 0
+

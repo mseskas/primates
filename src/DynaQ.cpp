@@ -79,6 +79,7 @@ logFile << "In state:\t" << CurrentState << "\tchoose\t" << nextState;
 
         RewardModel->StartMeasure();
         StateModel->ExecutePosition(nextState);
+        delay(888);
         short reward = RewardModel->StopMeasure();
 
         IndicateResult(reward);
@@ -105,7 +106,6 @@ logFile << "\tUpdate Q(" << CurrentState << ", " << nextState << ") = " << Q[Cur
 
 void DynaQ::RunIterationMPU(){
         short nextState = EGreedyByQuality(CurrentState);
-
 logFile << "In state:\t" << CurrentState << "\tchoose\t" << nextState;
         RewardModel->AsyncGetReward();
         delay(120);
@@ -132,6 +132,8 @@ logFile << "\tUpdate Q(" << CurrentState << ", " << nextState << ") = " << Q[Cur
         CurrentIteration++;
         Exploration[CurrentState][nextState] = CurrentIteration;
         CurrentState = nextState;
+        delay(250);
+
 }
 
 // return previously occupied state, when update is success, -1 - when nothing to update
