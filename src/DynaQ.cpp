@@ -20,16 +20,12 @@ DynaQ::DynaQ(AllServoModel * allServoModel, Reward * rewardModel)
     time_t now = time(0);
     tm *ltm = localtime(&now);
 
-    dateTimeStr = to_string(1900 + ltm->tm_year) + "-";
-    dateTimeStr.append(to_string(1 + ltm->tm_mon) + "-");
+    dateTimeStr = "dyna ";
     dateTimeStr.append(to_string(ltm->tm_mday) + " ");
 
     dateTimeStr.append(to_string(ltm->tm_hour) + ":");
     dateTimeStr.append(to_string(ltm->tm_min) + ":");
     dateTimeStr.append(to_string(ltm->tm_sec));
-
-    const int dir_err = mkdir("logs", S_IRWXU | S_IRWXG | S_IROTH | S_IXOTH);
-    if (-1 == dir_err) cout << "Error creating directory!" << endl;
 
     logFile.open("logs/" + dateTimeStr + ".txt");
     logFile << "IterationNo - in beginning of the line, s - state, r - received reward, rs - total reward" << endl;

@@ -14,6 +14,9 @@ bool isRaspberryPi = false;
 
 int main()
 {
+    const int dir_err = mkdir("logs", S_IRWXU | S_IRWXG | S_IROTH | S_IXOTH);
+
+
     struct utsname sysinfo;
     uname(&sysinfo);
     //cout << "Your computer is : " << sysinfo.nodename << endl;

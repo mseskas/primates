@@ -4,6 +4,9 @@
 #include "MPU6050.h"
 #include <gtk/gtk.h>
 #include <thread>
+#include <iostream>
+#include <fstream>
+#include <ctime>
 #include <cstdlib>
 
 #include <mutex>
@@ -30,6 +33,8 @@ class Reward
         GtkWidget * OutputLabel;
 
         bool HasMPU;
+        int IterationNumber;
+        ofstream logFile;
 
         std::thread * _execution_thread;
         std::mutex ExecutionLock;

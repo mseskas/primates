@@ -11,6 +11,20 @@ Reward::Reward(MPU6050 * mpuChip) {
     IsRunning = false;
     OutputLabel = NULL;
     ResultCategory = 0;
+    IterationNumber = 1;
+    time_t now = time(0);
+    tm *ltm = localtime(&now);
+
+    string dateTimeStr = "reward ";
+    dateTimeStr.append(to_string(ltm->tm_mday) + " ");
+
+    dateTimeStr.append(to_string(ltm->tm_hour) + ":");
+    dateTimeStr.append(to_string(ltm->tm_min) + ":");
+    dateTimeStr.append(to_string(ltm->tm_sec));
+
+    logFile.open("logs/" + dateTimeStr + ".txt");
+    logFile << "#syntax: iterationNumber, AccelX, minX, maxX, minIteration, maxIteration" << endl;
+
 }
 
 void Reward::AsyncGetReward(bool waitToFinish = false){
@@ -46,30 +60,38 @@ double Reward::GetReward(){
                     maxIteration = iteration;
                 }
             }
+            logFile << IterationNumber << "\t" << measure << " [" << minAX << ":" << maxAX << "]\t";
+            logFile << "[" << minIteration << ":" << maxIteration << "]" << endl;
+
             cout << "[" << minAX << ":" << maxAX << "]\t";
             cout << "[" << minIteration << ":" << maxIteration << "]\t" << measure << endl;
             delay(IntervalMs);
             iteration++;
         }
-
+        logFile << "result : ";
         if (minIteration == 2000000 && maxIteration == 2000000) {
             LastResult = 0;
             ResultCategory = -10;
-            cout << "standing still" << endl;
+            logFile << "Standing:|" << endl;
+            cout << "standing still:|" << endl;
         }
         else {
             if (minIteration < maxIteration){
                 // min WIN - forward
-                cout << "FORWARD!" << minAX << endl;
+                logFile << "FORWARD:)" << endl;
+                cout << "FORWARD:)" << minAX << endl;
                 ResultCategory = 100;
                 LastResult = minAX;
             }
             else {// max WIN - backward
-                cout << "BACKWARD!" << maxAX << endl;
+                logFile << "BACKWARD:(" << endl;
+                cout << "BACKWARD:(" << maxAX << endl;
                 ResultCategory = -100;
                 LastResult = maxAX;
             }
         }
+        logFile << endl;
+        IterationNumber++;
     } else{
         delay(DurationMs);
         ResultCategory = 0;
