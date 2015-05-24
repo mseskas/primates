@@ -7,7 +7,7 @@ Reward::Reward(MPU6050 * mpuChip) {
     if (mpuChip != NULL) HasMPU = true;
     DurationMs = 1500; // milliseconds
     IntervalMs = 20;
-    Threshold = 0.05;
+    Threshold = 0.3;
     IsRunning = false;
     OutputLabel = NULL;
     ResultCategory = 0;
@@ -54,7 +54,7 @@ double Reward::GetReward(){
 
         if (minIteration == 2000000 && maxIteration == 2000000) {
             LastResult = 0;
-            ResultCategory = 0;
+            ResultCategory = -10;
             cout << "standing still" << endl;
         }
         else {

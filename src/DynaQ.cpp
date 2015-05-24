@@ -8,9 +8,9 @@ DynaQ::~DynaQ(){
 
 DynaQ::DynaQ(AllServoModel * allServoModel, Reward * rewardModel)
 {
-    BETA = 0.91;
-    GAMA = 0.9;
-    EPSILON = 0.01;
+    BETA = 0.9;
+    GAMA = 0.5;
+    EPSILON = 0.1;
     TotalReward = 0;
     CurrentIteration = 0;
     StateModel = allServoModel;
@@ -83,7 +83,7 @@ logFile << "Update Q(" << CurrentState << ", " << nextState << ") = " << Q[Curre
         CurrentIteration++;
         Exploration[CurrentState][nextState] = CurrentIteration;
         CurrentState = nextState;
-        delay(1000);
+        delay(00);
     }
 }
 
@@ -111,7 +111,8 @@ short DynaQ::GetActionByEgreedy(short state){
 
     for (short a = 1; a < Statequantity; a++){
         if (state == a) continue; // skip current state
-        float currentQ = Model[state][a] + (EPSILON * sqrt(CurrentIteration - Exploration[state][a])) + GAMA * (GetMaxQuality(a));
+        float currentQ = Model[state][a] + (EPSILON * sqrt(CurrentIteration - Exploration[state][a]))
+            + GAMA * (GetMaxQuality(a));
 
         if (currentQ > maxQ){
             repeatedValues = 0;

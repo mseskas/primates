@@ -1,0 +1,110 @@
+IterationNo - in beginning of the line, s - state, r - received reward, rs - total reward
+start state: 1365
+In state: 1365 choose 312
+Received reward: 100	Total: 100
+Update Q(1365, 312) = 91
+
+In state: 312 choose 1365
+Received reward: -100	Total: 0
+Update Q(312, 1365) = -16.471
+
+In state: 1365 choose 312
+Received reward: 100	Total: 100
+Update Q(1365, 312) = 99.19
+
+In state: 312 choose 1365
+Received reward: -100	Total: 0
+Update Q(312, 1365) = -11.4014
+
+In state: 1365 choose 312
+Received reward: 100	Total: 100
+Update Q(1365, 312) = 99.9271
+
+In state: 312 choose 1365
+Received reward: -100	Total: 0
+Update Q(312, 1365) = -10.9451
+
+In state: 1365 choose 312
+Received reward: 100	Total: 100
+Update Q(1365, 312) = 99.9934
+
+In state: 312 choose 1365
+Received reward: 100	Total: 200
+Update Q(312, 1365) = 171.096
+
+In state: 1365 choose 312
+Received reward: 100	Total: 300
+Update Q(1365, 312) = 240.048
+
+In state: 312 choose 1365
+Received reward: -100	Total: 200
+Update Q(312, 1365) = 120.959
+
+In state: 1365 choose 312
+Received reward: 100	Total: 300
+Update Q(1365, 312) = 210.884
+
+In state: 312 choose 1365
+Received reward: -100	Total: 200
+Update Q(312, 1365) = 91.8763
+
+In state: 1365 choose 312
+Received reward: -100	Total: 100
+Update Q(1365, 312) = 2.50859
+
+In state: 312 choose 1365
+Received reward: 100	Total: 200
+Update Q(312, 1365) = 100.907
+
+In state: 1365 choose 312
+Received reward: 100	Total: 300
+Update Q(1365, 312) = 173.126
+
+In state: 312 choose 1365
+Received reward: -100	Total: 200
+Update Q(312, 1365) = 59.7686
+
+In state: 1365 choose 312
+Received reward: 100	Total: 300
+Update Q(1365, 312) = 154.902
+
+In state: 312 choose 1365
+Received reward: -100	Total: 200
+Update Q(312, 1365) = 40.5052
+
+In state: 1365 choose 312
+Received reward: 0	Total: 200
+Update Q(1365, 312) = 46.7012
+
+In state: 312 choose 1365
+Received reward: 0	Total: 200
+Update Q(312, 1365) = 41.3195
+
+In state: 1365 choose 312
+Received reward: 0	Total: 200
+Update Q(1365, 312) = 37.7821
+
+In state: 312 choose 1365
+Received reward: 0	Total: 200
+Update Q(312, 1365) = 34.0218
+
+In state: 1365 choose 312
+Received reward: 0	Total: 200
+Update Q(1365, 312) = 31.2464
+
+In state: 312 choose 1365
+Received reward: 0	Total: 200
+Update Q(312, 1365) = 28.451
+
+In state: 1365 choose 312
+Received reward: 0	Total: 200
+Update Q(1365, 312) = 25.7442
+
+In state: 312 choose 1365
+Received reward: 0	Total: 200
+Update Q(312, 1365) = 23.0356
+
+In state: 1365 choose 312
+Received reward: 0	Total: 200
+Update Q(1365, 312) = 21.154
+
