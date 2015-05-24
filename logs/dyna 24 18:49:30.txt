@@ -1,1 +1,0 @@
-IterationNo - in beginning of the line, s - state, r - received reward, rs - total reward
