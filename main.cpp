@@ -83,6 +83,15 @@ int main()
                 useMPU = !useMPU;
                 cout << "using reward device: " << (useMPU? "MPU": "SONAR") << endl;
                 break;
+            case 'f':
+                short nextState;
+                short reward;
+                cout << "insert new state ";
+                cin >> nextState;
+                cout << "insert reward ";
+                cin >> reward;
+                dyna->RunIterations(1, useMPU, nextState, reward);
+                break;
             case 't':
                 execute = false;
                 break;

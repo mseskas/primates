@@ -139,6 +139,12 @@ void Reward::StartMeasure()
     if (!HasSONAR) return false;
 
     LastDistance = FrontSonar->GetFilteredDistance();
+
+    if (LastDistance < 8){
+        InicatePause();
+        LastDistance = FrontSonar->GetFilteredDistance();
+    }
+
     logFile << "Start measure: \t" << LastDistance << endl;
     cout << "Start measure: \t" << LastDistance << endl;
 }
@@ -165,11 +171,6 @@ short Reward::StopMeasure()
     }
 
     int distance = FrontSonar->GetFilteredDistance();
-
-    if (distance < 8){
-        InicatePause();
-    }
-
 
     logFile << "Stop measure: \t" << distance;
     cout << "Stop measure: \t" << distance;

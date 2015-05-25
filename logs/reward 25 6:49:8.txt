@@ -1,0 +1,13 @@
+#syntax: iterationNumber, AccelX, minX, maxX, minIteration, maxIteration
+Start measure: 	151
+Stop measure: 	151	Result: Standing Still
+Start measure: 	150
+Stop measure: 	151	Result: Standing Still
+Start measure: 	151
+Stop measure: 	151	Result: Standing Still
+Start measure: 	151
+Stop measure: 	152	Result: Standing Still
+Start measure: 	150
+Stop measure: 	152	Result: BACKWARD
+Start measure: 	110
+Stop measure: 	101	Result: FORWARD

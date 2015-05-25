@@ -1,0 +1,8 @@
+beta 0.9 gama 0.1 epsilon 1
+IterationNo - in beginning of the line, s - state, r - received reward, rs - total reward
+0	In state:	0	choose	154	Received reward:	0	Total: 	0	Update Q(0, 154) = 0
+1	In state:	154	choose	32	Received reward:	-100	Total: 	-100	Update Q(154, 32) = -90
+2	In state:	32	choose	154	Received reward:	100	Total: 	0	Update Q(32, 154) = 90
+3	In state:	154	choose	32	Received reward:	-100	Total: 	-100	Update Q(154, 32) = -90.9
+4	In state:	32	choose	154	Received reward:	100	Total: 	0	Update Q(32, 154) = 99
+5	In state:	154	choose	32	Received reward:	100	Total: 	100	Update Q(154, 32) = 89.82

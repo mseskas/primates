@@ -38,10 +38,10 @@ class DynaQ
         short EGreedyByQuality(short currentState);
         short GetMaxQuality(short state);
 
-        void RunIterations(int iterations, bool useMPU);
+        void RunIterations(int iterations, bool useMPU, short nextState=-1, short reward=-1);
 
-        void RunIterationMPU();
-        void RunIterationSONAR();
+        void RunIterationMPU(short nextState=-1, short reward=-1);
+        void RunIterationSONAR(short nextState=-1, short reward=-1);
 
         void IndicateResult(short reward);
         //float MaxQ[Statequantity];

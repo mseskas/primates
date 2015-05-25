@@ -13,7 +13,7 @@ DynaQ::DynaQ(AllServoModel * allServoModel, Reward * rewardModel)
 {
     BETA = 0.9;
     GAMA = 0.1;
-    EPSILON = 0.1;
+    EPSILON = 1;
     TotalReward = 0;
     CurrentIteration = 0;
     StateModel = allServoModel;
@@ -33,6 +33,7 @@ DynaQ::DynaQ(AllServoModel * allServoModel, Reward * rewardModel)
     dateTimeStr.append(to_string(ltm->tm_sec));
 
     logFile.open("logs/" + dateTimeStr + ".txt");
+    logFile << "beta " << BETA << " gama " << GAMA << " epsilon " << EPSILON << endl;
     logFile << "IterationNo - in beginning of the line, s - state, r - received reward, rs - total reward" << endl;
 }
 
@@ -65,18 +66,24 @@ void DynaQ::IndicateResult(short reward){
     logFile << "\tReceived reward:\t" << reward << "\tTotal: \t" << TotalReward;
 }
 
-void DynaQ::RunIterations(int iterations, bool useMPU){
+void DynaQ::RunIterations(int iterations, bool useMPU, short nextState=-1, short reward=-1){
     if (useMPU) {
-        for (int i = 0; i < iterations; i++) RunIterationMPU();
+        for (int i = 0; i < iterations; i++) RunIterationMPU( nextState,  reward);
     }
     else {
-        for (int i = 0; i < iterations; i++) RunIterationSONAR();
+        for (int i = 0; i < iterations; i++) RunIterationSONAR( nextState,  reward);
     }
 }
 
-void DynaQ::RunIterationSONAR(){
+void DynaQ::RunIterationSONAR(short forcedNextState = -1, short forcedReward = -1){
        // short nextState = EGreedyByQuality(CurrentState);
-        short nextState = EGreedy(CurrentState);
+        short nextState;
+
+        if (forcedNextState == -1){
+            nextState = EGreedyByQuality(CurrentState);
+        } else {
+            nextState = forcedNextState;
+        }
 
 
 logFile << CurrentIteration << "\tIn state:\t" << CurrentState << "\tchoose\t" << nextState;
@@ -85,6 +92,10 @@ logFile << CurrentIteration << "\tIn state:\t" << CurrentState << "\tchoose\t" <
         StateModel->ExecutePosition(nextState);
         delay(1000);
         short reward = RewardModel->StopMeasure();
+
+        if (forcedReward != -1){
+            reward = forcedReward;
+        }
 
         IndicateResult(reward);
         Q[CurrentState][nextState] = Q[CurrentState][nextState] + BETA * (reward
@@ -108,7 +119,7 @@ logFile << "\tUpdate Q(" << CurrentState << ", " << nextState << ") = " << Q[Cur
 }
 
 
-void DynaQ::RunIterationMPU(){
+void DynaQ::RunIterationMPU(short forcedNextState = -1, short forcedReward = -1){
         short nextState = EGreedyByQuality(CurrentState);
 logFile << "In state:\t" << CurrentState << "\tchoose\t" << nextState;
         RewardModel->AsyncGetReward();
@@ -182,8 +193,6 @@ short DynaQ::GetMaxQuality(short state){
         }
      }
 
-     if (maxQ < 100) maxQ = 0;
-
      return maxQ;
 }
 
@@ -242,6 +251,7 @@ short DynaQ::EGreedyByQuality(short state){
             Temporary[repeatedValues] = a;
         }
     }
+    logFile << "egreedyByQuality repeatedValues - " << repeatedValues << "\t value = " << maxQ << endl;
     if (repeatedValues > 0){
         int randomState = rand() % repeatedValues + 1;  // rand = [0; repeatedValues]
         return Temporary[randomState];

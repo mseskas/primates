@@ -1,0 +1,964 @@
+#syntax: iterationNumber, AccelX, minX, maxX, minIteration, maxIteration
+Start measure: 	4
+Stop measure: 	5	Result: Standing Still
+Start measure: 	5
+Stop measure: 	4	Result: Standing Still
+Start measure: 	39
+Stop measure: 	35	Result: FORWARD
+Start measure: 	35
+Stop measure: 	32	Result: FORWARD
+Start measure: 	32
+Stop measure: 	34	Result: BACKWARD
+Start measure: 	34
+Stop measure: 	37	Result: BACKWARD
+Start measure: 	37
+Stop measure: 	36	Result: Standing Still
+Start measure: 	36
+Stop measure: 	38	Result: BACKWARD
+Start measure: 	37
+Stop measure: 	39	Result: BACKWARD
+Start measure: 	39
+Stop measure: 	38	Result: Standing Still
+Start measure: 	38
+Stop measure: 	42	Result: BACKWARD
+Start measure: 	42
+Stop measure: 	40	Result: FORWARD
+Start measure: 	41
+Stop measure: 	63	Result: BACKWARD
+Start measure: 	63
+Stop measure: 	39	Result: FORWARD
+Start measure: 	41
+Stop measure: 	44	Result: BACKWARD
+Start measure: 	43
+Stop measure: 	64	Result: BACKWARD
+Start measure: 	64
+Stop measure: 	46	Result: FORWARD
+Start measure: 	46
+Stop measure: 	41	Result: FORWARD
+Start measure: 	42
+Stop measure: 	65	Result: BACKWARD
+Start measure: 	65
+Stop measure: 	65	Result: Standing Still
+Start measure: 	65
+Stop measure: 	42	Result: FORWARD
+Start measure: 	42
+Stop measure: 	42	Result: Standing Still
+Start measure: 	41
+Stop measure: 	42	Result: Standing Still
+Start measure: 	41
+Stop measure: 	42	Result: Standing Still
+Start measure: 	42
+Stop measure: 	40	Result: FORWARD
+Start measure: 	39
+Stop measure: 	42	Result: BACKWARD
+Start measure: 	42
+Stop measure: 	43	Result: Standing Still
+Start measure: 	43
+Stop measure: 	42	Result: Standing Still
+Start measure: 	41
+Stop measure: 	41	Result: Standing Still
+Start measure: 	40
+Stop measure: 	43	Result: BACKWARD
+Start measure: 	43
+Stop measure: 	42	Result: Standing Still
+Start measure: 	42
+Stop measure: 	51	Result: BACKWARD
+Start measure: 	51
+Stop measure: 	4	Result: FORWARD
+Start measure: 	6
+Stop measure: 	38	Result: BACKWARD
+Start measure: 	37
+Stop measure: 	40	Result: BACKWARD
+Start measure: 	40
+Stop measure: 	38	Result: FORWARD
+Start measure: 	38
+Stop measure: 	38	Result: Standing Still
+Start measure: 	38
+Stop measure: 	37	Result: Standing Still
+Start measure: 	37
+Stop measure: 	37	Result: Standing Still
+Start measure: 	37
+Stop measure: 	40	Result: BACKWARD
+Start measure: 	40
+Stop measure: 	38	Result: FORWARD
+Start measure: 	38
+Stop measure: 	39	Result: Standing Still
+Start measure: 	38
+Stop measure: 	40	Result: BACKWARD
+Start measure: 	40
+Stop measure: 	47	Result: BACKWARD
+Start measure: 	47
+Stop measure: 	43	Result: FORWARD
+Start measure: 	44
+Stop measure: 	4	Result: FORWARD
+Start measure: 	38
+Stop measure: 	39	Result: Standing Still
+Start measure: 	39
+Stop measure: 	39	Result: Standing Still
+Start measure: 	39
+Stop measure: 	40	Result: Standing Still
+Start measure: 	40
+Stop measure: 	40	Result: Standing Still
+Start measure: 	40
+Stop measure: 	43	Result: BACKWARD
+Start measure: 	43
+Stop measure: 	43	Result: Standing Still
+Start measure: 	43
+Stop measure: 	43	Result: Standing Still
+Start measure: 	43
+Stop measure: 	42	Result: Standing Still
+Start measure: 	42
+Stop measure: 	40	Result: FORWARD
+Start measure: 	41
+Stop measure: 	43	Result: BACKWARD
+Start measure: 	43
+Stop measure: 	40	Result: FORWARD
+Start measure: 	41
+Stop measure: 	44	Result: BACKWARD
+Start measure: 	44
+Stop measure: 	41	Result: FORWARD
+Start measure: 	41
+Stop measure: 	43	Result: BACKWARD
+Start measure: 	41
+Stop measure: 	42	Result: Standing Still
+Start measure: 	42
+Stop measure: 	43	Result: Standing Still
+Start measure: 	43
+Stop measure: 	42	Result: Standing Still
+Start measure: 	42
+Stop measure: 	44	Result: BACKWARD
+Start measure: 	44
+Stop measure: 	42	Result: FORWARD
+Start measure: 	42
+Stop measure: 	42	Result: Standing Still
+Start measure: 	42
+Stop measure: 	43	Result: Standing Still
+Start measure: 	43
+Stop measure: 	43	Result: Standing Still
+Start measure: 	44
+Stop measure: 	42	Result: FORWARD
+Start measure: 	42
+Stop measure: 	42	Result: Standing Still
+Start measure: 	42
+Stop measure: 	41	Result: Standing Still
+Start measure: 	41
+Stop measure: 	42	Result: Standing Still
+Start measure: 	42
+Stop measure: 	41	Result: Standing Still
+Start measure: 	41
+Stop measure: 	40	Result: Standing Still
+Start measure: 	41
+Stop measure: 	42	Result: Standing Still
+Start measure: 	42
+Stop measure: 	42	Result: Standing Still
+Start measure: 	42
+Stop measure: 	42	Result: Standing Still
+Start measure: 	42
+Stop measure: 	43	Result: Standing Still
+Start measure: 	42
+Stop measure: 	42	Result: Standing Still
+Start measure: 	42
+Stop measure: 	41	Result: Standing Still
+Start measure: 	42
+Stop measure: 	42	Result: Standing Still
+Start measure: 	42
+Stop measure: 	44	Result: BACKWARD
+Start measure: 	44
+Stop measure: 	43	Result: Standing Still
+Start measure: 	43
+Stop measure: 	45	Result: BACKWARD
+Start measure: 	45
+Stop measure: 	44	Result: Standing Still
+Start measure: 	44
+Stop measure: 	45	Result: Standing Still
+Start measure: 	44
+Stop measure: 	44	Result: Standing Still
+Start measure: 	44
+Stop measure: 	56	Result: BACKWARD
+Start measure: 	56
+Stop measure: 	45	Result: FORWARD
+Start measure: 	46
+Stop measure: 	3	Result: FORWARD
+Start measure: 	41
+Stop measure: 	40	Result: Standing Still
+Start measure: 	40
+Stop measure: 	41	Result: Standing Still
+Start measure: 	41
+Stop measure: 	40	Result: Standing Still
+Start measure: 	40
+Stop measure: 	42	Result: BACKWARD
+Start measure: 	42
+Stop measure: 	41	Result: Standing Still
+Start measure: 	41
+Stop measure: 	40	Result: Standing Still
+Start measure: 	40
+Stop measure: 	41	Result: Standing Still
+Start measure: 	41
+Stop measure: 	42	Result: Standing Still
+Start measure: 	42
+Stop measure: 	40	Result: FORWARD
+Start measure: 	40
+Stop measure: 	39	Result: Standing Still
+Start measure: 	39
+Stop measure: 	40	Result: Standing Still
+Start measure: 	39
+Stop measure: 	41	Result: BACKWARD
+Start measure: 	42
+Stop measure: 	40	Result: FORWARD
+Start measure: 	40
+Stop measure: 	42	Result: BACKWARD
+Start measure: 	41
+Stop measure: 	39	Result: FORWARD
+Start measure: 	39
+Stop measure: 	40	Result: Standing Still
+Start measure: 	41
+Stop measure: 	40	Result: Standing Still
+Start measure: 	40
+Stop measure: 	40	Result: Standing Still
+Start measure: 	40
+Stop measure: 	39	Result: Standing Still
+Start measure: 	38
+Stop measure: 	36	Result: FORWARD
+Start measure: 	36
+Stop measure: 	34	Result: FORWARD
+Start measure: 	35
+Stop measure: 	32	Result: FORWARD
+Start measure: 	32
+Stop measure: 	32	Result: Standing Still
+Start measure: 	32
+Stop measure: 	30	Result: FORWARD
+Start measure: 	30
+Stop measure: 	30	Result: Standing Still
+Start measure: 	30
+Stop measure: 	31	Result: Standing Still
+Start measure: 	31
+Stop measure: 	30	Result: Standing Still
+Start measure: 	30
+Stop measure: 	33	Result: BACKWARD
+Start measure: 	33
+Stop measure: 	30	Result: FORWARD
+Start measure: 	30
+Stop measure: 	29	Result: Standing Still
+Start measure: 	29
+Stop measure: 	27	Result: FORWARD
+Start measure: 	28
+Stop measure: 	29	Result: Standing Still
+Start measure: 	29
+Stop measure: 	49	Result: BACKWARD
+Start measure: 	49
+Stop measure: 	5	Result: FORWARD
+Start measure: 	33
+Stop measure: 	33	Result: Standing Still
+Start measure: 	33
+Stop measure: 	35	Result: BACKWARD
+Start measure: 	35
+Stop measure: 	32	Result: FORWARD
+Start measure: 	33
+Stop measure: 	35	Result: BACKWARD
+Start measure: 	35
+Stop measure: 	34	Result: Standing Still
+Start measure: 	34
+Stop measure: 	36	Result: BACKWARD
+Start measure: 	35
+Stop measure: 	34	Result: Standing Still
+Start measure: 	34
+Stop measure: 	37	Result: BACKWARD
+Start measure: 	37
+Stop measure: 	35	Result: FORWARD
+Start measure: 	35
+Stop measure: 	36	Result: Standing Still
+Start measure: 	36
+Stop measure: 	36	Result: Standing Still
+Start measure: 	36
+Stop measure: 	37	Result: Standing Still
+Start measure: 	36
+Stop measure: 	34	Result: FORWARD
+Start measure: 	35
+Stop measure: 	34	Result: Standing Still
+Start measure: 	34
+Stop measure: 	37	Result: BACKWARD
+Start measure: 	38
+Stop measure: 	38	Result: Standing Still
+Start measure: 	38
+Stop measure: 	38	Result: Standing Still
+Start measure: 	38
+Stop measure: 	35	Result: FORWARD
+Start measure: 	35
+Stop measure: 	35	Result: Standing Still
+Start measure: 	35
+Stop measure: 	34	Result: Standing Still
+Start measure: 	34
+Stop measure: 	36	Result: BACKWARD
+Start measure: 	35
+Stop measure: 	35	Result: Standing Still
+Start measure: 	35
+Stop measure: 	35	Result: Standing Still
+Start measure: 	34
+Stop measure: 	32	Result: FORWARD
+Start measure: 	32
+Stop measure: 	34	Result: BACKWARD
+Start measure: 	34
+Stop measure: 	35	Result: Standing Still
+Start measure: 	35
+Stop measure: 	32	Result: FORWARD
+Start measure: 	32
+Stop measure: 	56	Result: BACKWARD
+Start measure: 	56
+Stop measure: 	55	Result: Standing Still
+Start measure: 	33
+Stop measure: 	35	Result: BACKWARD
+Start measure: 	54
+Stop measure: 	30	Result: FORWARD
+Start measure: 	31
+Stop measure: 	33	Result: BACKWARD
+Start measure: 	33
+Stop measure: 	50	Result: BACKWARD
+Start measure: 	30
+Stop measure: 	3	Result: FORWARD
+Start measure: 	35
+Stop measure: 	33	Result: FORWARD
+Start measure: 	33
+Stop measure: 	33	Result: Standing Still
+Start measure: 	33
+Stop measure: 	33	Result: Standing Still
+Start measure: 	33
+Stop measure: 	30	Result: FORWARD
+Start measure: 	31
+Stop measure: 	30	Result: Standing Still
+Start measure: 	30
+Stop measure: 	29	Result: Standing Still
+Start measure: 	28
+Stop measure: 	29	Result: Standing Still
+Start measure: 	29
+Stop measure: 	27	Result: FORWARD
+Start measure: 	27
+Stop measure: 	27	Result: Standing Still
+Start measure: 	27
+Stop measure: 	26	Result: Standing Still
+Start measure: 	26
+Stop measure: 	28	Result: BACKWARD
+Start measure: 	28
+Stop measure: 	28	Result: Standing Still
+Start measure: 	28
+Stop measure: 	28	Result: Standing Still
+Start measure: 	28
+Stop measure: 	28	Result: Standing Still
+Start measure: 	29
+Stop measure: 	28	Result: Standing Still
+Start measure: 	28
+Stop measure: 	27	Result: Standing Still
+Start measure: 	27
+Stop measure: 	27	Result: Standing Still
+Start measure: 	28
+Stop measure: 	26	Result: FORWARD
+Start measure: 	27
+Stop measure: 	28	Result: Standing Still
+Start measure: 	28
+Stop measure: 	27	Result: Standing Still
+Start measure: 	27
+Stop measure: 	27	Result: Standing Still
+Start measure: 	27
+Stop measure: 	28	Result: Standing Still
+Start measure: 	28
+Stop measure: 	26	Result: FORWARD
+Start measure: 	54
+Stop measure: 	4	Result: FORWARD
+Start measure: 	33
+Stop measure: 	32	Result: Standing Still
+Start measure: 	33
+Stop measure: 	32	Result: Standing Still
+Start measure: 	32
+Stop measure: 	33	Result: Standing Still
+Start measure: 	34
+Stop measure: 	32	Result: FORWARD
+Start measure: 	32
+Stop measure: 	29	Result: FORWARD
+Start measure: 	30
+Stop measure: 	34	Result: BACKWARD
+Start measure: 	33
+Stop measure: 	29	Result: FORWARD
+Start measure: 	29
+Stop measure: 	27	Result: FORWARD
+Start measure: 	28
+Stop measure: 	28	Result: Standing Still
+Start measure: 	28
+Stop measure: 	27	Result: Standing Still
+Start measure: 	27
+Stop measure: 	27	Result: Standing Still
+Start measure: 	27
+Stop measure: 	27	Result: Standing Still
+Start measure: 	27
+Stop measure: 	27	Result: Standing Still
+Start measure: 	27
+Stop measure: 	27	Result: Standing Still
+Start measure: 	27
+Stop measure: 	27	Result: Standing Still
+Start measure: 	27
+Stop measure: 	27	Result: Standing Still
+Start measure: 	27
+Stop measure: 	26	Result: Standing Still
+Start measure: 	26
+Stop measure: 	26	Result: Standing Still
+Start measure: 	26
+Stop measure: 	26	Result: Standing Still
+Start measure: 	26
+Stop measure: 	26	Result: Standing Still
+Start measure: 	26
+Stop measure: 	27	Result: Standing Still
+Start measure: 	26
+Stop measure: 	24	Result: FORWARD
+Start measure: 	25
+Stop measure: 	26	Result: Standing Still
+Start measure: 	25
+Stop measure: 	27	Result: BACKWARD
+Start measure: 	27
+Stop measure: 	26	Result: Standing Still
+Start measure: 	26
+Stop measure: 	25	Result: Standing Still
+Start measure: 	25
+Stop measure: 	28	Result: BACKWARD
+Start measure: 	28
+Stop measure: 	30	Result: BACKWARD
+Start measure: 	30
+Stop measure: 	28	Result: FORWARD
+Start measure: 	28
+Stop measure: 	26	Result: FORWARD
+Start measure: 	26
+Stop measure: 	26	Result: Standing Still
+Start measure: 	26
+Stop measure: 	27	Result: Standing Still
+Start measure: 	27
+Stop measure: 	26	Result: Standing Still
+Start measure: 	26
+Stop measure: 	21	Result: FORWARD
+Start measure: 	22
+Stop measure: 	22	Result: Standing Still
+Start measure: 	22
+Stop measure: 	24	Result: BACKWARD
+Start measure: 	24
+Stop measure: 	24	Result: Standing Still
+Start measure: 	24
+Stop measure: 	23	Result: Standing Still
+Start measure: 	23
+Stop measure: 	25	Result: BACKWARD
+Start measure: 	24
+Stop measure: 	24	Result: Standing Still
+Start measure: 	24
+Stop measure: 	27	Result: BACKWARD
+Start measure: 	27
+Stop measure: 	31	Result: BACKWARD
+Start measure: 	31
+Stop measure: 	29	Result: FORWARD
+Start measure: 	29
+Stop measure: 	34	Result: BACKWARD
+Start measure: 	34
+Stop measure: 	31	Result: FORWARD
+Start measure: 	31
+Stop measure: 	27	Result: FORWARD
+Start measure: 	27
+Stop measure: 	34	Result: BACKWARD
+Start measure: 	34
+Stop measure: 	32	Result: FORWARD
+Start measure: 	32
+Stop measure: 	32	Result: Standing Still
+Start measure: 	33
+Stop measure: 	33	Result: Standing Still
+Start measure: 	33
+Stop measure: 	25	Result: FORWARD
+Start measure: 	24
+Stop measure: 	25	Result: Standing Still
+Start measure: 	24
+Stop measure: 	24	Result: Standing Still
+Start measure: 	24
+Stop measure: 	25	Result: Standing Still
+Start measure: 	25
+Stop measure: 	21	Result: FORWARD
+Start measure: 	21
+Stop measure: 	21	Result: Standing Still
+Start measure: 	21
+Stop measure: 	22	Result: Standing Still
+Start measure: 	22
+Stop measure: 	22	Result: Standing Still
+Start measure: 	22
+Stop measure: 	3	Result: FORWARD
+Start measure: 	36
+Stop measure: 	36	Result: Standing Still
+Start measure: 	37
+Stop measure: 	32	Result: FORWARD
+Start measure: 	32
+Stop measure: 	32	Result: Standing Still
+Start measure: 	32
+Stop measure: 	33	Result: Standing Still
+Start measure: 	33
+Stop measure: 	31	Result: FORWARD
+Start measure: 	31
+Stop measure: 	32	Result: Standing Still
+Start measure: 	31
+Stop measure: 	30	Result: Standing Still
+Start measure: 	30
+Stop measure: 	32	Result: BACKWARD
+Start measure: 	32
+Stop measure: 	31	Result: Standing Still
+Start measure: 	31
+Stop measure: 	31	Result: Standing Still
+Start measure: 	31
+Stop measure: 	31	Result: Standing Still
+Start measure: 	31
+Stop measure: 	31	Result: Standing Still
+Start measure: 	31
+Stop measure: 	31	Result: Standing Still
+Start measure: 	31
+Stop measure: 	32	Result: Standing Still
+Start measure: 	32
+Stop measure: 	32	Result: Standing Still
+Start measure: 	32
+Stop measure: 	32	Result: Standing Still
+Start measure: 	32
+Stop measure: 	3	Result: FORWARD
+Start measure: 	3
+Stop measure: 	35	Result: BACKWARD
+Start measure: 	35
+Stop measure: 	33	Result: FORWARD
+Start measure: 	32
+Stop measure: 	34	Result: BACKWARD
+Start measure: 	34
+Stop measure: 	33	Result: Standing Still
+Start measure: 	33
+Stop measure: 	32	Result: Standing Still
+Start measure: 	32
+Stop measure: 	32	Result: Standing Still
+Start measure: 	32
+Stop measure: 	32	Result: Standing Still
+Start measure: 	31
+Stop measure: 	31	Result: Standing Still
+Start measure: 	32
+Stop measure: 	32	Result: Standing Still
+Start measure: 	32
+Stop measure: 	32	Result: Standing Still
+Start measure: 	32
+Stop measure: 	31	Result: Standing Still
+Start measure: 	31
+Stop measure: 	34	Result: BACKWARD
+Start measure: 	34
+Stop measure: 	36	Result: BACKWARD
+Start measure: 	35
+Stop measure: 	35	Result: Standing Still
+Start measure: 	34
+Stop measure: 	34	Result: Standing Still
+Start measure: 	35
+Stop measure: 	34	Result: Standing Still
+Start measure: 	35
+Stop measure: 	36	Result: Standing Still
+Start measure: 	36
+Stop measure: 	35	Result: Standing Still
+Start measure: 	35
+Stop measure: 	3	Result: FORWARD
+Start measure: 	35
+Stop measure: 	34	Result: Standing Still
+Start measure: 	34
+Stop measure: 	36	Result: BACKWARD
+Start measure: 	36
+Stop measure: 	35	Result: Standing Still
+Start measure: 	34
+Stop measure: 	34	Result: Standing Still
+Start measure: 	35
+Stop measure: 	35	Result: Standing Still
+Start measure: 	34
+Stop measure: 	36	Result: BACKWARD
+Start measure: 	32
+Stop measure: 	35	Result: BACKWARD
+Start measure: 	35
+Stop measure: 	34	Result: Standing Still
+Start measure: 	34
+Stop measure: 	34	Result: Standing Still
+Start measure: 	34
+Stop measure: 	34	Result: Standing Still
+Start measure: 	34
+Stop measure: 	34	Result: Standing Still
+Start measure: 	34
+Stop measure: 	34	Result: Standing Still
+Start measure: 	34
+Stop measure: 	34	Result: Standing Still
+Start measure: 	34
+Stop measure: 	36	Result: BACKWARD
+Start measure: 	36
+Stop measure: 	32	Result: FORWARD
+Start measure: 	33
+Stop measure: 	33	Result: Standing Still
+Start measure: 	32
+Stop measure: 	35	Result: BACKWARD
+Start measure: 	36
+Stop measure: 	32	Result: FORWARD
+Start measure: 	33
+Stop measure: 	33	Result: Standing Still
+Start measure: 	33
+Stop measure: 	35	Result: BACKWARD
+Start measure: 	35
+Stop measure: 	33	Result: FORWARD
+Start measure: 	33
+Stop measure: 	35	Result: BACKWARD
+Start measure: 	36
+Stop measure: 	35	Result: Standing Still
+Start measure: 	35
+Stop measure: 	31	Result: FORWARD
+Start measure: 	31
+Stop measure: 	31	Result: Standing Still
+Start measure: 	31
+Stop measure: 	31	Result: Standing Still
+Start measure: 	31
+Stop measure: 	31	Result: Standing Still
+Start measure: 	31
+Stop measure: 	31	Result: Standing Still
+Start measure: 	31
+Stop measure: 	31	Result: Standing Still
+Start measure: 	31
+Stop measure: 	31	Result: Standing Still
+Start measure: 	32
+Stop measure: 	31	Result: Standing Still
+Start measure: 	31
+Stop measure: 	32	Result: Standing Still
+Start measure: 	31
+Stop measure: 	31	Result: Standing Still
+Start measure: 	32
+Stop measure: 	32	Result: Standing Still
+Start measure: 	31
+Stop measure: 	31	Result: Standing Still
+Start measure: 	31
+Stop measure: 	31	Result: Standing Still
+Start measure: 	31
+Stop measure: 	31	Result: Standing Still
+Start measure: 	31
+Stop measure: 	31	Result: Standing Still
+Start measure: 	31
+Stop measure: 	32	Result: Standing Still
+Start measure: 	31
+Stop measure: 	31	Result: Standing Still
+Start measure: 	31
+Stop measure: 	32	Result: Standing Still
+Start measure: 	31
+Stop measure: 	31	Result: Standing Still
+Start measure: 	31
+Stop measure: 	31	Result: Standing Still
+Start measure: 	31
+Stop measure: 	33	Result: BACKWARD
+Start measure: 	32
+Stop measure: 	34	Result: BACKWARD
+Start measure: 	34
+Stop measure: 	34	Result: Standing Still
+Start measure: 	34
+Stop measure: 	31	Result: FORWARD
+Start measure: 	31
+Stop measure: 	33	Result: BACKWARD
+Start measure: 	33
+Stop measure: 	32	Result: Standing Still
+Start measure: 	31
+Stop measure: 	36	Result: BACKWARD
+Start measure: 	35
+Stop measure: 	32	Result: FORWARD
+Start measure: 	33
+Stop measure: 	32	Result: Standing Still
+Start measure: 	32
+Stop measure: 	32	Result: Standing Still
+Start measure: 	32
+Stop measure: 	34	Result: BACKWARD
+Start measure: 	35
+Stop measure: 	33	Result: FORWARD
+Start measure: 	33
+Stop measure: 	33	Result: Standing Still
+Start measure: 	33
+Stop measure: 	33	Result: Standing Still
+Start measure: 	33
+Stop measure: 	33	Result: Standing Still
+Start measure: 	33
+Stop measure: 	33	Result: Standing Still
+Start measure: 	33
+Stop measure: 	35	Result: BACKWARD
+Start measure: 	36
+Stop measure: 	33	Result: FORWARD
+Start measure: 	33
+Stop measure: 	33	Result: Standing Still
+Start measure: 	33
+Stop measure: 	36	Result: BACKWARD
+Start measure: 	49
+Stop measure: 	35	Result: FORWARD
+Start measure: 	37
+Stop measure: 	33	Result: FORWARD
+Start measure: 	34
+Stop measure: 	34	Result: Standing Still
+Start measure: 	34
+Stop measure: 	33	Result: Standing Still
+Start measure: 	34
+Stop measure: 	33	Result: Standing Still
+Start measure: 	34
+Stop measure: 	33	Result: Standing Still
+Start measure: 	33
+Stop measure: 	49	Result: BACKWARD
+Start measure: 	49
+Stop measure: 	30	Result: FORWARD
+Start measure: 	30
+Stop measure: 	31	Result: Standing Still
+Start measure: 	31
+Stop measure: 	31	Result: Standing Still
+Start measure: 	31
+Stop measure: 	31	Result: Standing Still
+Start measure: 	32
+Stop measure: 	31	Result: Standing Still
+Start measure: 	31
+Stop measure: 	32	Result: Standing Still
+Start measure: 	31
+Stop measure: 	31	Result: Standing Still
+Start measure: 	31
+Stop measure: 	34	Result: BACKWARD
+Start measure: 	34
+Stop measure: 	47	Result: BACKWARD
+Start measure: 	47
+Stop measure: 	3	Result: FORWARD
+Start measure: 	34
+Stop measure: 	34	Result: Standing Still
+Start measure: 	34
+Stop measure: 	38	Result: BACKWARD
+Start measure: 	38
+Stop measure: 	35	Result: FORWARD
+Start measure: 	35
+Stop measure: 	37	Result: BACKWARD
+Start measure: 	37
+Stop measure: 	31	Result: FORWARD
+Start measure: 	5
+Stop measure: 	4	Result: Standing Still
+Start measure: 	32
+Stop measure: 	32	Result: Standing Still
+Start measure: 	32
+Stop measure: 	32	Result: Standing Still
+Start measure: 	32
+Stop measure: 	34	Result: BACKWARD
+Start measure: 	34
+Stop measure: 	34	Result: Standing Still
+Start measure: 	34
+Stop measure: 	32	Result: FORWARD
+Start measure: 	32
+Stop measure: 	32	Result: Standing Still
+Start measure: 	32
+Stop measure: 	32	Result: Standing Still
+Start measure: 	32
+Stop measure: 	32	Result: Standing Still
+Start measure: 	32
+Stop measure: 	6	Result: FORWARD
+Start measure: 	32
+Stop measure: 	34	Result: BACKWARD
+Start measure: 	34
+Stop measure: 	32	Result: FORWARD
+Start measure: 	32
+Stop measure: 	32	Result: Standing Still
+Start measure: 	32
+Stop measure: 	32	Result: Standing Still
+Start measure: 	32
+Stop measure: 	32	Result: Standing Still
+Start measure: 	32
+Stop measure: 	32	Result: Standing Still
+Start measure: 	32
+Stop measure: 	32	Result: Standing Still
+Start measure: 	32
+Stop measure: 	32	Result: Standing Still
+Start measure: 	32
+Stop measure: 	32	Result: Standing Still
+Start measure: 	32
+Stop measure: 	32	Result: Standing Still
+Start measure: 	32
+Stop measure: 	32	Result: Standing Still
+Start measure: 	32
+Stop measure: 	32	Result: Standing Still
+Start measure: 	32
+Stop measure: 	32	Result: Standing Still
+Start measure: 	32
+Stop measure: 	32	Result: Standing Still
+Start measure: 	32
+Stop measure: 	32	Result: Standing Still
+Start measure: 	32
+Stop measure: 	32	Result: Standing Still
+Start measure: 	32
+Stop measure: 	32	Result: Standing Still
+Start measure: 	32
+Stop measure: 	32	Result: Standing Still
+Start measure: 	32
+Stop measure: 	32	Result: Standing Still
+Start measure: 	32
+Stop measure: 	31	Result: Standing Still
+Start measure: 	32
+Stop measure: 	35	Result: BACKWARD
+Start measure: 	36
+Stop measure: 	35	Result: Standing Still
+Start measure: 	35
+Stop measure: 	34	Result: Standing Still
+Start measure: 	34
+Stop measure: 	36	Result: BACKWARD
+Start measure: 	35
+Stop measure: 	35	Result: Standing Still
+Start measure: 	35
+Stop measure: 	35	Result: Standing Still
+Start measure: 	35
+Stop measure: 	35	Result: Standing Still
+Start measure: 	36
+Stop measure: 	35	Result: Standing Still
+Start measure: 	36
+Stop measure: 	43	Result: BACKWARD
+Start measure: 	43
+Stop measure: 	43	Result: Standing Still
+Start measure: 	43
+Stop measure: 	43	Result: Standing Still
+Start measure: 	43
+Stop measure: 	43	Result: Standing Still
+Start measure: 	43
+Stop measure: 	45	Result: BACKWARD
+Start measure: 	46
+Stop measure: 	48	Result: BACKWARD
+Start measure: 	47
+Stop measure: 	58	Result: BACKWARD
+Start measure: 	57
+Stop measure: 	57	Result: Standing Still
+Start measure: 	56
+Stop measure: 	5	Result: FORWARD
+Start measure: 	40
+Stop measure: 	40	Result: Standing Still
+Start measure: 	40
+Stop measure: 	40	Result: Standing Still
+Start measure: 	40
+Stop measure: 	42	Result: BACKWARD
+Start measure: 	41
+Stop measure: 	41	Result: Standing Still
+Start measure: 	41
+Stop measure: 	40	Result: Standing Still
+Start measure: 	40
+Stop measure: 	41	Result: Standing Still
+Start measure: 	41
+Stop measure: 	40	Result: Standing Still
+Start measure: 	39
+Stop measure: 	40	Result: Standing Still
+Start measure: 	40
+Stop measure: 	40	Result: Standing Still
+Start measure: 	40
+Stop measure: 	40	Result: Standing Still
+Start measure: 	40
+Stop measure: 	40	Result: Standing Still
+Start measure: 	40
+Stop measure: 	40	Result: Standing Still
+Start measure: 	40
+Stop measure: 	40	Result: Standing Still
+Start measure: 	40
+Stop measure: 	40	Result: Standing Still
+Start measure: 	41
+Stop measure: 	40	Result: Standing Still
+Start measure: 	40
+Stop measure: 	40	Result: Standing Still
+Start measure: 	40
+Stop measure: 	40	Result: Standing Still
+Start measure: 	41
+Stop measure: 	40	Result: Standing Still
+Start measure: 	40
+Stop measure: 	41	Result: Standing Still
+Start measure: 	41
+Stop measure: 	41	Result: Standing Still
+Start measure: 	41
+Stop measure: 	40	Result: Standing Still
+Start measure: 	40
+Stop measure: 	42	Result: BACKWARD
+Start measure: 	42
+Stop measure: 	43	Result: Standing Still
+Start measure: 	43
+Stop measure: 	44	Result: Standing Still
+Start measure: 	44
+Stop measure: 	53	Result: BACKWARD
+Start measure: 	52
+Stop measure: 	46	Result: FORWARD
+Start measure: 	45
+Stop measure: 	34	Result: FORWARD
+Start measure: 	35
+Stop measure: 	39	Result: BACKWARD
+Start measure: 	40
+Stop measure: 	38	Result: FORWARD
+Start measure: 	37
+Stop measure: 	37	Result: Standing Still
+Start measure: 	37
+Stop measure: 	127	Result: BACKWARD
+Start measure: 	38
+Stop measure: 	37	Result: Standing Still
+Start measure: 	37
+Stop measure: 	37	Result: Standing Still
+Start measure: 	37
+Stop measure: 	34	Result: FORWARD
+Start measure: 	34
+Stop measure: 	33	Result: Standing Still
+Start measure: 	34
+Stop measure: 	46	Result: BACKWARD
+Start measure: 	43
+Stop measure: 	34	Result: FORWARD
+Start measure: 	34
+Stop measure: 	34	Result: Standing Still
+Start measure: 	34
+Stop measure: 	34	Result: Standing Still
+Start measure: 	34
+Stop measure: 	34	Result: Standing Still
+Start measure: 	34
+Stop measure: 	33	Result: Standing Still
+Start measure: 	34
+Stop measure: 	34	Result: Standing Still
+Start measure: 	34
+Stop measure: 	34	Result: Standing Still
+Start measure: 	34
+Stop measure: 	34	Result: Standing Still
+Start measure: 	34
+Stop measure: 	34	Result: Standing Still
+Start measure: 	34
+Stop measure: 	34	Result: Standing Still
+Start measure: 	34
+Stop measure: 	34	Result: Standing Still
+Start measure: 	34
+Stop measure: 	43	Result: BACKWARD
+Start measure: 	40
+Stop measure: 	43	Result: BACKWARD
+Start measure: 	39
+Stop measure: 	35	Result: FORWARD
+Start measure: 	35
+Stop measure: 	34	Result: Standing Still
+Start measure: 	35
+Stop measure: 	23	Result: FORWARD
+Start measure: 	24
+Stop measure: 	17	Result: FORWARD
+Start measure: 	17
+Stop measure: 	30	Result: BACKWARD
+Start measure: 	29
+Stop measure: 	17	Result: FORWARD
+Start measure: 	17
+Stop measure: 	150	Result: BACKWARD
+Start measure: 	150
+Stop measure: 	5	Result: FORWARD
+Start measure: 	40
+Stop measure: 	40	Result: Standing Still
+Start measure: 	41
+Stop measure: 	39	Result: FORWARD
+Start measure: 	39
+Stop measure: 	40	Result: Standing Still
+Start measure: 	40
+Stop measure: 	41	Result: Standing Still
+Start measure: 	40
+Stop measure: 	40	Result: Standing Still
+Start measure: 	40
+Stop measure: 	40	Result: Standing Still
+Start measure: 	40
+Stop measure: 	40	Result: Standing Still
+Start measure: 	40
+Stop measure: 	41	Result: Standing Still
+Start measure: 	40
+Stop measure: 	39	Result: Standing Still
+Start measure: 	39
+Stop measure: 	40	Result: Standing Still
+Start measure: 	40
+Stop measure: 	41	Result: Standing Still
+Start measure: 	40
+Stop measure: 	39	Result: Standing Still
+Start measure: 	39
+Stop measure: 	40	Result: Standing Still
+Start measure: 	40
+Stop measure: 	40	Result: Standing Still
+Start measure: 	41
+Stop measure: 	40	Result: Standing Still
+Start measure: 	40

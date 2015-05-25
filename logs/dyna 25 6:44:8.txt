@@ -1,0 +1,14 @@
+beta 0.9 gama 0.1 epsilon 1
+IterationNo - in beginning of the line, s - state, r - received reward, rs - total reward
+start state: 102
+0	In state:	102	choose	154	Received reward:	0	Total: 	0	Update Q(102, 154) = 0
+egreedyByQuality repeatedValues - 254	 value = 1
+1	In state:	154	choose	130	Received reward:	0	Total: 	0	Update Q(154, 130) = 0
+egreedyByQuality repeatedValues - 254	 value = 1.41421
+2	In state:	130	choose	146	Received reward:	0	Total: 	0	Update Q(130, 146) = 0
+egreedyByQuality repeatedValues - 254	 value = 1.73205
+3	In state:	146	choose	181	Received reward:	0	Total: 	0	Update Q(146, 181) = 0
+egreedyByQuality repeatedValues - 254	 value = 2
+4	In state:	181	choose	10	Received reward:	0	Total: 	0	Update Q(181, 10) = 0
+egreedyByQuality repeatedValues - 254	 value = 2.23607
+5	In state:	10	choose	123
