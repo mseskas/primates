@@ -1,0 +1,115 @@
+#syntax: iterationNumber, AccelX, minX, maxX, minIteration, maxIteration
+Start measure: 	52
+Stop measure: 	54	Result: BACKWARD
+Start measure: 	55
+Stop measure: 	55	Result: Standing Still
+Start measure: 	0
+Stop measure: 	62	Result: BACKWARD
+Start measure: 	62
+Stop measure: 	52	Result: FORWARD
+Start measure: 	52
+Stop measure: 	53	Result: BACKWARD
+Start measure: 	53
+Stop measure: 	60	Result: BACKWARD
+Start measure: 	0
+Stop measure: 	59	Result: BACKWARD
+Start measure: 	59
+Stop measure: 	62	Result: BACKWARD
+Start measure: 	62
+Stop measure: 	0	Result: FORWARD
+Start measure: 	0
+Stop measure: 	63	Result: BACKWARD
+Start measure: 	63
+Stop measure: 	63	Result: Standing Still
+Start measure: 	0
+Stop measure: 	0	Result: Standing Still
+Start measure: 	0
+Stop measure: 	83	Result: BACKWARD
+Start measure: 	0
+Stop measure: 	57	Result: BACKWARD
+Start measure: 	57
+Stop measure: 	61	Result: BACKWARD
+Start measure: 	0
+Stop measure: 	58	Result: BACKWARD
+Start measure: 	59
+Stop measure: 	60	Result: BACKWARD
+Start measure: 	0
+Stop measure: 	57	Result: BACKWARD
+Start measure: 	58
+Stop measure: 	58	Result: Standing Still
+Start measure: 	0
+Stop measure: 	65	Result: BACKWARD
+Start measure: 	65
+Stop measure: 	0	Result: FORWARD
+Start measure: 	0
+Stop measure: 	62	Result: BACKWARD
+Start measure: 	0
+Stop measure: 	59	Result: BACKWARD
+Start measure: 	59
+Stop measure: 	60	Result: BACKWARD
+Start measure: 	60
+Stop measure: 	62	Result: BACKWARD
+Start measure: 	52
+Stop measure: 	56	Result: BACKWARD
+Start measure: 	56
+Stop measure: 	53	Result: FORWARD
+Start measure: 	53
+Stop measure: 	0	Result: FORWARD
+Start measure: 	0
+Stop measure: 	57	Result: BACKWARD
+Start measure: 	57
+Stop measure: 	0	Result: FORWARD
+Start measure: 	79
+Stop measure: 	0	Result: FORWARD
+Start measure: 	61
+Stop measure: 	0	Result: FORWARD
+Start measure: 	59
+Stop measure: 	76	Result: BACKWARD
+Start measure: 	76
+Stop measure: 	0	Result: FORWARD
+Start measure: 	0
+Stop measure: 	53	Result: BACKWARD
+Start measure: 	53
+Stop measure: 	0	Result: FORWARD
+Start measure: 	0
+Stop measure: 	55	Result: BACKWARD
+Start measure: 	54
+Stop measure: 	0	Result: FORWARD
+Start measure: 	56
+Stop measure: 	54	Result: FORWARD
+Start measure: 	53
+Stop measure: 	54	Result: BACKWARD
+Start measure: 	52
+Stop measure: 	58	Result: BACKWARD
+Start measure: 	41
+Stop measure: 	39	Result: FORWARD
+Start measure: 	39
+Stop measure: 	0	Result: FORWARD
+Start measure: 	38
+Stop measure: 	40	Result: BACKWARD
+Start measure: 	40
+Stop measure: 	40	Result: Standing Still
+Start measure: 	40
+Stop measure: 	41	Result: BACKWARD
+Start measure: 	41
+Stop measure: 	43	Result: BACKWARD
+Start measure: 	43
+Stop measure: 	40	Result: FORWARD
+Start measure: 	40
+Stop measure: 	43	Result: BACKWARD
+Start measure: 	43
+Stop measure: 	42	Result: FORWARD
+Start measure: 	43
+Stop measure: 	67	Result: BACKWARD
+Start measure: 	0
+Stop measure: 	0	Result: Standing Still
+Start measure: 	0
+Stop measure: 	67	Result: BACKWARD
+Start measure: 	67
+Stop measure: 	66	Result: FORWARD
+Start measure: 	0
+Stop measure: 	48	Result: BACKWARD
+Start measure: 	0
+Stop measure: 	41	Result: BACKWARD
+Start measure: 	41
+Stop measure: 	41	Result: Standing Still

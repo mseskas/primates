@@ -50,21 +50,22 @@ int Sonar::GetFilteredDistance(){
     delay(35);
     int secoundMeasure = GetDistance();
 
-    if (firstMeasure == secoundMeasure) return firstMeasure;
+    if (-2 < (firstMeasure - secoundMeasure) && (firstMeasure - secoundMeasure) < 2) return firstMeasure;
     else {
         delay(35);
         int thirdMeasure = GetDistance();
         if (firstMeasure == thirdMeasure) return firstMeasure;
         if (secoundMeasure == thirdMeasure) return secoundMeasure;
     }
-    return 0;
+    delay(35);
+    return GetFilteredDistance();
 }
 
 int Sonar::GetDistance()
 {
-    if (!isRaspberryPi) return rand() % 100;
+    if (!isRaspberryPi) return -1;
 
-    int l=0;
+    int l=400;
 
     digitalWrite(trigger, LOW);
     delayMicroseconds(2);
@@ -78,35 +79,14 @@ int Sonar::GetDistance()
         l = waitforpin(LOW, 30000);
 
         if (digitalRead(echo) == LOW) l = l/ 58 + 1;
-        else l = 400;
     }
     _last_distance = l;
     cout << "sonar: " << _last_distance << endl;
-    return _last_distance;
+    return l;
 }
 
 int Sonar::getLastDistance ()
 {
     return _last_distance;
-}
-
-int Sonar::get_trigger()
-{
-    return trigger;
-}
-
-void Sonar::set_trigger(int pin_trigger)
-{
-    trigger = pin_trigger;
-}
-
-int Sonar::get_echo()
-{
-    return echo;
-}
-
-void Sonar::set_echo(int pin_echo)
-{
-    echo = pin_echo;
 }
 

@@ -10,7 +10,7 @@
 	<File name="include/MPU6050.h" open="0" top="0" tabpos="4">
 		<Cursor position="0" topLine="0" />
 	</File>
-	<File name="include/Reward.h" open="1" top="0" tabpos="5">
+	<File name="include/Reward.h" open="0" top="0" tabpos="5">
 		<Cursor position="905" topLine="16" />
 	</File>
 	<File name="include/RewardView.h" open="0" top="0" tabpos="1">
@@ -32,25 +32,25 @@
 		<Cursor position="0" topLine="0" />
 	</File>
 	<File name="main.cpp" open="1" top="0" tabpos="1">
-		<Cursor position="1781" topLine="41" />
+		<Cursor position="789" topLine="50" />
 	</File>
-	<File name="src/AllServoModel.cpp" open="1" top="0" tabpos="7">
+	<File name="src/AllServoModel.cpp" open="1" top="0" tabpos="6">
 		<Cursor position="1431" topLine="33" />
 	</File>
-	<File name="src/DynaQ.cpp" open="1" top="1" tabpos="2">
-		<Cursor position="4376" topLine="63" />
+	<File name="src/DynaQ.cpp" open="1" top="0" tabpos="2">
+		<Cursor position="2378" topLine="66" />
 	</File>
 	<File name="src/MPU6050.cpp" open="0" top="0" tabpos="2">
 		<Cursor position="0" topLine="0" />
 	</File>
 	<File name="src/Reward.cpp" open="1" top="0" tabpos="4">
-		<Cursor position="349" topLine="0" />
+		<Cursor position="349" topLine="6" />
 	</File>
 	<File name="src/RewardView.cpp" open="0" top="0" tabpos="6">
 		<Cursor position="0" topLine="0" />
 	</File>
-	<File name="src/Sonar.cpp" open="1" top="0" tabpos="6">
-		<Cursor position="0" topLine="0" />
+	<File name="src/Sonar.cpp" open="1" top="1" tabpos="5">
+		<Cursor position="1295" topLine="27" />
 	</File>
 	<File name="src/gtkAllServo.cpp" open="0" top="0" tabpos="7">
 		<Cursor position="0" topLine="0" />

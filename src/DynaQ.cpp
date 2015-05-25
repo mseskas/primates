@@ -75,11 +75,11 @@ void DynaQ::RunIterations(int iterations, bool useMPU){
 
 void DynaQ::RunIterationSONAR(){
         short nextState = EGreedyByQuality(CurrentState);
-logFile << "In state:\t" << CurrentState << "\tchoose\t" << nextState;
+logFile << CurrentIteration << "In state:\t" << CurrentState << "\tchoose\t" << nextState;
 
         RewardModel->StartMeasure();
         StateModel->ExecutePosition(nextState);
-        delay(888);
+        delay(1000);
         short reward = RewardModel->StopMeasure();
 
         IndicateResult(reward);

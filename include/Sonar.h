@@ -17,19 +17,17 @@ class Sonar
 public:
     Sonar(int pin_trigger, int pin_echo);
     int getLastDistance();
-    int get_trigger();
-    void set_trigger(int pin_trigger);
-    int get_echo();
-    void set_echo(int pin_echo);
 
     int GetDistance();
     int GetFilteredDistance();
 
+    int trigger;
+    int echo;
+
     bool isRaspberryPi;
 private:
 
-    int trigger;
-    int echo;
+
     int waitforpin(int pin_value, int timeout_uS);
     int _last_distance;
 };

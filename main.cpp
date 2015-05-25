@@ -77,7 +77,10 @@ int main()
                 break;
             case 's':
                 cout << "measure distance" << endl;
-                for (int i = 0; i < 10; i ++) frontSonar->GetDistance();
+                for (int i = 0; i < 100; i ++) {
+                    frontSonar->GetDistance();
+                    delay(200);
+                }
                 break;
             case 'c':
                 useMPU = !useMPU;
