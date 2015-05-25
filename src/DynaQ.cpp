@@ -87,10 +87,10 @@ void DynaQ::RunIterationSONAR(short forcedNextState = -1, short forcedReward = -
 
 logFile << CurrentIteration << "\tIn state:\t" << CurrentState << "\tchoose\t" << nextState;
 
-        RewardModel->StartMeasure();
+       // RewardModel->StartMeasure();
         StateModel->ExecutePosition(nextState);
-        delay(1000);
-        short reward = RewardModel->StopMeasure();
+       // delay(1000);
+        short reward ;//= RewardModel->StopMeasure();
         char input;
         cout << "insert reward 1 - forward, 0 - still, . - backward: ";
         cin >> input;

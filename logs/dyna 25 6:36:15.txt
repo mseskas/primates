@@ -1,2 +1,0 @@
-beta 0.9 gama 0.1 epsilon 1
-IterationNo - in beginning of the line, s - state, r - received reward, rs - total reward

@@ -55,6 +55,7 @@ int main()
                 dyna->PrepareToLearn();
                 break;
             case '1':
+            while (true)
                 dyna->RunIterations(1, useMPU);
                 break;
             case '2':
