@@ -2,6 +2,7 @@
 #define REWARD_H
 
 #include "MPU6050.h"
+#include "Sonar.h"
 #include <gtk/gtk.h>
 #include <thread>
 #include <iostream>
@@ -14,7 +15,7 @@
 class Reward
 {
     public:
-        Reward(MPU6050 * mpuChip);
+        Reward(MPU6050 * mpuChip, Sonar * sonar);
 
 //        void SetIterationduration(int milliseconds);
 //        void SetRewardThreshold(float threshold);
@@ -24,15 +25,24 @@ class Reward
         float Threshold;
         int DurationMs;  // total measure duration
 
-        double GetReward();
+        double SyncGetReward();
         void AsyncGetReward(bool waitToFinish = false);
+        void StartMeasure();
+        short StopMeasure();
 
         double LastResult;
+        int LastDistance;
+
+
+        //  Result is set to category where { fail, nothing, success} respectively :
+        static const short CategoryResult[3] = { -100, 0, 100 };
         short ResultCategory;
 
         GtkWidget * OutputLabel;
 
         bool HasMPU;
+        bool HasSONAR;
+
         int IterationNumber;
         ofstream logFile;
 
@@ -42,7 +52,7 @@ class Reward
 
     protected:
     private:
-
+        Sonar * FrontSonar;
         MPU6050 * _mpuChip;
 };
 

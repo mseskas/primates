@@ -43,9 +43,26 @@ int Sonar::waitforpin(int pin_value, int timeout_uS)
     return micros;
 }
 
-int Sonar::measure_distance()
+int Sonar::GetFilteredDistance(){
+    if (!isRaspberryPi) return rand() % 100;
+
+    int firstMeasure = GetDistance();
+    delay(35);
+    int secoundMeasure = GetDistance();
+
+    if (firstMeasure == secoundMeasure) return firstMeasure;
+    else {
+        delay(35);
+        int thirdMeasure = GetDistance();
+        if (firstMeasure == thirdMeasure) return firstMeasure;
+        if (secoundMeasure == thirdMeasure) return secoundMeasure;
+    }
+    return 0;
+}
+
+int Sonar::GetDistance()
 {
-    if (!isRaspberryPi) return -1;
+    if (!isRaspberryPi) return rand() % 100;
 
     int l=0;
 

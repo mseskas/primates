@@ -13,19 +13,20 @@
 #include "AllServoModel.h"
 #include "LED.h"
 
-#include "Sonar.h"
+
 
 using namespace std;
 
 class DynaQ
 {
     public:
-        DynaQ(AllServoModel * allServoModel, Reward * rewardModel, Sonar * frontSonar);
+        DynaQ(AllServoModel * allServoModel, Reward * rewardModel);
         ~DynaQ();
         static const short Statequantity =  256;
         //static const short Statequantity =  4096;
+        static const int PlanningSteps = 10;
+        static const char UnidentifiedRewardSign = -88;
         int srvQuantity;
-
 
         double TotalReward;
         short CurrentState;
@@ -33,16 +34,18 @@ class DynaQ
 
 
         void PrepareToLearn();
-
+        short DoPlanning(short currentstate);
         short EGreedy(short currentState);
         short EGreedyByQuality(short currentState);
-
         short GetMaxQuality(short state);
-        void RunIterations(int iterationsNo);
+
+        void RunIterations(int iterations, bool useMPU);
+
+        void RunIterationMPU();
+        void RunIterationSONAR();
+
         void IndicateResult(short reward);
-
-
-        float MaxQ[Statequantity];
+        //float MaxQ[Statequantity];
 
         /// [state from][state to]
         float Q[Statequantity][Statequantity];
@@ -57,9 +60,11 @@ class DynaQ
         Reward * RewardModel;
         LED * GreenLED;
         LED * RedLED;
-        Sonar * FrontSonar;
+
     protected:
     private:
+
+
 
         ofstream logFile;
         string dateTimeStr;

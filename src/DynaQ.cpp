@@ -9,7 +9,7 @@ DynaQ::~DynaQ(){
     cout << "DynaQ deleted";
 }
 
-DynaQ::DynaQ(AllServoModel * allServoModel, Reward * rewardModel, Sonar * frontSonar)
+DynaQ::DynaQ(AllServoModel * allServoModel, Reward * rewardModel)
 {
     BETA = 0.9;
     GAMA = 0.5;
@@ -21,7 +21,6 @@ DynaQ::DynaQ(AllServoModel * allServoModel, Reward * rewardModel, Sonar * frontS
     srvQuantity = allServoModel->srvQuantity;
     GreenLED = new LED(GREEN_LED_PIN);
     RedLED = new LED(RED_LED_PIN);
-    FrontSonar = frontSonar;
 
     time_t now = time(0);
     tm *ltm = localtime(&now);
@@ -44,7 +43,7 @@ void DynaQ::PrepareToLearn() {
 
     for (int s = 0; s < Statequantity; s++){
         for (int a = 0; a < Statequantity; a++){
-            Model[s][a] = 0;
+            Model[s][a] = UnidentifiedRewardSign;
             Q[s][a] = 0;
             Exploration[s][a] = 0;
         }
@@ -62,16 +61,52 @@ void DynaQ::IndicateResult(short reward){
         RedLED->TurnON();
     }
     TotalReward += reward;
-    logFile << "Received reward: " << reward << "\tTotal: " << TotalReward << endl;
+    logFile << "\tReceived reward:\t" << reward << "\tTotal: \t" << TotalReward;
 }
 
-void DynaQ::RunIterations(int iterationsNo){
+void DynaQ::RunIterations(int iterations, bool useMPU){
+    if (useMPU) {
+        for (int i = 0; i < iterations; i++) RunIterationMPU();
+    }
+    else {
+        for (int i = 0; i < iterations; i++) RunIterationSONAR();
+    }
+}
 
-    for (int i = 0; i < iterationsNo; i++){
-        //short nextState = EGreedy(CurrentState);
+void DynaQ::RunIterationSONAR(){
         short nextState = EGreedyByQuality(CurrentState);
-logFile << "In state: " << CurrentState << " choose " << nextState << endl;
+logFile << "In state:\t" << CurrentState << "\tchoose\t" << nextState;
 
+        RewardModel->StartMeasure();
+        StateModel->ExecutePosition(nextState);
+        short reward = RewardModel->StopMeasure();
+
+        IndicateResult(reward);
+        Q[CurrentState][nextState] = Q[CurrentState][nextState] + BETA * (reward
+        // always = 0  //+ EPSILON * sqrt(CurrentIteration - Exploration[CurrentState][nextState])
+            + GAMA * GetMaxQuality(nextState) - Q[CurrentState][nextState]); //old:
+        //Q(s, a) = Q(s, a) + β(r + γmax a ′ Q(s ′ , a ′ ) − Q(s, a))
+
+logFile << "\tUpdate Q(" << CurrentState << ", " << nextState << ") = " << Q[CurrentState][nextState] << endl << endl;
+
+        //Update Model
+        Model[CurrentState][nextState] = reward;
+        // learn from model
+        short PlanningCurrentState = CurrentState;
+        for (int i = 0; i < PlanningSteps; i++){
+            if (PlanningCurrentState != -1) PlanningCurrentState = DoPlanning(PlanningCurrentState);
+        }
+
+        CurrentIteration++;
+        Exploration[CurrentState][nextState] = CurrentIteration;
+        CurrentState = nextState;
+}
+
+
+void DynaQ::RunIterationMPU(){
+        short nextState = EGreedyByQuality(CurrentState);
+
+logFile << "In state:\t" << CurrentState << "\tchoose\t" << nextState;
         RewardModel->AsyncGetReward();
         delay(120);
         StateModel->ExecutePosition(nextState);
@@ -84,18 +119,51 @@ logFile << "In state: " << CurrentState << " choose " << nextState << endl;
             + GAMA * GetMaxQuality(nextState) - Q[CurrentState][nextState]); //old:
         //Q(s, a) = Q(s, a) + β(r + γmax a ′ Q(s ′ , a ′ ) − Q(s, a))
 
-// if (Q[CurrentState][nextState] > MaxQ[CurrentState]) MaxQ[CurrentState] = Q[CurrentState][nextState];
-
-logFile << "Update Q(" << CurrentState << ", " << nextState << ") = " << Q[CurrentState][nextState] << endl << endl;
+logFile << "\tUpdate Q(" << CurrentState << ", " << nextState << ") = " << Q[CurrentState][nextState] << endl << endl;
 
         //Update Model
         Model[CurrentState][nextState] = reward;
+        // learn from model
+        short PlanningCurrentState = CurrentState;
+        for (int i = 0; i < PlanningSteps; i++){
+            if (PlanningCurrentState != -1) PlanningCurrentState = DoPlanning(PlanningCurrentState);
+        }
 
         CurrentIteration++;
         Exploration[CurrentState][nextState] = CurrentIteration;
         CurrentState = nextState;
-        delay(00);
+}
+
+// return previously occupied state, when update is success, -1 - when nothing to update
+short DynaQ::DoPlanning(short currentstate){
+    short repeatedValues = -1;
+    short previousState = -1;
+
+    for (short i = 0; i < Statequantity; i++){
+        // when occurred reward
+        if (Model[i][currentstate] != UnidentifiedRewardSign){
+            repeatedValues++;
+            Temporary[repeatedValues] = i;
+        }
     }
+
+    if (repeatedValues == 0) previousState = Temporary[0];
+    if (repeatedValues > 0){
+        int randomState = rand() % repeatedValues + 1;  // rand = [0; repeatedValues]
+        previousState = Temporary[randomState];
+    }
+
+    // update
+    if (previousState == -1) return previousState;
+
+    // epsilon not needed
+    float oldValue = Q[previousState][currentstate];
+    float reward = Model[previousState][currentstate];
+
+    Q[previousState][currentstate] = oldValue + BETA * (reward
+        + GAMA * GetMaxQuality(currentstate) - oldValue);
+
+    return previousState;
 }
 
 // max Q(s,a)
@@ -110,7 +178,7 @@ short DynaQ::GetMaxQuality(short state){
      return maxQ;
 }
 
-//epsilon-greedy: return State number
+//epsilon-greedy with update on each check: return State number
 short DynaQ::EGreedy(short state){
     float maxQ=0;
     short maxA=0;
@@ -161,8 +229,8 @@ short DynaQ::EGreedyByQuality(short state){
             maxQ = currentQ;
             maxA = a;
         } else if (currentQ == maxQ){
-            Temporary[repeatedValues] = a;
             repeatedValues++;
+            Temporary[repeatedValues] = a;
         }
     }
     if (repeatedValues > 0){

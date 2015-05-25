@@ -173,7 +173,7 @@ void AllServoModel::ExecutePosition(const char * data12){
     int max = 0;
     double d = 0.0;
 
-    printf("changing state to: ");
+    printf("Change state to: ");
     printf(data12);
     printf("\r\n");
 

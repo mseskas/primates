@@ -22,7 +22,9 @@ public:
     int get_echo();
     void set_echo(int pin_echo);
 
-    int measure_distance();
+    int GetDistance();
+    int GetFilteredDistance();
+
     bool isRaspberryPi;
 private:
 

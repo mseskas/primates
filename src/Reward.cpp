@@ -1,10 +1,14 @@
 #include "Reward.h"
 
 
-Reward::Reward(MPU6050 * mpuChip) {
+Reward::Reward(MPU6050 * mpuChip, Sonar * sonar)
+{
     HasMPU = false;
+    HasSONAR = false;
     _mpuChip = mpuChip;
+    FrontSonar = sonar;
     if (mpuChip != NULL) HasMPU = true;
+    if (sonar != NULL) HasSONAR = true;
     DurationMs = 1500; // milliseconds
     IntervalMs = 20;
     Threshold = 0.3;
@@ -24,18 +28,18 @@ Reward::Reward(MPU6050 * mpuChip) {
 
     logFile.open("logs/" + dateTimeStr + ".txt");
     logFile << "#syntax: iterationNumber, AccelX, minX, maxX, minIteration, maxIteration" << endl;
-
 }
 
-void Reward::AsyncGetReward(bool waitToFinish = false){
+void Reward::AsyncGetReward(bool waitToFinish = false)
+{
     ExecutionLock.lock();
 
     if (waitToFinish) ExecutionLock.unlock(); // just leave, this means LastResult is initialized
-    else _execution_thread = new std::thread (&Reward::GetReward, this);
+    else _execution_thread = new std::thread (&Reward::SyncGetReward, this);
 }
 
-
-double Reward::GetReward(){
+double Reward::SyncGetReward()
+{
     IsRunning = true;
     int iteration = 0;
     int minIteration;
@@ -45,17 +49,22 @@ double Reward::GetReward(){
     double maxAX = 0;
     double leanAX;
 
-    if (HasMPU){
+    if (HasMPU)
+    {
         leanAX = _mpuChip->GetAccelX(); // initialization
 
-        for (int i = 0; i < DurationMs; i += IntervalMs){
+        for (int i = 0; i < DurationMs; i += IntervalMs)
+        {
             double measure = _mpuChip->GetAccelX() - leanAX;
-            if (measure > Threshold || measure < -Threshold){
-                if (measure < minAX){
+            if (measure > Threshold || measure < -Threshold)
+            {
+                if (measure < minAX)
+                {
                     minAX = measure;
                     minIteration = iteration;
                 }
-                else if (measure > maxAX){
+                else if (measure > maxAX)
+                {
                     maxAX = measure;
                     maxIteration = iteration;
                 }
@@ -69,32 +78,38 @@ double Reward::GetReward(){
             iteration++;
         }
         logFile << "result : ";
-        if (minIteration == 2000000 && maxIteration == 2000000) {
+        if (minIteration == 2000000 && maxIteration == 2000000)
+        {
             LastResult = 0;
-            ResultCategory = 0;
+            ResultCategory = CategoryResult[1];
             logFile << "Standing:|" << endl;
-            cout << "standing still:|" << endl;
+            cout << "Standing still:|" << endl;
         }
-        else {
-            if (minIteration < maxIteration){
+        else
+        {
+            if (minIteration < maxIteration)
+            {
                 // min WIN - forward
                 logFile << "FORWARD:)" << endl;
                 cout << "FORWARD:)" << minAX << endl;
-                ResultCategory = 100;
+                ResultCategory = CategoryResult[2];
                 LastResult = minAX;
             }
-            else {// max WIN - backward
+            else  // max WIN - backward
+            {
                 logFile << "BACKWARD:(" << endl;
                 cout << "BACKWARD:(" << maxAX << endl;
-                ResultCategory = -100;
+                ResultCategory = CategoryResult[0];
                 LastResult = maxAX;
             }
         }
         logFile << endl;
         IterationNumber++;
-    } else{
+    }
+    else
+    {
         delay(DurationMs);
-        ResultCategory = 0;
+        ResultCategory = CategoryResult[1];
         LastResult = 0;
     }
 
@@ -109,3 +124,66 @@ double Reward::GetReward(){
     ExecutionLock.unlock();
     return LastResult;
 }
+
+
+void Reward::StartMeasure()
+{
+    ResultCategory = 0;
+    if (!HasSONAR) return false;
+
+    LastDistance = FrontSonar->GetFilteredDistance();
+    logFile << "Start measure: \t" << LastDistance << endl;
+    cout << "Start measure: \t" << LastDistance << endl;
+}
+
+short Reward::StopMeasure()
+{
+    if (!HasSONAR)
+    {
+        ResultCategory = CategoryResult[1];
+        return ResultCategory;
+    }
+
+    int distance = FrontSonar->GetFilteredDistance();
+    logFile << "Stop measure: \t" << distance;
+    cout << "Stop measure: \t" << distance;
+
+    // standing still
+    if (distance == LastDistance) {
+        ResultCategory = CategoryResult[1];
+        logFile << "\tResult: Standing Still" << endl;
+        cout << "\tResult: Standing Still" << endl;
+    }
+
+    else {
+        // forward
+        if (distance < LastDistance) {
+            ResultCategory = CategoryResult[2];
+            logFile << "\tResult: FORWARD" << endl;
+            cout << "\tResult: FORWARD" << endl;
+        }
+        else  {
+            ResultCategory = CategoryResult[0]; // backward
+            logFile << "\tResult: BACKWARD" << endl;
+            cout << "\tResult: BACKWARD" << endl;
+        }
+    }
+
+    LastDistance = distance;
+    return ResultCategory;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

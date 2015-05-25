@@ -7,7 +7,6 @@
 #include "AllServoModel.h"
 #include "Sonar.h"
 
-using namespace std;
 
 // TODO: remove if necessary
 bool isRaspberryPi = false;
@@ -32,19 +31,21 @@ int main()
     std::string g = "raspberrypi";
     if ( g.compare(sysinfo.nodename) == 0) isRaspberryPi = true;  // if raspberry
 
-    AllServoModel * servosModel = new AllServoModel();
-    Reward * reward = new Reward(new MPU6050());
-    gui_main * main_gui = new gui_main(servosModel, reward);
 
-    Sonar * frontSonar = new Sonar( FRONT_SONAR_TRIGGER_PIN, FRONT_SONAR_ECHO_PIN);
+    Sonar* frontSonar = new Sonar(FRONT_SONAR_TRIGGER_PIN, FRONT_SONAR_ECHO_PIN);
+    AllServoModel* servosModel = new AllServoModel();
+
+    Reward* reward = new Reward(new MPU6050(), frontSonar);
+    gui_main* main_gui = new gui_main(servosModel, reward);
 
 
-    dyna = new DynaQ(servosModel, reward, frontSonar);
+    dyna = new DynaQ(servosModel, reward);
 
 
 
     char c;
 
+    bool useMPU = false;
     bool execute = true;
     while (execute) {
         cout << "Enter command: " <<  endl;
@@ -53,30 +54,34 @@ int main()
         //scanf ("%79s",&str);
 
         switch (c){
-            case '1':
-                dyna->RunIterations(1);
-                break;
             case '0':
                 dyna->PrepareToLearn();
                 break;
+            case '1':
+                dyna->RunIterations(1, useMPU);
+                break;
             case '5':
-                dyna->RunIterations(2);
+                dyna->RunIterations(2, useMPU);
                 break;
             case '6':
-                dyna->RunIterations(4);
+                dyna->RunIterations(4, useMPU);
                 break;
             case '7':
-                dyna->RunIterations(8);
+                dyna->RunIterations(8, useMPU);
                 break;
             case '8':
-                dyna->RunIterations(16);
+                dyna->RunIterations(16, useMPU);
                 break;
             case '9':
-                dyna->RunIterations(6000);
+                dyna->RunIterations(6000, useMPU);
                 break;
             case 's':
                 cout << "measure distance" << endl;
-                for (int i = 0; i < 10; i ++) frontSonar->measure_distance();
+                for (int i = 0; i < 10; i ++) frontSonar->GetDistance();
+                break;
+            case 'c':
+                useMPU = !useMPU;
+                cout << "using reward device: " << (useMPU? "MPU": "SONAR") << endl;
                 break;
             case 't':
                 execute = false;
