@@ -1,8 +1,0 @@
-beta 0.9 gama 0.5 epsilon 0.01
-IterationNo - in beginning of the line, s - state, r - received reward, rs - total reward
-In state:	0	choose	164	Update Q(0, 164) = 0
-
-In state:	164	choose	223	Update Q(164, 223) = 0
-
-In state:	223	choose	84	Update Q(223, 84) = 0
-

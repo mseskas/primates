@@ -63,7 +63,7 @@ void DynaQ::IndicateResult(short reward){
     }
     TotalReward += reward;
     cout << "total reward:\t" << TotalReward << endl;
-   // logFile << "\tReceived reward:\t" << reward << "\tTotal: \t" << TotalReward;
+    logFile << "\tReceived reward:\t" << reward << "\tTotal: \t" << TotalReward;
     cout << "\tReceived reward:\t" << reward << "\tTotal: \t" << TotalReward;
 }
 
@@ -86,11 +86,11 @@ void DynaQ::RunIterationSONAR(short forcedNextState = -1, short forcedReward = -
             nextState = forcedNextState;
         }
 
-//logFile << CurrentIteration << "\tIn state:\t" << CurrentState << "\tchoose\t" << nextState;
+logFile << CurrentIteration << "\tIn state:\t" << CurrentState << "\tchoose\t" << nextState;
 cout << CurrentIteration << "\tIn state:\t" << CurrentState << "\tchoose\t" << nextState;
 
        // RewardModel->StartMeasure();
-     //   StateModel->ExecutePosition(nextState);
+        StateModel->ExecutePosition(nextState);
        // delay(1000);
         short reward ;//= RewardModel->StopMeasure();
         char input;
@@ -117,12 +117,14 @@ cout << CurrentIteration << "\tIn state:\t" << CurrentState << "\tchoose\t" << n
         IndicateResult(reward);
         Q[CurrentState][nextState] = (Q[CurrentState][nextState] - BETA * (Q[CurrentState][nextState])) + BETA * (reward  + GAMA * GetMaxQuality(nextState));
 
-        if (Q[CurrentState][nextState]  >= 200) for (int i = 0; i < 10; i++) cout << "ERROR  ERROR  ERROR  ERROR  ERROR  ERROR  ERROR  ERROR  ERROR  ERROR  ERROR  ERROR  ERROR  ERROR  ERROR"<< endl;
+        if (Q[CurrentState][nextState]  >= 200)
+            for (int i = 0; i < 10; i++)
+                cout << "ERROR  ERROR  ERROR  ERROR  ERROR  ERROR  ERROR  ERROR  ERROR  ERROR  ERROR  ERROR  ERROR  ERROR  ERROR"<< endl;
 
 
         //Q(s, a) = Q(s, a) + β(r + γmax a ′ Q(s ′ , a ′ ) − Q(s, a))
 
-//logFile << "\tUpdate Q(" << CurrentState << ", " << nextState << ") = " << Q[CurrentState][nextState] << endl;
+logFile << "\tUpdate Q(" << CurrentState << ", " << nextState << ") = " << Q[CurrentState][nextState] << endl;
 cout << "\tUpdate Q(" << CurrentState << ", " << nextState << ") = " << Q[CurrentState][nextState] << endl;
 
 
@@ -169,6 +171,13 @@ short DynaQ::DoPlanning(short currentstate){
     float reward = Model[previousState][currentstate];
 
     Q[previousState][currentstate] = oldValue + BETA * (reward + (GAMA * GetMaxQuality(currentstate)) - oldValue);
+
+
+     if (Q[previousState][currentstate]  >= 200)
+            for (int i = 0; i < 10; i++)
+                cout << "ERROR  ERROR  ERROR  ERROR  ERROR  ERROR  ERROR  ERROR  ERROR  ERROR  ERROR  ERROR  ERROR  ERROR  ERROR"<< endl;
+
+
 
     return previousState;
 }

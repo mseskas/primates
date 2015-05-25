@@ -23,7 +23,7 @@ class DynaQ
         static const short Statequantity =  256;
         //static const short Statequantity =  4096;
         static const int PlanningSteps = 10;
-        static const char UnidentifiedRewardSign = -88;
+        static const signed char UnidentifiedRewardSign = -88;
         int srvQuantity;
 
         double TotalReward;
@@ -46,7 +46,7 @@ class DynaQ
 
         /// [state from][state to]
         float Q[Statequantity][Statequantity];
-        char Model[Statequantity][Statequantity];
+        signed char Model[Statequantity][Statequantity];
         short Exploration[Statequantity][Statequantity];  // last iteration number
         short Temporary[Statequantity];
 
