@@ -152,8 +152,10 @@ short Reward::StopMeasure()
     logFile << "Stop measure: \t" << distance;
     cout << "Stop measure: \t" << distance;
 
-    // standing still
-    if (distance == LastDistance) {
+
+
+    // standing still: -1, 0, +1
+    if (-2 < (distance - LastDistance) && (distance - LastDistance) < 2) {
         ResultCategory = CategoryResult[1];
         logFile << "\tResult: Standing Still" << endl;
         cout << "\tResult: Standing Still" << endl;
