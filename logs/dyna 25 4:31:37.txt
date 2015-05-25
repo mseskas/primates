@@ -1,0 +1,351 @@
+IterationNo - in beginning of the line, s - state, r - received reward, rs - total reward
+start state: 102
+0In state:	102	choose	132	Received reward:	-100	Total: 	-100	Update Q(102, 132) = -90
+
+1In state:	132	choose	147	Received reward:	-100	Total: 	-200	Update Q(132, 147) = -90
+
+2In state:	147	choose	102	Received reward:	100	Total: 	-100	Update Q(147, 102) = 148.95
+
+3In state:	102	choose	132	Received reward:	-100	Total: 	-200	Update Q(102, 132) = 63.7287
+
+4In state:	132	choose	102	Received reward:	-100	Total: 	-300	Update Q(132, 102) = 40.95
+
+5In state:	102	choose	132	Received reward:	-100	Total: 	-400	Update Q(102, 132) = 64.5997
+
+6In state:	132	choose	102	Received reward:	0	Total: 	-400	Update Q(132, 102) = 135.045
+
+7In state:	102	choose	132	Received reward:	-100	Total: 	-500	Update Q(102, 132) = 64.5997
+
+8In state:	132	choose	147	Received reward:	0	Total: 	-500	Update Q(132, 147) = 137.163
+
+9In state:	147	choose	132	Received reward:	0	Total: 	-500	Update Q(147, 132) = 60.75
+
+10In state:	132	choose	175	Received reward:	-100	Total: 	-600	Update Q(132, 175) = -90
+
+11In state:	175	choose	102	Received reward:	0	Total: 	-600	Update Q(175, 102) = 100.35
+
+12In state:	102	choose	147	Received reward:	100	Total: 	-500	Update Q(102, 147) = 184.95
+
+13In state:	147	choose	175	Received reward:	-100	Total: 	-600	Update Q(147, 175) = -40.5
+
+14In state:	175	choose	147	Received reward:	100	Total: 	-500	Update Q(175, 147) = 184.95
+
+15In state:	147	choose	175	Received reward:	0	Total: 	-500	Update Q(147, 175) = 132.902
+
+16In state:	175	choose	132	Received reward:	100	Total: 	-400	Update Q(175, 132) = 183.15
+
+17In state:	132	choose	175	Received reward:	-100	Total: 	-500	Update Q(132, 175) = 23.004
+
+18In state:	175	choose	147	Received reward:	100	Total: 	-400	Update Q(175, 147) = 205.503
+
+19In state:	147	choose	102	Received reward:	0	Total: 	-400	Update Q(147, 102) = 121.511
+
+20In state:	102	choose	175	Received reward:	-100	Total: 	-500	Update Q(102, 175) = -14.85
+
+21In state:	175	choose	132	Received reward:	0	Total: 	-500	Update Q(175, 132) = 136.279
+
+22In state:	132	choose	175	Received reward:	-100	Total: 	-600	Update Q(132, 175) = 5.59851
+
+23In state:	175	choose	151	Received reward:	100	Total: 	-500	Update Q(175, 151) = 90
+
+24In state:	151	choose	132	Received reward:	100	Total: 	-400	Update Q(151, 132) = 194.85
+
+25In state:	132	choose	151	Received reward:	-100	Total: 	-500	Update Q(132, 151) = -2.7
+
+26In state:	151	choose	102	Received reward:	100	Total: 	-400	Update Q(151, 102) = 190.35
+
+27In state:	102	choose	132	Received reward:	-100	Total: 	-500	Update Q(102, 132) = 49.3508
+
+28In state:	132	choose	151	Received reward:	-100	Total: 	-600	Update Q(132, 151) = 12.78
+
+29In state:	151	choose	175	Received reward:	0	Total: 	-600	Update Q(151, 175) = 96.3
+
+30In state:	175	choose	151	Received reward:	100	Total: 	-500	Update Q(175, 151) = 215
+
+31In state:	151	choose	147	Received reward:	0	Total: 	-500	Update Q(151, 147) = 58.5
+
+32In state:	147	choose	151	Received reward:	0	Total: 	-500	Update Q(147, 151) = 103.5
+
+33In state:	151	choose	132	Received reward:	100	Total: 	-400	Update Q(151, 132) = 231.495
+
+34In state:	132	choose	151	Received reward:	-100	Total: 	-500	Update Q(132, 151) = 15.228
+
+35In state:	151	choose	132	Received reward:	100	Total: 	-400	Update Q(151, 132) = 231.5
+
+36In state:	132	choose	151	Received reward:	-100	Total: 	-500	Update Q(132, 151) = 15.4728
+
+37In state:	151	choose	132	Received reward:	100	Total: 	-400	Update Q(151, 132) = 231.5
+
+38In state:	132	choose	151	Received reward:	-100	Total: 	-500	Update Q(132, 151) = 15.4973
+
+39In state:	151	choose	132	Received reward:	100	Total: 	-400	Update Q(151, 132) = 231.5
+
+40In state:	132	choose	151	Received reward:	-100	Total: 	-500	Update Q(132, 151) = 15.4997
+
+41In state:	151	choose	132	Received reward:	100	Total: 	-400	Update Q(151, 132) = 231.5
+
+42In state:	132	choose	151	Received reward:	-100	Total: 	-500	Update Q(132, 151) = 15.5
+
+43In state:	151	choose	132	Received reward:	100	Total: 	-400	Update Q(151, 132) = 231.5
+
+44In state:	132	choose	151	Received reward:	-100	Total: 	-500	Update Q(132, 151) = 15.5
+
+45In state:	151	choose	132	Received reward:	100	Total: 	-400	Update Q(151, 132) = 231.5
+
+46In state:	132	choose	151	Received reward:	-100	Total: 	-500	Update Q(132, 151) = 15.5
+
+47In state:	151	choose	132	Received reward:	100	Total: 	-400	Update Q(151, 132) = 231.5
+
+48In state:	132	choose	151	Received reward:	-100	Total: 	-500	Update Q(132, 151) = 15.5
+
+49In state:	151	choose	132	Received reward:	100	Total: 	-400	Update Q(151, 132) = 231.5
+
+50In state:	132	choose	151	Received reward:	0	Total: 	-400	Update Q(132, 151) = 105.5
+
+51In state:	151	choose	132	Received reward:	100	Total: 	-300	Update Q(151, 132) = 231.5
+
+52In state:	132	choose	175	Received reward:	-100	Total: 	-400	Update Q(132, 175) = 33.1
+
+53In state:	175	choose	151	Received reward:	-100	Total: 	-500	Update Q(175, 151) = 35.5
+
+54In state:	151	choose	132	Received reward:	100	Total: 	-400	Update Q(151, 132) = 236.9
+
+55In state:	132	choose	175	Received reward:	0	Total: 	-400	Update Q(132, 175) = 151.926
+
+56In state:	175	choose	151	Received reward:	100	Total: 	-300	Update Q(175, 151) = 200.827
+
+57In state:	151	choose	102	Received reward:	0	Total: 	-300	Update Q(151, 102) = 101.835
+
+58In state:	102	choose	151	Received reward:	0	Total: 	-300	Update Q(102, 151) = 75.6
+
+59In state:	151	choose	25	Received reward:	-100	Total: 	-400	Update Q(151, 25) = -90
+
+60In state:	25	choose	2	Received reward:	-100	Total: 	-500	Update Q(25, 2) = -90
+
+61In state:	2	choose	3	Received reward:	100	Total: 	-400	Update Q(2, 3) = 90
+
+62In state:	3	choose	151	Received reward:	100	Total: 	-300	Update Q(3, 151) = 193.5
+
+63In state:	151	choose	25	Received reward:	-100	Total: 	-400	Update Q(151, 25) = 45.1449
+
+64In state:	25	choose	3	Received reward:	-100	Total: 	-500	Update Q(25, 3) = -3.15
+
+65In state:	3	choose	25	Received reward:	-100	Total: 	-600	Update Q(3, 25) = 18
+
+66In state:	25	choose	151	Received reward:	-100	Total: 	-700	Update Q(25, 151) = 32.85
+
+67In state:	151	choose	25	Received reward:	-100	Total: 	-800	Update Q(151, 25) = 45.5769
+
+68In state:	25	choose	175	Received reward:	0	Total: 	-800	Update Q(25, 175) = 84.6
+
+69In state:	175	choose	25	Received reward:	100	Total: 	-700	Update Q(175, 25) = 198
+
+70In state:	25	choose	151	Received reward:	100	Total: 	-600	Update Q(25, 151) = 206.685
+
+71In state:	151	choose	25	Received reward:	0	Total: 	-600	Update Q(151, 25) = 133.296
+
+72In state:	25	choose	102	Received reward:	-100	Total: 	-700	Update Q(25, 102) = 27.9
+
+73In state:	102	choose	25	Received reward:	0	Total: 	-700	Update Q(102, 25) = 108
+
+74In state:	25	choose	102	Received reward:	-100	Total: 	-800	Update Q(25, 102) = 32.04
+
+75In state:	102	choose	175	Received reward:	100	Total: 	-700	Update Q(102, 175) = 215.1
+
+76In state:	175	choose	3	Received reward:	0	Total: 	-700	Update Q(175, 3) = 86.85
+
+77In state:	3	choose	175	Received reward:	0	Total: 	-700	Update Q(3, 175) = 98.55
+
+78In state:	175	choose	2	Received reward:	-100	Total: 	-800	Update Q(175, 2) = -6.75
+
+79In state:	2	choose	25	Received reward:	-100	Total: 	-900	Update Q(2, 25) = 18
+
+80In state:	25	choose	3	Received reward:	100	Total: 	-800	Update Q(25, 3) = 230.059
+
+81In state:	3	choose	25	Received reward:	100	Total: 	-700	Update Q(3, 25) = 223.02
+
+82In state:	25	choose	102	Received reward:	-100	Total: 	-800	Update Q(25, 102) = 7.704
+
+83In state:	102	choose	3	Received reward:	100	Total: 	-700	Update Q(102, 3) = 190.35
+
+84In state:	3	choose	102	Received reward:	-100	Total: 	-800	Update Q(3, 102) = 4.5
+
+85In state:	102	choose	2	Received reward:	0	Total: 	-800	Update Q(102, 2) = 83.25
+
+86In state:	2	choose	25	Received reward:	0	Total: 	-800	Update Q(2, 25) = 117.9
+
+87In state:	25	choose	102	Received reward:	-100	Total: 	-900	Update Q(25, 102) = 32.0597
+
+88In state:	102	choose	132	Received reward:	100	Total: 	-800	Update Q(102, 132) = 154.335
+
+89In state:	132	choose	25	Received reward:	100	Total: 	-700	Update Q(132, 25) = 198
+
+90In state:	25	choose	132	Received reward:	-100	Total: 	-800	Update Q(25, 132) = 7.65
+
+91In state:	132	choose	3	Received reward:	0	Total: 	-800	Update Q(132, 3) = 102.6
+
+92In state:	3	choose	132	Received reward:	-100	Total: 	-900	Update Q(3, 132) = 7.65
+
+93In state:	132	choose	2	Received reward:	0	Total: 	-900	Update Q(132, 2) = 83.25
+
+94In state:	2	choose	175	Received reward:	100	Total: 	-800	Update Q(2, 175) = 189.9
+
+95In state:	175	choose	2	Received reward:	-100	Total: 	-900	Update Q(175, 2) = 19.8248
+
+96In state:	2	choose	132	Received reward:	100	Total: 	-800	Update Q(2, 132) = 192.6
+
+97In state:	132	choose	25	Received reward:	100	Total: 	-700	Update Q(132, 25) = 229.878
+
+98In state:	25	choose	132	Received reward:	-100	Total: 	-800	Update Q(25, 132) = 36.9315
+
+99In state:	132	choose	25	Received reward:	100	Total: 	-700	Update Q(132, 25) = 229.999
+
+100In state:	25	choose	132	Received reward:	-100	Total: 	-800	Update Q(25, 132) = 37.7643
+
+101In state:	132	choose	25	Received reward:	100	Total: 	-700	Update Q(132, 25) = 230.99
+
+102In state:	25	choose	132	Received reward:	-100	Total: 	-800	Update Q(25, 132) = 17.2764
+
+103In state:	132	choose	25	Received reward:	100	Total: 	-700	Update Q(132, 25) = 231
+
+104In state:	25	choose	102	Received reward:	-100	Total: 	-800	Update Q(25, 102) = 40.6972
+
+105In state:	102	choose	3	Received reward:	100	Total: 	-700	Update Q(102, 3) = 234.794
+
+106In state:	3	choose	102	Received reward:	-100	Total: 	-800	Update Q(3, 102) = 15.75
+
+107In state:	102	choose	3	Received reward:	100	Total: 	-700	Update Q(102, 3) = 234.008
+
+108In state:	3	choose	102	Received reward:	-100	Total: 	-800	Update Q(3, 102) = 16.875
+
+109In state:	102	choose	3	Received reward:	100	Total: 	-700	Update Q(102, 3) = 234
+
+110In state:	3	choose	132	Received reward:	-100	Total: 	-800	Update Q(3, 132) = 42.625
+
+111In state:	132	choose	25	Received reward:	100	Total: 	-700	Update Q(132, 25) = 235.467
+
+112In state:	25	choose	132	Received reward:	-100	Total: 	-800	Update Q(25, 132) = 43.0844
+
+113In state:	132	choose	25	Received reward:	100	Total: 	-700	Update Q(132, 25) = 235.5
+
+114In state:	25	choose	102	Received reward:	-100	Total: 	-800	Update Q(25, 102) = 42.8627
+
+115In state:	102	choose	3	Received reward:	100	Total: 	-700	Update Q(102, 3) = 236.488
+
+116In state:	3	choose	102	Received reward:	-100	Total: 	-800	Update Q(3, 102) = 17.8875
+
+117In state:	102	choose	3	Received reward:	100	Total: 	-700	Update Q(102, 3) = 236.5
+
+118In state:	3	choose	102	Received reward:	-100	Total: 	-800	Update Q(3, 102) = 17.9888
+
+119In state:	102	choose	3	Received reward:	100	Total: 	-700	Update Q(102, 3) = 236.5
+
+120In state:	3	choose	102	Received reward:	0	Total: 	-700	Update Q(3, 102) = 107.999
+
+121In state:	102	choose	3	Received reward:	0	Total: 	-700	Update Q(102, 3) = 146.5
+
+122In state:	3	choose	132	Received reward:	-100	Total: 	-800	Update Q(3, 132) = 38.645
+
+123In state:	132	choose	25	Received reward:	100	Total: 	-700	Update Q(132, 25) = 231.405
+
+124In state:	25	choose	132	Received reward:	0	Total: 	-700	Update Q(25, 132) = 128.591
+
+125In state:	132	choose	25	Received reward:	100	Total: 	-600	Update Q(132, 25) = 231.999
+
+126In state:	25	choose	102	Received reward:	0	Total: 	-600	Update Q(25, 102) = 124.127
+
+127In state:	102	choose	175	Received reward:	0	Total: 	-600	Update Q(102, 175) = 127.49
+
+128In state:	175	choose	2	Received reward:	-100	Total: 	-700	Update Q(175, 2) = 19.2783
+
+129In state:	2	choose	25	Received reward:	0	Total: 	-700	Update Q(2, 25) = 119.79
+
+130In state:	25	choose	2	Received reward:	-100	Total: 	-800	Update Q(25, 2) = 20.484
+
+131In state:	2	choose	3	Received reward:	-100	Total: 	-900	Update Q(2, 3) = 50.535
+
+132In state:	3	choose	132	Received reward:	0	Total: 	-900	Update Q(3, 132) = 131.098
+
+133In state:	132	choose	25	Received reward:	0	Total: 	-900	Update Q(132, 25) = 128.05
+
+134In state:	25	choose	2	Received reward:	0	Total: 	-900	Update Q(25, 2) = 88.4484
+
+135In state:	2	choose	25	Received reward:	-100	Total: 	-1000	Update Q(2, 25) = 16.479
+
+136In state:	25	choose	147	Received reward:	100	Total: 	-900	Update Q(25, 147) = 140.85
+
+137In state:	147	choose	25	Received reward:	100	Total: 	-800	Update Q(147, 25) = 184.5
+
+138In state:	25	choose	151	Received reward:	100	Total: 	-700	Update Q(25, 151) = 207.499
+
+139In state:	151	choose	3	Received reward:	-100	Total: 	-800	Update Q(151, 3) = 2.25
+
+140In state:	3	choose	147	Received reward:	0	Total: 	-800	Update Q(3, 147) = 90.9
+
+141In state:	147	choose	3	Received reward:	0	Total: 	-800	Update Q(147, 3) = 92.25
+
+142In state:	3	choose	2	Received reward:	100	Total: 	-700	Update Q(3, 2) = 176.4
+
+143In state:	2	choose	151	Received reward:	0	Total: 	-700	Update Q(2, 151) = 104.4
+
+144In state:	151	choose	2	Received reward:	0	Total: 	-700	Update Q(151, 2) = 86.4
+
+145In state:	2	choose	147	Received reward:	0	Total: 	-700	Update Q(2, 147) = 90.9
+
+146In state:	147	choose	2	Received reward:	-100	Total: 	-800	Update Q(147, 2) = -3.6
+
+147In state:	2	choose	102	Received reward:	0	Total: 	-800	Update Q(2, 102) = 85.95
+
+148In state:	102	choose	147	Received reward:	0	Total: 	-800	Update Q(102, 147) = 120.829
+
+149In state:	147	choose	2	Received reward:	-100	Total: 	-900	Update Q(147, 2) = 19.044
+
+150In state:	2	choose	3	Received reward:	100	Total: 	-800	Update Q(2, 3) = 191.803
+
+151In state:	3	choose	151	Received reward:	100	Total: 	-700	Update Q(3, 151) = 229.858
+
+152In state:	151	choose	3	Received reward:	-100	Total: 	-800	Update Q(151, 3) = 39.0938
+
+153In state:	3	choose	25	Received reward:	100	Total: 	-700	Update Q(3, 25) = 207.5
+
+154In state:	25	choose	3	Received reward:	-100	Total: 	-800	Update Q(25, 3) = 34.4303
+
+155In state:	3	choose	25	Received reward:	0	Total: 	-800	Update Q(3, 25) = 116.15
+
+156In state:	25	choose	3	Received reward:	-100	Total: 	-900	Update Q(25, 3) = 16.493
+
+157In state:	3	choose	151	Received reward:	100	Total: 	-800	Update Q(3, 151) = 224.136
+
+158In state:	151	choose	3	Received reward:	0	Total: 	-800	Update Q(151, 3) = 125.086
+
+159In state:	3	choose	2	Received reward:	100	Total: 	-700	Update Q(3, 2) = 194.04
+
+160In state:	2	choose	25	Received reward:	0	Total: 	-700	Update Q(2, 25) = 97.0479
+
+161In state:	25	choose	3	Received reward:	0	Total: 	-700	Update Q(25, 3) = 88.9493
+
+162In state:	3	choose	2	Received reward:	100	Total: 	-600	Update Q(3, 2) = 195.804
+
+163In state:	2	choose	175	Received reward:	-100	Total: 	-700	Update Q(2, 175) = 41.04
+
+164In state:	175	choose	2	Received reward:	0	Total: 	-700	Update Q(175, 2) = 111.577
+
+165In state:	2	choose	175	Received reward:	0	Total: 	-700	Update Q(2, 175) = 104.904
+
+166In state:	175	choose	147	Received reward:	0	Total: 	-700	Update Q(175, 147) = 135.389
+
+167In state:	147	choose	2	Received reward:	0	Total: 	-700	Update Q(147, 2) = 111.577
+
+168In state:	2	choose	3	Received reward:	0	Total: 	-700	Update Q(2, 3) = 106.93
+
+169In state:	3	choose	2	Received reward:	0	Total: 	-700	Update Q(3, 2) = 105.98
+
+170In state:	2	choose	174	Received reward:	0	Total: 	-700	Update Q(2, 174) = 0
+
+171In state:	174	choose	147	Received reward:	0	Total: 	-700	Update Q(174, 147) = 94.95
+
+172In state:	147	choose	174	Received reward:	0	Total: 	-700	Update Q(147, 174) = 42.3
+
+173In state:	174	choose	25	Received reward:	0	Total: 	-700	Update Q(174, 25) = 93.15
+
+174In state:	25	choose	174

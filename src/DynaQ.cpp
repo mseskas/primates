@@ -61,6 +61,7 @@ void DynaQ::IndicateResult(short reward){
         RedLED->TurnON();
     }
     TotalReward += reward;
+    cout << "total reward:\t" << TotalReward< < endl;
     logFile << "\tReceived reward:\t" << reward << "\tTotal: \t" << TotalReward;
 }
 
@@ -74,7 +75,10 @@ void DynaQ::RunIterations(int iterations, bool useMPU){
 }
 
 void DynaQ::RunIterationSONAR(){
-        short nextState = EGreedyByQuality(CurrentState);
+       // short nextState = EGreedyByQuality(CurrentState);
+        short nextState = EGreedy(CurrentState);
+
+
 logFile << CurrentIteration << "In state:\t" << CurrentState << "\tchoose\t" << nextState;
 
         RewardModel->StartMeasure();
@@ -88,7 +92,7 @@ logFile << CurrentIteration << "In state:\t" << CurrentState << "\tchoose\t" << 
             + GAMA * GetMaxQuality(nextState) - Q[CurrentState][nextState]); //old:
         //Q(s, a) = Q(s, a) + β(r + γmax a ′ Q(s ′ , a ′ ) − Q(s, a))
 
-logFile << "\tUpdate Q(" << CurrentState << ", " << nextState << ") = " << Q[CurrentState][nextState] << endl << endl;
+logFile << "\tUpdate Q(" << CurrentState << ", " << nextState << ") = " << Q[CurrentState][nextState] << endl;
 
         //Update Model
         Model[CurrentState][nextState] = reward;
