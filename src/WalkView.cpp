@@ -20,6 +20,26 @@ void WalkView::btnStandClick(GtkWidget *wid, gpointer user_data)
     obj->Model->SetSinglePosition(0, angle);
 }
 
+void pwm_gtk_control::scale_value_changed(GtkWidget *wid, gpointer user_data)
+{
+    pwm_gtk_control * obj = (pwm_gtk_control * )user_data;
+    if (obj->isON == false) {
+        printf("Off\r\n");
+        return;
+    }
+    if (obj->ser == NULL) {
+        printf("null\r\n");
+        return;
+    }
+    gdouble val = gtk_range_get_value(GTK_RANGE(obj->scale));
+    double d = (double)val;
+    d = d / 100;
+    obj->ser->set_angle(d);
+    printf("Scale turn to %f\n\r", d);
+}
+
+
+
 void WalkView::build_gui(){
     fixed = gtk_fixed_new();
     gtk_container_set_border_width(GTK_CONTAINER (fixed), 2);
