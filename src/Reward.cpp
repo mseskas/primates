@@ -1,6 +1,7 @@
 #include "Reward.h"
 
 
+
 Reward::Reward(MPU6050 * mpuChip, Sonar * sonar)
 {
     HasMPU = false;
@@ -20,6 +21,9 @@ Reward::Reward(MPU6050 * mpuChip, Sonar * sonar)
     OutputLabel = NULL;
     ResultCategory = 0;
     IterationNumber = 1;
+    GreenLED = new LED(GREEN_LED_PIN);
+    RedLED = new LED(RED_LED_PIN);
+
     time_t now = time(0);
     tm *ltm = localtime(&now);
 
@@ -129,7 +133,6 @@ double Reward::SyncGetReward()
     return LastResult;
 }
 
-
 void Reward::StartMeasure()
 {
     ResultCategory = 0;
@@ -138,6 +141,19 @@ void Reward::StartMeasure()
     LastDistance = FrontSonar->GetFilteredDistance();
     logFile << "Start measure: \t" << LastDistance << endl;
     cout << "Start measure: \t" << LastDistance << endl;
+}
+
+void Reward::InicatePause(){
+    GreenLED->TurnON();
+    RedLED->TurnON();
+    cout << "PAUSE STATE!!!!!" << endl;
+    while (FrontSonar->GetFilteredDistance() < 8){
+        GreenLED->TurnOff();
+        RedLED->TurnOff();
+        delay(333);
+        GreenLED->TurnON();
+        RedLED->TurnON();
+    }
 }
 
 short Reward::StopMeasure()
@@ -149,6 +165,12 @@ short Reward::StopMeasure()
     }
 
     int distance = FrontSonar->GetFilteredDistance();
+
+    if (distance < 8){
+        InicatePause();
+    }
+
+
     logFile << "Stop measure: \t" << distance;
     cout << "Stop measure: \t" << distance;
 

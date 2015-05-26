@@ -12,7 +12,7 @@ DynaQ::~DynaQ(){
 DynaQ::DynaQ(AllServoModel * allServoModel, Reward * rewardModel)
 {
     BETA = 0.9;
-    GAMA = 0.5;
+    GAMA = 0.1;
     EPSILON = 0.1;
     TotalReward = 0;
     CurrentIteration = 0;
@@ -61,7 +61,7 @@ void DynaQ::IndicateResult(short reward){
         RedLED->TurnON();
     }
     TotalReward += reward;
-    cout << "total reward:\t" << TotalReward< < endl;
+    cout << "total reward:\t" << TotalReward << endl;
     logFile << "\tReceived reward:\t" << reward << "\tTotal: \t" << TotalReward;
 }
 
@@ -79,7 +79,7 @@ void DynaQ::RunIterationSONAR(){
         short nextState = EGreedy(CurrentState);
 
 
-logFile << CurrentIteration << "In state:\t" << CurrentState << "\tchoose\t" << nextState;
+logFile << CurrentIteration << "\tIn state:\t" << CurrentState << "\tchoose\t" << nextState;
 
         RewardModel->StartMeasure();
         StateModel->ExecutePosition(nextState);
@@ -181,6 +181,9 @@ short DynaQ::GetMaxQuality(short state){
             maxQ = Q[state][a];
         }
      }
+
+     if (maxQ < 100) maxQ = 0;
+
      return maxQ;
 }
 

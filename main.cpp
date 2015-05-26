@@ -38,10 +38,7 @@ int main()
     Reward* reward = new Reward(new MPU6050(), frontSonar);
    // gui_main* main_gui = new gui_main(servosModel, reward);
 
-
     dyna = new DynaQ(servosModel, reward);
-
-
 
     char c;
 
@@ -77,7 +74,7 @@ int main()
                 break;
             case 's':
                 cout << "measure distance" << endl;
-                for (int i = 0; i < 100; i ++) {
+                for (int i = 0; i < 10; i ++) {
                     frontSonar->GetDistance();
                     delay(200);
                 }

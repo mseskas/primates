@@ -12,6 +12,8 @@
 
 #include <mutex>
 
+#include "LED.h"
+
 class Reward
 {
     public:
@@ -24,6 +26,8 @@ class Reward
         float IntervalMs; // time between measure
         float Threshold;
         int DurationMs;  // total measure duration
+
+        void InicatePause();
 
         double SyncGetReward();
         void AsyncGetReward(bool waitToFinish = false);
@@ -46,6 +50,8 @@ class Reward
         int IterationNumber;
         ofstream logFile;
 
+        LED * GreenLED;
+        LED * RedLED;
         std::thread * _execution_thread;
         std::mutex ExecutionLock;
         bool IsRunning;

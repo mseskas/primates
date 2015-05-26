@@ -14,7 +14,6 @@
 #include "LED.h"
 
 
-
 using namespace std;
 
 class DynaQ
