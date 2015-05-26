@@ -31,7 +31,6 @@ class DynaQ
         short CurrentState;
         short CurrentIteration;
 
-
         void PrepareToLearn();
         short DoPlanning(short currentstate);
         short EGreedy(short currentState);
@@ -62,9 +61,6 @@ class DynaQ
 
     protected:
     private:
-
-
-
         ofstream logFile;
         string dateTimeStr;
 };

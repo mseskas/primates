@@ -160,6 +160,9 @@ void Reward::InicatePause(){
         GreenLED->TurnON();
         RedLED->TurnON();
     }
+    GreenLED->TurnOff();
+    RedLED->TurnOff();
+    delay(1500);
 }
 
 short Reward::StopMeasure()
@@ -174,8 +177,6 @@ short Reward::StopMeasure()
 
     logFile << "Stop measure: \t" << distance;
     cout << "Stop measure: \t" << distance;
-
-
 
     // standing still: -1, 0, +1
     if (-2 < (distance - LastDistance) && (distance - LastDistance) < 2) {
