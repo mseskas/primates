@@ -12,7 +12,7 @@ DynaQ::~DynaQ(){
 DynaQ::DynaQ(AllServoModel * allServoModel, Reward * rewardModel)
 {
     BETA = 0.9;
-    GAMA = 0.9;
+    GAMA = 0.5;
     EPSILON = 0.01;
     TotalReward = 0;
     CurrentIteration = 0;
@@ -63,7 +63,8 @@ void DynaQ::IndicateResult(short reward){
     }
     TotalReward += reward;
     cout << "total reward:\t" << TotalReward << endl;
-    logFile << "\tReceived reward:\t" << reward << "\tTotal: \t" << TotalReward;
+   // logFile << "\tReceived reward:\t" << reward << "\tTotal: \t" << TotalReward;
+    cout << "\tReceived reward:\t" << reward << "\tTotal: \t" << TotalReward;
 }
 
 void DynaQ::RunIterations(int iterations, bool useMPU, short nextState=-1, short reward=-1){
@@ -85,10 +86,11 @@ void DynaQ::RunIterationSONAR(short forcedNextState = -1, short forcedReward = -
             nextState = forcedNextState;
         }
 
-logFile << CurrentIteration << "\tIn state:\t" << CurrentState << "\tchoose\t" << nextState;
+//logFile << CurrentIteration << "\tIn state:\t" << CurrentState << "\tchoose\t" << nextState;
+cout << CurrentIteration << "\tIn state:\t" << CurrentState << "\tchoose\t" << nextState;
 
        // RewardModel->StartMeasure();
-        StateModel->ExecutePosition(nextState);
+     //   StateModel->ExecutePosition(nextState);
        // delay(1000);
         short reward ;//= RewardModel->StopMeasure();
         char input;
@@ -113,10 +115,22 @@ logFile << CurrentIteration << "\tIn state:\t" << CurrentState << "\tchoose\t" <
         }
 
         IndicateResult(reward);
-        Q[CurrentState][nextState] = Q[CurrentState][nextState] + BETA * (reward  + GAMA * GetMaxQuality(nextState) - Q[CurrentState][nextState]);
+        Q[CurrentState][nextState] = (Q[CurrentState][nextState] - BETA * (Q[CurrentState][nextState])) + BETA * (reward  + GAMA * GetMaxQuality(nextState));
+
+        if (Q[CurrentState][nextState]  >= 200){
+            cout << "ERROR  ERROR  ERROR  ERROR  ERROR  ERROR  ERROR  ERROR  ERROR  ERROR  ERROR  ERROR  ERROR  ERROR  ERROR"<< endl;
+            cout << "ERROR  ERROR  ERROR  ERROR  ERROR  ERROR  ERROR  ERROR  ERROR  ERROR  ERROR  ERROR  ERROR  ERROR  ERROR"<< endl;
+            cout << "ERROR  ERROR  ERROR  ERROR  ERROR  ERROR  ERROR  ERROR  ERROR  ERROR  ERROR  ERROR  ERROR  ERROR  ERROR"<< endl;
+            cout << "ERROR  ERROR  ERROR  ERROR  ERROR  ERROR  ERROR  ERROR  ERROR  ERROR  ERROR  ERROR  ERROR  ERROR  ERROR"<< endl;
+            cout << "ERROR  ERROR  ERROR  ERROR  ERROR  ERROR  ERROR  ERROR  ERROR  ERROR  ERROR  ERROR  ERROR  ERROR  ERROR"<< endl;
+        }
+
         //Q(s, a) = Q(s, a) + β(r + γmax a ′ Q(s ′ , a ′ ) − Q(s, a))
 
-logFile << "\tUpdate Q(" << CurrentState << ", " << nextState << ") = " << Q[CurrentState][nextState] << endl;
+//logFile << "\tUpdate Q(" << CurrentState << ", " << nextState << ") = " << Q[CurrentState][nextState] << endl;
+cout << "\tUpdate Q(" << CurrentState << ", " << nextState << ") = " << Q[CurrentState][nextState] << endl;
+
+
 
         //Update Model
         Model[CurrentState][nextState] = reward;
@@ -159,8 +173,7 @@ short DynaQ::DoPlanning(short currentstate){
     float oldValue = Q[previousState][currentstate];
     float reward = Model[previousState][currentstate];
 
-    Q[previousState][currentstate] = oldValue + BETA * (reward
-        + (GAMA * GetMaxQuality(currentstate)) - oldValue);
+    Q[previousState][currentstate] = oldValue + BETA * (reward + (GAMA * GetMaxQuality(currentstate)) - oldValue);
 
     return previousState;
 }
@@ -199,7 +212,8 @@ short DynaQ::EGreedyByQuality(short state){
             Temporary[repeatedValues] = a;
         }
     }
-    logFile << "egreedyByQuality repeatedValues - " << repeatedValues << "\t value = " << maxQ << endl;
+    //logFile << "egreedyByQuality repeatedValues - " << repeatedValues << "\t value = " << maxQ << endl;
+    cout << "egreedyByQuality repeatedValues - " << repeatedValues << "\t value = " << maxQ << endl;
     if (repeatedValues > 0){
         int randomState = rand() % repeatedValues + 1;  // rand = [0; repeatedValues]
         return Temporary[randomState];
