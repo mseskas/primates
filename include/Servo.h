@@ -1,7 +1,7 @@
 #ifndef servo_H
 #define servo_H
 
-#include <pwm_chip.h>
+#include <PwmChip.h>
 
 #include <project_constants.h>
 #include <iostream>

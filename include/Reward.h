@@ -11,10 +11,10 @@
 #include <cstdlib>
 
 #include <mutex>
-
+#include "IReward.h"
 #include "LED.h"
 
-class Reward
+class Reward : public IReward
 {
     public:
         Reward(MPU6050 * mpuChip, Sonar * sonar);

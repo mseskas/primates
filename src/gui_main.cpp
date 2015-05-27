@@ -1,6 +1,6 @@
 #include "gui_main.h"
 
-gui_main::gui_main(AllServoModel * allServoModel, Reward * rewardModel)
+gui_main::gui_main(ServoModel * allServoModel, Reward * rewardModel)
 {
     ServosModel = allServoModel;
     RewardModel = rewardModel;

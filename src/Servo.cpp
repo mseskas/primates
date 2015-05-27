@@ -1,4 +1,4 @@
-#include "servo.h"
+#include "Servo.h"
 
 servo::servo(pwm_chip * chip_PCA9685, int pin_no)
 {

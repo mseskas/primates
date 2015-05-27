@@ -3,8 +3,8 @@
 
 #include <gtk/gtk.h>
 #include <gtk/gtkbutton.h>
-#include "pwm_chip.h"
-#include "servo.h"
+#include "PwmChip.h"
+#include "Servo.h"
 
 
 

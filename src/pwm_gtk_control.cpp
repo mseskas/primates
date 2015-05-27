@@ -1,8 +1,8 @@
 
 #include "../include/pwm_gtk_control.h"
 
-#include "pwm_chip.h"
-#include "servo.h"
+#include "PwmChip.h"
+#include "Servo.h"
 
 /*
     Static fields must be declared in header file

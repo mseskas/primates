@@ -1,6 +1,6 @@
-#include "AllServoModel.h"
+#include "ServoModel.h"
 
-AllServoModel::AllServoModel()
+ServoModel::ServoModel()
 {
     //
     int * params = new int[srvQuantity*3] {
@@ -23,11 +23,11 @@ AllServoModel::AllServoModel()
     LoadServoControls();
 }
 
-void AllServoModel::ReleaseMotors(){
+void ServoModel::ReleaseState(){
     for (int i = 0; i < srvQuantity; i++) Servos[i]->Reset();
 }
 
-void AllServoModel::LoadServoControls(){
+void ServoModel::LoadServoControls(){
     pwm_chip * chip = NULL;
     chip = new pwm_chip(PWM_CHIP_ADDR);
    // servo ** temp = new servo*[srvQuantity];
@@ -35,7 +35,7 @@ void AllServoModel::LoadServoControls(){
     for (int i = 0; i < srvQuantity; i++) Servos[i] = new servo(chip, i+1);
 }
 
-short AllServoModel::BeginState(){
+short ServoModel::BeginState(){
     //string tmp = "010101010101";
     //strcpy(LastState, tmp.c_str());
     //short beginState = 1365;
@@ -64,7 +64,7 @@ short AllServoModel::BeginState(){
     return LastState;
 }
 
-void AllServoModel::ExecutePosition(short state){
+void ServoModel::ExecutePosition(short state){
     int min = 0;
     int max = 0;
     double d = 0.0;
@@ -166,8 +166,6 @@ void AllServoModel::ExecutePosition(short state){
             Servos[10]->set_angle(d);
     }
 
-
-
 //    for (int i = 0; i < srvQuantity; i++){
 //
 //
@@ -185,7 +183,7 @@ void AllServoModel::ExecutePosition(short state){
 
 
 // Possible data12[x] values : "0", "1" or any other
-void AllServoModel::ExecutePosition(const char * data12){
+void ServoModel::ExecutePosition(const char * data12){
     int min = 0;
     int max = 0;
     double d = 0.0;

@@ -1,5 +1,5 @@
-#include "../include/gtkAllServo.h"
-#include "servo.h"
+#include "gtkAllServo.h"
+#include "Servo.h"
 
 
 GtkWidget * gtkAllServo::get_main()
@@ -22,12 +22,12 @@ void gtkAllServo::btnTurnClick(GtkWidget *wid, gpointer user_data)
     g.append(leg3txt);
     g.append(leg4txt);
 
-    obj->ServoModel->ExecutePosition(g.c_str());
+    obj->Servos->ExecutePosition(g.c_str());
 }
 
-gtkAllServo::gtkAllServo(char * title, AllServoModel * servoModel)
+gtkAllServo::gtkAllServo(char * title, ServoModel * servoModel)
 {
-    ServoModel = servoModel;
+    Servos = servoModel;
 
     frame = gtk_frame_new(title);
     fixed = gtk_fixed_new();

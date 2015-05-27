@@ -1,4 +1,4 @@
-#include "pwm_chip.h"
+#include "PwmChip.h"
 
 pwm_chip::pwm_chip(int chip_addr)
 {

@@ -4,7 +4,7 @@
 #include "Reward.h"
 #include "DynaQ.h"
 #include <signal.h>
-#include "AllServoModel.h"
+#include "ServoModel.h"
 #include "Sonar.h"
 
 
@@ -33,7 +33,7 @@ int main()
 
 
     Sonar* frontSonar = new Sonar(FRONT_SONAR_TRIGGER_PIN, FRONT_SONAR_ECHO_PIN);
-    AllServoModel* servosModel = new AllServoModel();
+    ServoModel* servosModel = new ServoModel();
 
     Reward* reward = new Reward(new MPU6050(), frontSonar);
    // gui_main* main_gui = new gui_main(servosModel, reward);

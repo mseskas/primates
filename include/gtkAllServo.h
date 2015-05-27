@@ -3,15 +3,15 @@
 
 #include <gtk/gtk.h>
 
-#include "AllServoModel.h"
+#include "ServoModel.h"
 
 class gtkAllServo
 {
     public:
-        gtkAllServo(char * title, AllServoModel * servoModel);
+        gtkAllServo(char * title, ServoModel * servoModel);
         GtkWidget * get_main();
 
-        AllServoModel * ServoModel;
+        ServoModel * Servos;
         int srvQuantity;
 
         static void btnTurnClick(GtkWidget *wid, gpointer user_data);

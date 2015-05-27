@@ -6,7 +6,7 @@
 #include <X11/Xlib.h>
 #include <thread>
 #include <sys/utsname.h>
-#include "servo.h"
+#include "Servo.h"
 #include "gtkAllServo.h"
 #include "pwm_gtk_control.h"
 #include "RewardView.h"
@@ -14,7 +14,7 @@
 class gui_main
 {
     public:
-        gui_main(AllServoModel * allServoModel, Reward * rewardModel);
+        gui_main(ServoModel * allServoModel, Reward * rewardModel);
         void build_gui();
         void LoadServoControls(GtkWidget * frame);
 
@@ -25,7 +25,7 @@ class gui_main
 
         pwm_gtk_control * PwmViews[12];
 
-        AllServoModel * ServosModel;
+        ServoModel * ServosModel;
         Reward * RewardModel;
 
     protected:

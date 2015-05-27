@@ -1,25 +1,25 @@
 #ifndef ALLSERVOMODEL_H
 #define ALLSERVOMODEL_H
 
-#include <pwm_chip.h>
-#include "servo.h"
+#include <PwmChip.h>
+#include "Servo.h"
 #include <iostream>
 #include <cstring>
-
+#include "IState.h"
 
 
 using namespace std;
 
-class AllServoModel
+class ServoModel : public IState
 {
     public:
         static const int srvQuantity = 12;
-        AllServoModel();
+        ServoModel();
 
         void ExecutePosition(const char * data12);
         void ExecutePosition(short state);
 
-        void ReleaseMotors();
+        void ReleaseState();
 
         short BeginState();
 
@@ -28,12 +28,7 @@ class AllServoModel
 
         servo * Servos[srvQuantity];
         int * ServoParams;
-
-
-
-    protected:
     private:
-
         void LoadServoControls();
 
 };

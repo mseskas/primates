@@ -63,40 +63,42 @@
 			<Add library="/usr/local/lib/libwiringPiDev.so" />
 			<Add directory="/usr/local/lib" />
 		</Linker>
-		<Unit filename="include/AllServoModel.h" />
 		<Unit filename="include/DynaQ.h" />
+		<Unit filename="include/IReward.h" />
+		<Unit filename="include/IState.h" />
 		<Unit filename="include/LED.h" />
 		<Unit filename="include/MPU6050.h" />
+		<Unit filename="include/PwmChip.h" />
 		<Unit filename="include/Reward.h" />
 		<Unit filename="include/RewardView.h" />
+		<Unit filename="include/Servo.h" />
+		<Unit filename="include/ServoModel.h" />
 		<Unit filename="include/Sonar.h" />
 		<Unit filename="include/gtkAllServo.h">
 			<Option target="Debug" />
 		</Unit>
 		<Unit filename="include/gui_main.h" />
 		<Unit filename="include/project_constants.h" />
-		<Unit filename="include/pwm_chip.h" />
 		<Unit filename="include/pwm_gtk_control.h">
 			<Option target="Debug" />
 		</Unit>
-		<Unit filename="include/servo.h" />
 		<Unit filename="main.cpp" />
-		<Unit filename="src/AllServoModel.cpp" />
 		<Unit filename="src/DynaQ.cpp" />
 		<Unit filename="src/LED.cpp" />
 		<Unit filename="src/MPU6050.cpp" />
+		<Unit filename="src/PwmChip.cpp" />
 		<Unit filename="src/Reward.cpp" />
 		<Unit filename="src/RewardView.cpp" />
+		<Unit filename="src/Servo.cpp" />
+		<Unit filename="src/ServoModel.cpp" />
 		<Unit filename="src/Sonar.cpp" />
 		<Unit filename="src/gtkAllServo.cpp">
 			<Option target="Debug" />
 		</Unit>
 		<Unit filename="src/gui_main.cpp" />
-		<Unit filename="src/pwm_chip.cpp" />
 		<Unit filename="src/pwm_gtk_control.cpp">
 			<Option target="Debug" />
 		</Unit>
-		<Unit filename="src/servo.cpp" />
 		<Extensions>
 			<code_completion />
 			<debugger />

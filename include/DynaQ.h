@@ -8,18 +8,17 @@
 #include <thread>   // std::sleep_for
 #include <chrono>   // std::chrono::seconds
 #include <sys/stat.h> // mkdir
-
-#include "RewardView.h"
-#include "AllServoModel.h"
+#include "IReward.h"
+#include "IState.h"
 #include "LED.h"
-
+#include "project_constants.h"
 
 using namespace std;
 
 class DynaQ
 {
     public:
-        DynaQ(AllServoModel * allServoModel, Reward * rewardModel);
+        DynaQ(IState* allServoModel, IReward * rewardModel);
         ~DynaQ();
         static const short Statequantity =  256;
         //static const short Statequantity =  4096;
@@ -54,8 +53,8 @@ class DynaQ
         float BETA;  // 0.9
         float GAMA;  // 0.9
         float EPSILON; // 0.01
-        AllServoModel * StateModel;
-        Reward * RewardModel;
+        IState * StateModel;
+        IReward * RewardModel;
         LED * GreenLED;
         LED * RedLED;
 

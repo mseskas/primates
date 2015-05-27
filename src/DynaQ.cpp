@@ -3,13 +3,13 @@
 // destructor to release memory
 DynaQ::~DynaQ(){
     logFile.close();
-    StateModel->ReleaseMotors();
+    StateModel->ReleaseState();
     RedLED->TurnOff();
     GreenLED->TurnOff();
     cout << "DynaQ deleted";
 }
 
-DynaQ::DynaQ(AllServoModel * allServoModel, Reward * rewardModel)
+DynaQ::DynaQ(IState* allServoModel, IReward* rewardModel)
 {
     BETA = 0.9;
     GAMA = 0.5;
@@ -117,13 +117,8 @@ cout << CurrentIteration << "\tIn state:\t" << CurrentState << "\tchoose\t" << n
         IndicateResult(reward);
         Q[CurrentState][nextState] = (Q[CurrentState][nextState] - BETA * (Q[CurrentState][nextState])) + BETA * (reward  + GAMA * GetMaxQuality(nextState));
 
-        if (Q[CurrentState][nextState]  >= 200){
-            cout << "ERROR  ERROR  ERROR  ERROR  ERROR  ERROR  ERROR  ERROR  ERROR  ERROR  ERROR  ERROR  ERROR  ERROR  ERROR"<< endl;
-            cout << "ERROR  ERROR  ERROR  ERROR  ERROR  ERROR  ERROR  ERROR  ERROR  ERROR  ERROR  ERROR  ERROR  ERROR  ERROR"<< endl;
-            cout << "ERROR  ERROR  ERROR  ERROR  ERROR  ERROR  ERROR  ERROR  ERROR  ERROR  ERROR  ERROR  ERROR  ERROR  ERROR"<< endl;
-            cout << "ERROR  ERROR  ERROR  ERROR  ERROR  ERROR  ERROR  ERROR  ERROR  ERROR  ERROR  ERROR  ERROR  ERROR  ERROR"<< endl;
-            cout << "ERROR  ERROR  ERROR  ERROR  ERROR  ERROR  ERROR  ERROR  ERROR  ERROR  ERROR  ERROR  ERROR  ERROR  ERROR"<< endl;
-        }
+        if (Q[CurrentState][nextState]  >= 200) for (int i = 0; i < 10; i++) cout << "ERROR  ERROR  ERROR  ERROR  ERROR  ERROR  ERROR  ERROR  ERROR  ERROR  ERROR  ERROR  ERROR  ERROR  ERROR"<< endl;
+
 
         //Q(s, a) = Q(s, a) + β(r + γmax a ′ Q(s ′ , a ′ ) − Q(s, a))
 
@@ -260,7 +255,7 @@ logFile << "In state:\t" << CurrentState << "\tchoose\t" << nextState;
         RewardModel->AsyncGetReward();
         delay(120);
         StateModel->ExecutePosition(nextState);
-        RewardModel->AsyncGetReward(true); // just waiting to finish measurement
+        RewardModel->AsyncGetReward(); // just waiting to finish measurement
         short reward = RewardModel->ResultCategory;
         IndicateResult(reward);
 
