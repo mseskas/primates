@@ -41,8 +41,13 @@ void ServoModel::LoadServoControls(){
 
 void ServoModel::SetSinglePosition(int servo, float anglePercent){
     if (servo < 0 || srvQuantity < servo ) return;
-    Servos[servo]->set_angle((float)anglePercent / 100);
-    cout << "SetSinglePosition " <<  servo << " " << anglePercent << endl;
+    if (anglePercent < 0 || 100 < anglePercent ) return;
+
+    int max = ServoParams[servo*3 + 2];
+    int min = ServoParams[servo*3 + 1];
+    float value = min + ((anglePercent / 100) * ( max - min ));
+    Servos[servo]->set_angle(value / 100);
+    cout << "SetSinglePosition " <<  servo << " " << value << endl;
 }
 
 void ServoModel::SetAllPositions(float * positions){

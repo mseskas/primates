@@ -17,7 +17,10 @@ class WalkView
         GtkWidget * SitButton;
         ServoModel * Model;
 
+        GtkWidget * Zscale;
+
         static void btnStandClick(GtkWidget *wid, gpointer user_data);
+        static void scale_Z_changed(GtkWidget *wid, gpointer user_data);
     private:
         GtkWidget * fixed;
 

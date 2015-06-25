@@ -20,21 +20,14 @@ void WalkView::btnStandClick(GtkWidget *wid, gpointer user_data)
     obj->Model->SetSinglePosition(0, angle);
 }
 
-void pwm_gtk_control::scale_value_changed(GtkWidget *wid, gpointer user_data)
+void WalkView::scale_Z_changed(GtkWidget *wid, gpointer user_data)
 {
-    pwm_gtk_control * obj = (pwm_gtk_control * )user_data;
-    if (obj->isON == false) {
-        printf("Off\r\n");
-        return;
-    }
-    if (obj->ser == NULL) {
-        printf("null\r\n");
-        return;
-    }
-    gdouble val = gtk_range_get_value(GTK_RANGE(obj->scale));
+    WalkView * obj = (WalkView * )user_data;
+
+    gdouble val = gtk_range_get_value(GTK_RANGE(obj->Zscale));
     double d = (double)val;
-    d = d / 100;
-    obj->ser->set_angle(d);
+    obj->Model->SetSinglePosition(3, d);
+    obj->Model->SetSinglePosition(2, 100 - d);
     printf("Scale turn to %f\n\r", d);
 }
 
@@ -55,12 +48,12 @@ void WalkView::build_gui(){
     gtk_fixed_put(GTK_FIXED (fixed), SitButton, 150, 60);
 
 
-    GtkWidget * scale = gtk_hscale_new_with_range(0, 100, 1);
-    gtk_range_set_value(GTK_RANGE(scale), 0);
+    Zscale = gtk_hscale_new_with_range(0, 100, 1);
+    gtk_range_set_value(GTK_RANGE(Zscale), 0);
 
-    gtk_widget_set_usize(scale, 130, 45);
-   // g_signal_connect (scale, "value-changed", G_CALLBACK (pwm_gtk_control::scale_value_changed), this);
-    gtk_fixed_put(GTK_FIXED (fixed), scale, 10, 0);
+    gtk_widget_set_usize(Zscale, 130, 45);
+    g_signal_connect (Zscale, "value-changed", G_CALLBACK (WalkView::scale_Z_changed), this);
+    gtk_fixed_put(GTK_FIXED (fixed), Zscale, 10, 0);
 
 
 }

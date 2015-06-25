@@ -56,10 +56,6 @@ void pwm_gtk_control::scale_value_changed(GtkWidget *wid, gpointer user_data)
     double d = (double)val;
     d = d / 100;
     obj->ser->set_angle(d);
-
-
-
-
     printf("Scale turn to %f\n\r", d);
 }
 
