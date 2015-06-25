@@ -36,7 +36,7 @@ int main()
     ServoModel* servosModel = new ServoModel();
 
     Reward* reward = new Reward(new MPU6050(), frontSonar);
-   // gui_main* main_gui = new gui_main(servosModel, reward);
+    gui_main* main_gui = new gui_main(servosModel, reward);
 
     dyna = new DynaQ(servosModel, reward);
 

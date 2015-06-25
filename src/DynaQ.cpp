@@ -78,7 +78,6 @@ void DynaQ::RunIterations(int iterations, bool useMPU, short nextState=-1, short
 
 void DynaQ::RunIteration(short forcedNextState = -1, short forcedReward = -1){
         short nextState = EGreedyByQuality(CurrentState);
-        short nextState;
 
         if (forcedNextState == -1){
             nextState = EGreedyByQuality(CurrentState);
@@ -88,29 +87,28 @@ void DynaQ::RunIteration(short forcedNextState = -1, short forcedReward = -1){
 
 logFile << CurrentIteration << "\tIn state:\t" << CurrentState << "\tchoose\t" << nextState;
 cout << CurrentIteration << "\tIn state:\t" << CurrentState << "\tchoose\t" << nextState;
-        double t = (double)cvGetTickCount();  // mark when started
         RewardModel->StartMeasure();
         StateModel->ExecutePosition(nextState); // asynchronous
 
 // start learn calculations in parallel
         short reward = lastReward;
 
-        char input;
-        cout << "insert reward 1 - forward, 0 - still, . - backward: ";
-        cin >> input;
-        cout << endl;
-
-        switch (input) {
-            case '1':
-                reward = 100;
-                break;
-            case '0':
-                reward = 0;
-                break;
-            case '.':
-                reward = -100;
-                break;
-        }
+//        char input;
+//        cout << "insert reward 1 - forward, 0 - still, . - backward: ";
+//        cin >> input;
+//        cout << endl;
+//
+//        switch (input) {
+//            case '1':
+//                reward = 100;
+//                break;
+//            case '0':
+//                reward = 0;
+//                break;
+//            case '.':
+//                reward = -100;
+//                break;
+//        }
 
         if (forcedReward != -1){
             reward = forcedReward;
@@ -143,9 +141,7 @@ cout << "\tUpdate Q(" << CurrentState << ", " << nextState << ") = " << Q[Curren
         Exploration[CurrentState][nextState] = CurrentIteration;
 // stop learn calculations in parallel
 
-        t = (double)cvGetTickCount() - t;  // count time past
-        t = t/((double)cvGetTickFrequency()*1000); // in ms
-        delay(1000 - t); // synchronize
+
         lastReward = RewardModel->StopMeasure();
         lastState = CurrentState;
         CurrentState = nextState;

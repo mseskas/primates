@@ -17,8 +17,12 @@ ServoModel::ServoModel()
             10, 10, 20,
             23, 10, 23
             };
-
     ServoParams = params;
+
+    float * positions = new float[srvQuantity] {0,0,0,0,0,0,0,0,0,0,0,0};
+    ServoPositions = positions;
+
+
     LastState = 0;
     LoadServoControls();
 }
@@ -33,6 +37,19 @@ void ServoModel::LoadServoControls(){
    // servo ** temp = new servo*[srvQuantity];
    // Servos = &temp[0][0];
     for (int i = 0; i < srvQuantity; i++) Servos[i] = new servo(chip, i+1);
+}
+
+void ServoModel::SetSinglePosition(int servo, float anglePercent){
+    if (servo < 0 || srvQuantity < servo ) return;
+    Servos[servo]->set_angle((float)anglePercent / 100);
+    cout << "SetSinglePosition " <<  servo << " " << anglePercent << endl;
+}
+
+void ServoModel::SetAllPositions(float * positions){
+    for (int i = 0; i < srvQuantity; i++){
+        SetSinglePosition(i, positions[i]);
+    }
+    cout << "SetAllPositions " << endl;
 }
 
 short ServoModel::BeginState(){

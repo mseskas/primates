@@ -69,8 +69,8 @@ void RewardView::build_gui(){
 
     SetParamsButton = gtk_button_new_with_label("Set Parameters");
     g_signal_connect (SetParamsButton, "clicked", G_CALLBACK (RewardView::btnSetParamsClick), this);
-    gtk_widget_set_usize(SetParamsButton, 125, 45);
-    gtk_fixed_put(GTK_FIXED (fixed), SetParamsButton, groupX+55, 85);
+    gtk_widget_set_usize(SetParamsButton, 120, 45);
+    gtk_fixed_put(GTK_FIXED (fixed), SetParamsButton, groupX+60, 85);
 
     gtk_fixed_put(GTK_FIXED (fixed), gtk_label_new("Threshold"), 10, 105);
     ThresholdEntry = gtk_entry_new_with_buffer(gtk_entry_buffer_new(threshold.c_str(), threshold.length()));

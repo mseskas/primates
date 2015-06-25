@@ -50,12 +50,17 @@ void gui_main::build_gui()
     gtk_fixed_put(GTK_FIXED (_positionPage), all->get_main(), 0, 240);
 
     RewardView * view = new RewardView(RewardModel);
-
-
     gtk_fixed_put(GTK_FIXED (_positionPage), view->get_main(), 250, 0);
+
+    // walk page
+    WalkView * walkView = new WalkView(ServosModel);
+    GtkWidget * walkPage = gtk_fixed_new();
+    gtk_widget_set_usize(walkPage, 900, 450);
+    gtk_fixed_put(GTK_FIXED (walkPage), walkView->get_main(), 0, 0);
 
     gtk_notebook_append_page ((GtkNotebook*)noteBook, _positionPage, gtk_label_new("Position"));
     gtk_notebook_append_page ((GtkNotebook*)noteBook, _pwmControlPage, gtk_label_new("PWM Control"));
+    gtk_notebook_append_page ((GtkNotebook*)noteBook, walkPage, gtk_label_new("Walk"));
 
     // put everithing to window
     gtk_container_add (GTK_CONTAINER (_window), noteBook);

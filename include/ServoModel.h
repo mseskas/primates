@@ -19,6 +19,9 @@ class ServoModel : public IState
         void ExecutePosition(const char * data12);
         void ExecutePosition(short state);
 
+        void SetSinglePosition(int servo, float anglePercent);
+        void SetAllPositions(float * positions);
+
         void ReleaseState();
 
         short BeginState();
@@ -28,6 +31,9 @@ class ServoModel : public IState
 
         servo * Servos[srvQuantity];
         int * ServoParams;
+
+        float * ServoPositions;
+
     private:
         void LoadServoControls();
 

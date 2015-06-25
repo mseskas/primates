@@ -10,6 +10,7 @@
 #include "gtkAllServo.h"
 #include "pwm_gtk_control.h"
 #include "RewardView.h"
+#include "WalkView.h"
 
 class gui_main
 {
